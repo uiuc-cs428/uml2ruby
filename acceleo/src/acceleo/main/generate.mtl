@@ -1,0 +1,22 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.eclipse.org/uml2/4.0.0/UML')]
+
+[template public generateElement(aClass : Class)]
+[comment @main/]
+[file (aClass.name.concat('.py'), false, 'UTF-8')]
+class [aClass.name.toUpperFirst()/]:
+	[for (p: Property | aClass.attribute) separator('\n')]
+	[p.name/]
+	[/for]
+ 
+	[for (p: Property | aClass.attribute) separator('\n')]
+	def get[p.name.toUpperFirst()/]() :
+		return this.[p.name/]
+	[/for]
+ 
+	[for (o: Operation | aClass.ownedOperation) separator('\n')]
+	def [o.name/]() :
+		# TODO should be implemented
+	[/for]
+[/file]
+[/template]
