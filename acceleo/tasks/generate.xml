@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="acceleo">
-    <property name="ECLIPSE_HOME" value="../../../../../../Programs/eclipse"/>
-    <property name="ECLIPSE_WORKSPACE" value="../.."/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../Programs/eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../../workspace"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="acceleo.libraryclasspath">

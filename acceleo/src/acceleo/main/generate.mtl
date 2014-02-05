@@ -16,7 +16,7 @@ class [aClass.name.toUpperFirst()/]:
  
 	[for (o: Operation | aClass.ownedOperation) separator('\n')]
 	def [o.name/]() :
-		# TODO should be implemented
+		# TODO should be implemented and stuf
 	[/for]
 [/file]
 [/template]
