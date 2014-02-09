@@ -12,12 +12,12 @@ class Test
     puts "[#{@name}]"
 
     # iterate each Ruby file that was generated
-    Dir.glob("#{@autogenDir}/*.rb") do |autogen|
+    Dir.glob("#{@expectedDir}/*.rb") do |expected|
 
       # correlate autogen code to its expected couterpart
-      expected = autogen.gsub(@autogenDir, @expectedDir).gsub(".rb", "Expected.rb")
+      autogen = expected.gsub(@expectedDir, @autogenDir).gsub("Expected", "")
 
-      if File.exists?(expected)
+      if File.exists?(autogen)
         generatedCode = File.open(autogen).readlines
         expectedCode = File.open(expected).readlines
         if generatedCode == expectedCode
@@ -27,7 +27,7 @@ class Test
           success = false
         end
       else
-        puts "  [-] Could not find expected file #{File.basename(expected)}"
+        puts "  [-] Could not find autogen file #{File.basename(autogen)}"
         success = false
       end
     end
