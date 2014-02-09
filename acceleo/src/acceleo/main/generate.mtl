@@ -3,20 +3,19 @@
 
 [template public generateElement(aClass : Class)]
 [comment @main/]
-[file (aClass.name.concat('.py'), false, 'UTF-8')]
-class [aClass.name.toUpperFirst()/]:
+[file (aClass.name.concat('.rb'), false, 'UTF-8')]
+class [aClass.name.toUpperFirst()/]
 	[for (p: Property | aClass.attribute) separator('\n')]
 	[p.name/]
 	[/for]
- 
-	[for (p: Property | aClass.attribute) separator('\n')]
+ 	[for (p: Property | aClass.attribute) separator('\n')]
 	def get[p.name.toUpperFirst()/]() :
 		return this.[p.name/]
 	[/for]
- 
-	[for (o: Operation | aClass.ownedOperation) separator('\n')]
+ 	[for (o: Operation | aClass.ownedOperation) separator('\n')]
 	def [o.name/]() :
 		# TODO should be implemented
 	[/for]
+end
 [/file]
 [/template]
