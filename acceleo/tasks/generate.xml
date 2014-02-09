@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="acceleo">
-    <property name="ECLIPSE_HOME" value="../../../../../../Programs/eclipse"/>
-    <property name="ECLIPSE_WORKSPACE" value="../.."/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../Programs/eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../../workspace"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="acceleo.libraryclasspath">
@@ -35,6 +35,7 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen.ecore_2.9.1.v20130902-0605.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen_2.9.0.v20130902-0605.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/com.google.guava_11.0.2.v201303041551.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.parser_3.4.1.201309031307.jar"/>
     </path>
 
     <path id="acceleo.classpath">
