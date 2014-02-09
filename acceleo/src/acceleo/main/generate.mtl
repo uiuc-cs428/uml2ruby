@@ -8,7 +8,6 @@ class [aClass.name.toUpperFirst()/]:
 	[for (p: Property | aClass.attribute) separator('\n')]
 	[p.name/]
 	[/for]
- 
 	[for (p: Property | aClass.attribute) separator('\n')]
 	def get[p.name.toUpperFirst()/]() :
 		return this.[p.name/]
@@ -16,7 +15,7 @@ class [aClass.name.toUpperFirst()/]:
  
 	[for (o: Operation | aClass.ownedOperation) separator('\n')]
 	def [o.name/]() :
-		# TODO should be implemented and stuf
+		# TODO should be implemented and stuff
 	[/for]
 [/file]
 [/template]
