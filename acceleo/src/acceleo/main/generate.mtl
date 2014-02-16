@@ -4,7 +4,7 @@
 [template public generateElement(aClass : Class)]
 [comment @main/]
 [file (aClass.name.concat('.py'), false, 'UTF-8')]
-class [aClass.name.toUpperFirst()/]:
+class [aClass.name.toUpperFirst()/][comment code for class generalization: /][for (c: Classifier |  aClass.general)] < [c.name/][/for]
 	[for (p: Property | aClass.attribute) separator('\n')]
 	[p.name/]
 	[/for]
