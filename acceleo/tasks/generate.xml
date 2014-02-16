@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="acceleo">
-    <property name="ECLIPSE_HOME" value="../../../../../../../Programs/eclipse"/>
-    <property name="ECLIPSE_WORKSPACE" value="../../../../workspace"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../Program Files (x86)/Eclipse Kepler 4.3.1/eclipse-standard-kepler-SR1-win32-x86_64/eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../../../EclipseWorkspaceKepler"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="acceleo.libraryclasspath">
