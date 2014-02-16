@@ -3,8 +3,8 @@
 
 [template public generateElement(aClass : Class)]
 [comment @main/]
-[file (aClass.name.concat('.rb'), false, 'UTF-8')]
-class [aClass.name.toUpperFirst()/][comment code for class generalization: /][for (c: Classifier |  aClass.general)] < [c.name/][/for]
+[file (aClass.name.concat('.py'), false, 'UTF-8')]
+class [aClass.name.toUpperFirst()/]:
 	[for (p: Property | aClass.attribute) separator('\n')]
 	[p.name/]
 	[/for]
@@ -16,7 +16,7 @@ class [aClass.name.toUpperFirst()/][comment code for class generalization: /][fo
  
 	[for (o: Operation | aClass.ownedOperation) separator('\n')]
 	def [o.name/]() :
-		# TODO should be implemented and stuff
+		# TODO should be implemented and stuf
 	[/for]
 [/file]
 [/template]
