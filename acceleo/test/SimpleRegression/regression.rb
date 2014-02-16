@@ -2,7 +2,7 @@ class Test
 
   def initialize(name, expectedDir = "expected", autogenDir = "autogen")
     @name = name
-    @baseDir = "../#{name}"
+    @baseDir = "test/#{name}"
     @expectedDir = "#{@baseDir}/#{expectedDir}"
     @autogenDir = "#{@baseDir}/#{autogenDir}"
   end
@@ -12,7 +12,14 @@ class Test
     puts "[#{@name}]"
 
     # iterate each Ruby file that was generated
-    Dir.glob("#{@expectedDir}/*.rb") do |expected|
+    expectedFiles = Dir.glob("#{@expectedDir}/*.rb")
+
+    if expectedFiles.size == 0
+      puts "No expected files found"
+      raise "No expected files found"
+    end
+        
+    expectedFiles.each do |expected|
 
       # correlate autogen code to its expected couterpart
       autogen = expected.gsub(@expectedDir, @autogenDir).gsub("Expected", "")
@@ -37,15 +44,20 @@ class Test
 end
 
 def main()
+  testDirectory = ARGV[0]
   successes = 0
   tests = []
-  tests << Test.new("EmptyClassStory")
+  tests << Test.new(testDirectory)
   tests.each do |test|
     if test.run()
       successes += 1
     end
   end
   puts "\n[*] #{successes}/#{tests.size} tests succeeded."
+  if successes != tests.size
+    puts "Failed tests!"
+    raise "Failed tests!"
+  end
 end
 
 main()
