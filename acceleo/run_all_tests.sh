@@ -2,3 +2,4 @@
 #for each user story.
 
 #TUXML_OUTPUT_FILE=testUserStory.xml ruby testing/user_story/autogen/TestClass.rb --runner xml
+echo 'Running Ruby unit tests'
