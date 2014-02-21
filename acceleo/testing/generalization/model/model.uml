@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_28bpIJdUEeOLitOzcRAhEQ" name="model">
+  <packagedElement xmi:type="uml:Class" xmi:id="_9K3hUJdUEeOLitOzcRAhEQ" name="Fruit">
+    <generalization xmi:type="uml:Generalization" xmi:id="_xtChMJdWEeOLitOzcRAhEQ" general="_wmrWEJdWEeOLitOzcRAhEQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9ZMRMJdUEeOLitOzcRAhEQ" name="Apple">
+    <generalization xmi:type="uml:Generalization" xmi:id="_Euu7YJdVEeOLitOzcRAhEQ" general="_9K3hUJdUEeOLitOzcRAhEQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9ksWkJdUEeOLitOzcRAhEQ" name="Banana">
+    <generalization xmi:type="uml:Generalization" xmi:id="_C8eTkJdVEeOLitOzcRAhEQ" general="_9K3hUJdUEeOLitOzcRAhEQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wmrWEJdWEeOLitOzcRAhEQ" name="Food"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zrWA8JdWEeOLitOzcRAhEQ" name="Meat">
+    <generalization xmi:type="uml:Generalization" xmi:id="_084hUJdWEeOLitOzcRAhEQ" general="_wmrWEJdWEeOLitOzcRAhEQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_33mmAJdWEeOLitOzcRAhEQ" name="Beef">
+    <generalization xmi:type="uml:Generalization" xmi:id="_5R-SQJdWEeOLitOzcRAhEQ" general="_zrWA8JdWEeOLitOzcRAhEQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_86lZ8JkSEeOQxbGyk_P0LQ" name="Class1"/>
+</uml:Model>

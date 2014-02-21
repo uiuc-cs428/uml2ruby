@@ -1,12 +1,12 @@
 require 'test/unit'
 require 'rubygems'
 require 'tuxml'
-require 'src/out/Food.rb'
-require 'src/out/Fruit.rb'
-require 'src/out/Meat.rb'
-require 'src/out/Apple.rb'
-require 'src/out/Banana.rb'
-require 'src/out/Beef.rb'
+require 'testing/generalization/autogen/Food.rb'
+require 'testing/generalization/autogen/Fruit.rb'
+require 'testing/generalization/autogen/Meat.rb'
+require 'testing/generalization/autogen/Apple.rb'
+require 'testing/generalization/autogen/Banana.rb'
+require 'testing/generalization/autogen/Beef.rb'
 
 
 class TestGeneralizationSuite < Test::Unit::TestCase
