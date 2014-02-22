@@ -1,23 +1,42 @@
 [comment encoding = UTF-8 /]
 [module generate('http://www.eclipse.org/uml2/4.0.0/UML')]
 
-[template public generateElement(aClass : Class)]
+[template public generateElement(c : Class) {
+className : String = c.name;
+pubAttrs : Set(Property) = c.attribute->select(visibility = VisibilityKind::public);
+protAttrs : Set(Property) = c.attribute->select(visibility = VisibilityKind::protected);
+privAttrs : Set(Property) = c.attribute->select(visibility = VisibilityKind::private);
+}
+]
 [comment @main/]
-[file (aClass.name.concat('.rb'), false, 'UTF-8')]
-class [aClass.name.toUpperFirst()/][comment code for class generalization: /][for (c: Classifier |  aClass.general)] < [c.name/][/for]
+[file (className.concat('.rb'), false, 'UTF-8')]
+class [className.toUpperFirst()/][comment code for class generalization: /][for (c: Classifier |  Class.general)] < [c.name/][/for]
 	def initialize()
-	end
-	[for (p: Property | aClass.attribute) separator('\n')]
-	[p.name/]
-	[/for] 
-	[for (p: Property | aClass.attribute) separator('\n')]
-	def get[p.name.toUpperFirst()/]() :
-		return this.[p.name/]
-	[/for] 
-	[for (o: Operation | aClass.ownedOperation) separator('\n')]
-	def [o.name/]() :
-		# TODO should be implemented and stuf
-	[/for]
+  [for (p: Property | pubAttrs)]
+    [if (p.isReadOnly = true) ]
+  attr_reader :[p.name/]
+    [else]
+  attr_accessor :[p.name/]
+    [/if]
+  [/for]
+  [for (p: Property | protAttrs)]
+
+  protected
+    [if (p.isReadOnly = true) ]
+  attr_reader :[p.name/]
+    [else]
+  attr_accessor :[p.name/]
+    [/if]
+  [/for]
+  [for (p: Property | privAttrs)]
+
+  private
+    [if (p.isReadOnly = true) ]
+  attr_reader :[p.name/]
+    [else]
+  attr_accessor :[p.name/]
+    [/if]
+  [/for]
 end
 [/file]
 [/template]
