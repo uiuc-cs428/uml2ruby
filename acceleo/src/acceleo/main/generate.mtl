@@ -1,16 +1,16 @@
 [comment encoding = UTF-8 /]
 [module generate('http://www.eclipse.org/uml2/4.0.0/UML')]
 
-[template public generateElement(c : Class) {
-className : String = c.name;
-pubAttrs : Set(Property) = c.attribute->select(visibility = VisibilityKind::public);
-protAttrs : Set(Property) = c.attribute->select(visibility = VisibilityKind::protected);
-privAttrs : Set(Property) = c.attribute->select(visibility = VisibilityKind::private);
+[template public generateElement(aClass : Class) {
+className : String = aClass.name;
+pubAttrs : Set(Property) = aClass.attribute->select(visibility = VisibilityKind::public);
+protAttrs : Set(Property) = aClass.attribute->select(visibility = VisibilityKind::protected);
+privAttrs : Set(Property) = aClass.attribute->select(visibility = VisibilityKind::private);
 }
 ]
 [comment @main/]
 [file (className.concat('.rb'), false, 'UTF-8')]
-class [className.toUpperFirst()/][comment code for class generalization: /][for (c: Classifier |  Class.general)] < [c.name/][/for]
+class [className.toUpperFirst()/][for (c: Classifier |  aClass.general)] < [c.name][/for]
 	def initialize()
   [for (p: Property | pubAttrs)]
     [if (p.isReadOnly = true) ]
