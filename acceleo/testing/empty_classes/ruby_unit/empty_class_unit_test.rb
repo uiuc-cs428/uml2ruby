@@ -4,7 +4,7 @@ require 'tuxml'
 require 'acceleo/testing/empty_classes/autogen/Class1.rb'
 require 'acceleo/testing/empty_classes/autogen/Class2.rb'
 
-class TestAttributesSuite < Test::Unit::TestCase
+class EmptyClassSuite < Test::Unit::TestCase
 
   def test_class1_is_valid_class
     c1 = Class1.new
