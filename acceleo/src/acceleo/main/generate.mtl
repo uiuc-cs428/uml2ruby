@@ -10,7 +10,7 @@ privAttrs : Set(Property) = aClass.attribute->select(visibility = VisibilityKind
 ]
 [comment @main/]
 [file (className.concat('.rb'), false, 'UTF-8')]
-class [className.toUpperFirst()/][for (c: Classifier |  aClass.general)] < [c.name][/for]
+class [className.toUpperFirst()/][for (c: Classifier |  aClass.general)] < [c.name/][/for]
 	def initialize()
   [for (p: Property | pubAttrs)]
     [if (p.isReadOnly = true) ]
