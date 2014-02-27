@@ -1,43 +1,81 @@
 [comment encoding = UTF-8 /]
 [module generate('http://www.eclipse.org/uml2/4.0.0/UML')]
 
-[template public generateElement(aClass : Class) {
-className : String = aClass.name;
-pubAttrs : Set(Property) = aClass.attribute->select(visibility = VisibilityKind::public);
-protAttrs : Set(Property) = aClass.attribute->select(visibility = VisibilityKind::protected);
-privAttrs : Set(Property) = aClass.attribute->select(visibility = VisibilityKind::private);
-}
-]
+[template public generateElement(aClass : Class)]
 [comment @main/]
-[file (className.concat('.rb'), false, 'UTF-8')]
-class [className.toUpperFirst()/][for (c: Classifier |  aClass.general)] < [c.name/][/for]
-	def initialize()
-	end
-  [for (p: Property | pubAttrs)]
-    [if (p.isReadOnly = true) ]
-  attr_reader :[p.name/]
-    [else]
-  attr_accessor :[p.name/]
-    [/if]
-  [/for]
-  [for (p: Property | protAttrs)]
+[file (aClass.genName().concat('.rb'), false, 'UTF-8')]
+[aClass.genClass()/]
+  public
+  def initialize()
+  end
+
+  [aClass.genAttributes(VisibilityKind::public)/][aClass.genOperations(VisibilityKind::public)/]
 
   protected
-    [if (p.isReadOnly = true) ]
-  attr_reader :[p.name/]
-    [else]
-  attr_accessor :[p.name/]
-    [/if]
-  [/for]
-  [for (p: Property | privAttrs)]
+  [aClass.genAttributes(VisibilityKind::protected)/][aClass.genOperations(VisibilityKind::protected)/]
 
   private
-    [if (p.isReadOnly = true) ]
-  attr_reader :[p.name/]
-    [else]
-  attr_accessor :[p.name/]
-    [/if]
-  [/for]
+  [aClass.genAttributes(VisibilityKind::private)/][aClass.genOperations(VisibilityKind::private)/]
 end
 [/file]
+
 [/template]
+
+
+[comment General Templates/]
+
+[template public genName(aNamedElement : NamedElement)]
+[aNamedElement.name/]
+[/template]
+
+[comment Class Name Related Templates/]
+
+[template public genClass(aClass : Class)]
+[aClass.genClassName()/][aClass.genParent()/]
+[/template]
+
+[template public genClassName(aClass : Class)]
+class [aClass.genName().toUpperFirst()/]
+[/template]
+
+[template public genParent(aClass : Class)]
+[for (aClassifier: Classifier |  aClass.general)] < [aClassifier.name/][/for]
+[/template]
+
+[comment Attribute Related Templates/]
+
+[template public genAttributes(aClass : Class, visibilityKind : VisibilityKind)]
+[aClass.attribute->select(visibility = visibilityKind).genAttribute()/]
+[/template]
+
+[template public genAttribute(anAttribute : Property)]
+[if (anAttribute.isReadOnly = true) ]
+  attr_reader :[anAttribute.genName()/]
+[else]
+  attr_accessor :[anAttribute.genName()/]
+[/if]
+[/template]
+
+[comment Operation Related Templates/]
+
+[template public genOperations(aClass : Class, visibilityKind : VisibilityKind)]
+[aClass.ownedOperation->select(visibility = visibilityKind).genOperation()/]
+[/template]
+
+[template public genOperation(anOperation : Operation)]
+
+def [anOperation.genName()/]([anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genOperationParameter()->sep(', ')/])
+end
+[/template]
+
+[template public genOperationParameters(anOperation : Operation)]
+[anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genOperationParameter()->sep(', ')/]
+[/template]
+
+[template public genOperationParameter(aParameter : Parameter)]
+[aParameter.genName()/]
+[/template]
+
+
+
+

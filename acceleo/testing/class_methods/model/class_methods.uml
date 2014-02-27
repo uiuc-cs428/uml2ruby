@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_lsZakJzMEeODVOE2brWgLA" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_lsZakZzMEeODVOE2brWgLA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ojOdwJzMEeODVOE2brWgLA" name="Class1">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_uGMXEJzMEeODVOE2brWgLA" name="method1" concurrency="concurrent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CvUXMJzNEeODVOE2brWgLA" name="arg1"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_FMSv8JzNEeODVOE2brWgLA" name="arg2"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_WQSccJzNEeODVOE2brWgLA" name="arg3"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mG2FcJzNEeODVOE2brWgLA" name="rv" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_iDcsAJzOEeODVOE2brWgLA" name="method2" visibility="private" concurrency="concurrent"/>
+  </packagedElement>
+</uml:Model>
