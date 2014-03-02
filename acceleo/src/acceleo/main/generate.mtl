@@ -4,6 +4,7 @@
 [template public generateElement(aClass : Class)]
 [comment @main/]
 [file (aClass.genName().concat('.rb'), false, 'UTF-8')]
+[aClass.genComments()/]
 [aClass.genClass()/]
   public
   def initialize()
@@ -76,6 +77,9 @@ end
 [aParameter.genName()/]
 [/template]
 
+[template public genComments(aClass : Class)]
+[for (com : Comment | aClass.ownedComment) separator('\n')]# [com._body.toString() /][/for]
+[/template]
 
 
 

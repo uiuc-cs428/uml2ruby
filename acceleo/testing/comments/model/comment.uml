@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_-LpmMKJHEeOFGot9Ps58jQ" name="model">
+  <ownedComment xmi:type="uml:Comment" xmi:id="_BVdaUKJJEeOFGot9Ps58jQ">
+    <body>Standalone Comment</body>
+  </ownedComment>
+  <packagedElement xmi:type="uml:Class" xmi:id="__DfNIKJHEeOFGot9Ps58jQ" name="Class1">
+    <ownedComment xmi:type="uml:Comment" xmi:id="__e590KJHEeOFGot9Ps58jQ" annotatedElement="__DfNIKJHEeOFGot9Ps58jQ">
+      <body>Attached Comment</body>
+    </ownedComment>
+  </packagedElement>
+</uml:Model>
