@@ -3,6 +3,9 @@
 
 [template public generateElement(aClass : Class)]
 [comment @main/]
+[for (com : Comment | aClass.ownedComment) separator('\n')]# [com._body.toString() /][/for]
+[for (com : Comment | aClass.ownedComment) separator('\n')]# [com._body.size() /][/for]
+[aClass.genComments()/]
 [file (aClass.genName().concat('.rb'), false, 'UTF-8')]
 [aClass.genClass()/]
   public
@@ -76,6 +79,9 @@ end
 [aParameter.genName()/]
 [/template]
 
+[template public genComments(aClass : Class)]
+[for (com : Comment | aClass.ownedComment) separator('\n')]# [com._body.toString() /][/for]
+[/template]
 
 
 
