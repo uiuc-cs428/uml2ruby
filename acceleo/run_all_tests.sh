@@ -6,4 +6,5 @@ TUXML_OUTPUT_FILE=testClassGeneralization.xml ruby acceleo/testing/generalizatio
 TUXML_OUTPUT_FILE=testEmptyClasses.xml ruby acceleo/testing/empty_classes/ruby_unit/empty_class_unit_test.rb --runner xml
 TUXML_OUTPUT_FILE=testClassAttributes.xml ruby acceleo/testing/class_attributes/ruby_unit/class_attributes_unit_test.rb --runner xml
 TUXML_OUTPUT_FILE=testClassMethods.xml ruby acceleo/testing/class_methods/ruby_unit/class_methods_unit_test.rb --runner xml
+TUXML_OUTPUT_FILE=testClassQualifier.xml ruby acceleo/testing/class_qualifier/ruby_unit/qualifier_unit_test.rb --runner xml
 echo 'Running Ruby unit tests'
