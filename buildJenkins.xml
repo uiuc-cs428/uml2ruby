@@ -16,7 +16,7 @@
 
     <!-- The classpath with only the dependencies used by the project (a dependency with the parser is required) -->
     <path id="acceleo.libraryclasspath">
-        <pathelement location="${ECLIPSE_WORKSPACE}/acceleo/bin"/>
+        <pathelement location="${ECLIPSE_WORKSPACE}/bin"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime_3.9.0.v20130326-1255.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi_3.9.1.v20130814-1242.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"/>
