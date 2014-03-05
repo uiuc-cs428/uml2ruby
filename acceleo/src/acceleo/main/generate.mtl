@@ -8,7 +8,7 @@
 [aClass.genClass()/]
   public
     def initialize()
-		[aClass.attribute.initializeQualifierHash()/]
+    [aClass.attribute.initializeQualifierHash()/]
     end
 
   [aClass.genAttributes(VisibilityKind::public)/][aClass.genOperations(VisibilityKind::public)/]
@@ -95,7 +95,7 @@ end
 
 [template public initializeQualifierHash(anAttribute : Property)]
 [if (anAttribute.qualifier->size() > 0)]
-	@[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = Hash.new[/if]
+  @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = Hash.new[/if]
 [/template]
 
 [template public genComments(aClass : Class)]
