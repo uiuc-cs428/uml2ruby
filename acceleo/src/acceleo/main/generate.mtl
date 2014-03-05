@@ -4,6 +4,7 @@
 [template public generateElement(aClass : Class)]
 [comment @main/]
 [file (aClass.genName().concat('.rb'), false, 'UTF-8')]
+[aClass.genComments()/]
 [aClass.genClass()/]
   public
     def initialize()
@@ -97,4 +98,7 @@ end
 	@[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = Hash.new[/if]
 [/template]
 
+[template public genComments(aClass : Class)]
+[for (com : Comment | aClass.ownedComment) separator('\n')]# [com._body.toString() /][/for]
+[/template]
 
