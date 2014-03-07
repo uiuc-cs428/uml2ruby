@@ -7,8 +7,9 @@
 [aClass.genComments()/]
 [aClass.genClass()/]
   public
-  def initialize()
-  end
+    def initialize()
+    [aClass.attribute.initializeQualifierHash()/]
+    end
 
   [aClass.genAttributes(VisibilityKind::public)/][aClass.genOperations(VisibilityKind::public)/]
 
@@ -50,10 +51,25 @@ class [aClass.genName().toUpperFirst()/]
 [/template]
 
 [template public genAttribute(anAttribute : Property)]
-[if (anAttribute.isReadOnly = true) ]
-  attr_reader :[anAttribute.genName()/]
+[if (anAttribute.qualifier->isEmpty())]
+  [if (anAttribute.isReadOnly = true) ]
+    attr_reader :[anAttribute.genName()/]
+  [else]
+    attr_accessor :[anAttribute.genName()/]
+  [/if]
 [else]
-  attr_accessor :[anAttribute.genName()/]
+  [comment create add,get,remove functions for the qualified association hash/]
+  def add[anAttribute.type.name/]([anAttribute.qualifier.name/], [anAttribute.type.name.toLowerFirst()/])
+    @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/]['['/][anAttribute.qualifier.name/][']'/]  = [anAttribute.type.name.toLowerFirst()/]
+  end
+
+  def remove[anAttribute.type.name/]([anAttribute.qualifier.name/])
+    @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/].delete([anAttribute.qualifier.name/])
+  end
+  
+  def get[anAttribute.type.name/]([anAttribute.qualifier.name/])
+    return @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/]['['/][anAttribute.qualifier.name/][']'/]
+  end
 [/if]
 [/template]
 
@@ -77,9 +93,12 @@ end
 [aParameter.genName()/]
 [/template]
 
+[template public initializeQualifierHash(anAttribute : Property)]
+[if (anAttribute.qualifier->size() > 0)]
+  @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = Hash.new[/if]
+[/template]
+
 [template public genComments(aClass : Class)]
 [for (com : Comment | aClass.ownedComment) separator('\n')]# [com._body.toString() /][/for]
 [/template]
-
-
 

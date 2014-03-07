@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_qsT84KF8EeO-ZfbIEpzVpg" name="model" URI="" viewpoint="">
+  <packagedElement xmi:type="uml:Class" xmi:id="_ssRCcKF8EeO-ZfbIEpzVpg" name="Bank">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_U-1WcKHBEeOjp91dQk0Mrw" name="customer" type="_ZTlkcKGmEeO-ZfbIEpzVpg" association="_U-3LoKHBEeOjp91dQk0Mrw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_U-1WcaHBEeOjp91dQk0Mrw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_U-1WcqHBEeOjp91dQk0Mrw" value="1"/>
+      <qualifier xmi:type="uml:Property" xmi:id="_d9rgwKHBEeOjp91dQk0Mrw" name="accountNumber"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZTlkcKGmEeO-ZfbIEpzVpg" name="Customer"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_U-3LoKHBEeOjp91dQk0Mrw" name="bank_customer_1" memberEnd="_U-3LoaHBEeOjp91dQk0Mrw _U-1WcKHBEeOjp91dQk0Mrw">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_U-3LoaHBEeOjp91dQk0Mrw" name="bank" type="_ssRCcKF8EeO-ZfbIEpzVpg" association="_U-3LoKHBEeOjp91dQk0Mrw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_U-3LoqHBEeOjp91dQk0Mrw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_U-3Lo6HBEeOjp91dQk0Mrw" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>
