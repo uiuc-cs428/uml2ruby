@@ -12,7 +12,7 @@
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_iDcsAJzOEeODVOE2brWgLA" name="priv_method1" visibility="private" concurrency="concurrent"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_mYiSsKefEeOC972okWLMGw" name="pub_method2" visibility="public">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qp7PYKefEeOC972okWLMGw" name="rv" direction="return">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qp7PYKefEeOC972okWLMGw" name="return_value" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
     </ownedOperation>
