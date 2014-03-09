@@ -97,17 +97,14 @@ end
 [/template]
 
 [template public genDefaultType(aParameter : Parameter)]
-[if (aParameter.type->isEmpty() = true) ]
-nil
-[elseif (aParameter.type.name = 'String') ]
-""
-[elseif (aParameter.type.name = 'Integer') ]
-0
-[elseif (aParameter.type.name = 'Real') ]
-0.0
+[if (aParameter.type->isEmpty() = true) ] nil
 [else]
-[comment for any non-primitive types, just call the class constructor/]
-[aParameter.type.name/].new
+  [if (aParameter.type.name = 'String') ] ""
+  [elseif (aParameter.type.name = 'Integer') ] 0
+  [elseif (aParameter.type.name = 'Real') ] 0.0
+  [comment for any non-primitive types, just call the class constructor/]
+  [else] [aParameter.type.name /].new
+  [/if]
 [/if]
 [/template]
 
