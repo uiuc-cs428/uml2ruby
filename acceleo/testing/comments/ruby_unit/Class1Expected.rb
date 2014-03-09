@@ -1,3 +1,4 @@
+
 # Attached Comment
 class Class1
   public
