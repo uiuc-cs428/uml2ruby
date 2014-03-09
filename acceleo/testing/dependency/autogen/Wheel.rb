@@ -1,6 +1,6 @@
+require 'acceleo/testing/dependency/autogen/Car.rb'
 
-# Attached Comment
-class Class1
+class Wheel
   public
     def initialize()
     

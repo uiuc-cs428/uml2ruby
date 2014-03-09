@@ -1,6 +1,5 @@
 
-# Attached Comment
-class Class1
+class Class2
   public
     def initialize()
     
@@ -12,5 +11,6 @@ class Class1
   
 
   private
-  
+      attr_accessor :class3
+
 end

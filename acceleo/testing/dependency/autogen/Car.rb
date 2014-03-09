@@ -1,6 +1,6 @@
 
-# Attached Comment
-class Class1
+
+class Car
   public
     def initialize()
     

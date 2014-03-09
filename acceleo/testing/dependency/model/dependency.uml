@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_40bIMKJaEeOFGot9Ps58jQ" name="model">
+  <packagedElement xmi:type="uml:Class" xmi:id="_5lUZoKJaEeOFGot9Ps58jQ" name="Car"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6vGFIKJaEeOFGot9Ps58jQ" clientDependency="_DE55gKJbEeOFGot9Ps58jQ" name="Wheel"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_DE55gKJbEeOFGot9Ps58jQ" name="" client="_6vGFIKJaEeOFGot9Ps58jQ" supplier="_5lUZoKJaEeOFGot9Ps58jQ"/>
+</uml:Model>

@@ -4,6 +4,7 @@
 [template public generateElement(aClass : Class)]
 [comment @main/]
 [file (aClass.genName().concat('.rb'), false, 'UTF-8')]
+[aClass.genDependencies()/]
 [aClass.genComments()/]
 [aClass.genClass()/]
   public
@@ -127,3 +128,6 @@ end
 [for (com : Comment | aClass.ownedComment) separator('\n')]# [com._body.toString() /][/for]
 [/template]
 
+[template public genDependencies(aClass : Class)]
+[for (dep : Dependency | aClass.clientDependency) separator('\n')]require 'acceleo/testing/dependency/autogen/[dep.supplier.name.concat('.rb') /]'[/for]
+[/template]
