@@ -23,6 +23,10 @@
         <element xmi:type="uml:Operation" href="class_methods.uml#_iDcsAJzOEeODVOE2brWgLA"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_iDiLkZzOEeODVOE2brWgLA"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_mZRSgKefEeOC972okWLMGw" type="3013">
+        <element xmi:type="uml:Operation" href="class_methods.uml#_mYiSsKefEeOC972okWLMGw"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_mZRSgaefEeOC972okWLMGw"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_opVs0ZzMEeODVOE2brWgLA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_opVs0pzMEeODVOE2brWgLA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_opVs05zMEeODVOE2brWgLA"/>
