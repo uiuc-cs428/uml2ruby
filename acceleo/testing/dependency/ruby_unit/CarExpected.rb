@@ -2,8 +2,9 @@
 
 class Car
   public
-  def initialize()
-  end
+    def initialize()
+    
+    end
 
   
 

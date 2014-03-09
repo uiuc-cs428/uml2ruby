@@ -2,8 +2,9 @@ require 'acceleo/testing/dependency/autogen/Car.rb'
 
 class Wheel
   public
-  def initialize()
-  end
+    def initialize()
+    
+    end
 
   
 
