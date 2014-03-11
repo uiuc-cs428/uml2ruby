@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_WjqX0Ke3EeOzx_QlbxPRtg" name="model">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_Wjs0EKe3EeOzx_QlbxPRtg" name="SomeFunActivity" node="_aQlVgKe3EeOzx_QlbxPRtg _5a-vkKi1EeOGPL1tbNOgVw _Q3XLYKi_EeOGPL1tbNOgVw">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Dxt54Ki2EeOGPL1tbNOgVw" name="ControlFlow" source="_5a-vkKi1EeOGPL1tbNOgVw" target="_aQlVgKe3EeOzx_QlbxPRtg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_aQlVgKe3EeOzx_QlbxPRtg" name="OpaqueAction" incoming="_Dxt54Ki2EeOGPL1tbNOgVw" language="" body=""/>
+    <node xmi:type="uml:InitialNode" xmi:id="_5a-vkKi1EeOGPL1tbNOgVw" name="The Good Node" outgoing="_Dxt54Ki2EeOGPL1tbNOgVw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Q3XLYKi_EeOGPL1tbNOgVw" name="OpaqueAction1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Wb52MKi4EeOGPL1tbNOgVw" name="Class1"/>
+</uml:Model>
