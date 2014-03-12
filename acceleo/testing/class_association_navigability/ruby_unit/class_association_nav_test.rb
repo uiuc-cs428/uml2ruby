@@ -1,9 +1,9 @@
 require 'test/unit'
 require 'rubygems'
 require 'tuxml'
-require 'acceleo/testing/class_association_navigability/autogen/Class1.rb'
-require 'acceleo/testing/class_association_navigability/autogen/Class2.rb'
-require 'acceleo/testing/class_association_navigability/autogen/Class3.rb'
+require_relative '../autogen/Class1.rb'
+require_relative '../autogen/Class2.rb'
+require_relative '../autogen/Class3.rb'
 
 class TestAssociationNavSuite < Test::Unit::TestCase
   def test_class1_protected_attribute_not_accessible

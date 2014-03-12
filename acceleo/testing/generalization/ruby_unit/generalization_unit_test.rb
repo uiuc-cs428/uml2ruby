@@ -1,12 +1,12 @@
 require 'test/unit'
 require 'rubygems'
 require 'tuxml'
-require 'acceleo/testing/generalization/autogen/Food.rb'
-require 'acceleo/testing/generalization/autogen/Fruit.rb'
-require 'acceleo/testing/generalization/autogen/Meat.rb'
-require 'acceleo/testing/generalization/autogen/Apple.rb'
-require 'acceleo/testing/generalization/autogen/Banana.rb'
-require 'acceleo/testing/generalization/autogen/Beef.rb'
+require '../autogen/Food.rb'
+require '../autogen/Fruit.rb'
+require '../autogen/Meat.rb'
+require '../autogen/Apple.rb'
+require '../autogen/Banana.rb'
+require '../autogen/Beef.rb'
 
 
 class TestGeneralizationSuite < Test::Unit::TestCase
