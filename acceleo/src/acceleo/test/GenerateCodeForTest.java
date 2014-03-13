@@ -32,7 +32,7 @@ public class GenerateCodeForTest {
 			DirectoryStream<Path> stream =
 					Files.newDirectoryStream(modelDirectory, "*.uml"); 
 			for (Path modelFile: stream) {
-				System.out.println(modelFile.getFileName());
+				System.out.println("\t" + modelFile.getFileName());
 				generateCode(modelFile.toAbsolutePath().toString(), autogenDirectory.toAbsolutePath().toString());
 			}
 		}

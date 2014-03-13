@@ -1,0 +1,10 @@
+[comment encoding = UTF-8 /]
+[module activity('http://www.eclipse.org/uml2/4.0.0/UML')]
+
+[template public generateActivity(anActivity : Activity)]
+
+[file (anActivity.name.concat('.rb'), false, 'UTF-8')]
+  #The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows
+  #The initial node is called "[anActivity.eAllContents(InitialNode)->first().name/]"
+[/file]
+[/template]
