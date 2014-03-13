@@ -5,9 +5,15 @@
   </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_ojOdwJzMEeODVOE2brWgLA" name="Class1">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_uGMXEJzMEeODVOE2brWgLA" name="pub_method1" concurrency="concurrent">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CvUXMJzNEeODVOE2brWgLA" name="arg1"/>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_FMSv8JzNEeODVOE2brWgLA" name="arg2"/>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_WQSccJzNEeODVOE2brWgLA" name="arg3"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CvUXMJzNEeODVOE2brWgLA" name="arg1">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_FMSv8JzNEeODVOE2brWgLA" name="arg2">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_WQSccJzNEeODVOE2brWgLA" name="arg3">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_mG2FcJzNEeODVOE2brWgLA" name="rv" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_iDcsAJzOEeODVOE2brWgLA" name="priv_method1" visibility="private" concurrency="concurrent"/>
