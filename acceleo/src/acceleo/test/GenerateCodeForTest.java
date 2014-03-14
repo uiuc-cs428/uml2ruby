@@ -37,9 +37,6 @@ public class GenerateCodeForTest {
 			}
 		}
 
-		// Clean up blank lines and duplicate require_relative statements
-		// David: TODO
-		
 		assertTrue(true);
 	}
 
