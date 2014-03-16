@@ -1,8 +1,8 @@
 require 'test/unit'
 require 'rubygems'
 require 'tuxml'
-require 'acceleo/testing/class_qualifier/autogen/Bank.rb'
-require 'acceleo/testing/class_qualifier/autogen/Customer.rb'
+require_relative '../autogen/Bank.rb'
+require_relative '../autogen/Customer.rb'
 
 class TestQualifierSuite < Test::Unit::TestCase
   def test_qualifier_interface

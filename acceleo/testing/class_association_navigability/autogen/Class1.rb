@@ -1,4 +1,5 @@
 
+
 class Class1
   public
     def initialize()
@@ -9,9 +10,9 @@ class Class1
 
   protected
       attr_accessor :class3
-
+  
 
   private
       attr_accessor :class2
-
+  
 end

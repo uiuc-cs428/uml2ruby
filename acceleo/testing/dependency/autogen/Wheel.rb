@@ -1,4 +1,4 @@
-require_relative '../autogen/Car.rb'
+require_relative 'Car.rb'
 
 class Wheel
   public

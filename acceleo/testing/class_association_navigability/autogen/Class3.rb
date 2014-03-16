@@ -1,12 +1,13 @@
 
+
 class Class3
   public
     def initialize()
     
     end
 
-    attr_accessor :class1
-
+      attr_accessor :class1
+  
 
   protected
   
