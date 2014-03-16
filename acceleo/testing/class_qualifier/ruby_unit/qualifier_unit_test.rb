@@ -11,7 +11,7 @@ class TestQualifierSuite < Test::Unit::TestCase
 
     bank.addCustomer(1234, customer)
     assert_equal(bank.getCustomer(1234), customer)
-  
+
     bank.removeCustomer(1234);
     assert_equal(bank.getCustomer(1234), nil)
   end

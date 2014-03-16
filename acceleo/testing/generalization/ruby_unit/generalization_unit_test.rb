@@ -25,7 +25,7 @@ class TestGeneralizationSuite < Test::Unit::TestCase
   def test_parent_is_subclass_of_grandparent
     assert_equal(true, Fruit < Food)
   end
-  
+
   def test_food_is_ancestor_of_banana_and_beef
     assert_equal(true, Banana < Food)
     assert_equal(true, Beef < Food)
