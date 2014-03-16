@@ -1,7 +1,7 @@
 require 'test/unit'
 require 'rubygems'
 require 'tuxml'
-require_relative '../autogen/Class1.rb'
+require 'acceleo/testing/class_methods/autogen/Class1.rb'
 
 class TestMethodsSuite < Test::Unit::TestCase
 

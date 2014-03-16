@@ -42,6 +42,20 @@ end
 [aNamedElement.name/]
 [/template]
 
+[template public genType(aParameter : Parameter) post(trim())]
+[if (aParameter.type->isEmpty() = true) ]
+Undefined
+[elseif (aParameter.type.name->includes('String'))]
+String
+[elseif (aParameter.type.name->includes('Integer'))]
+Fixnum
+[elseif (aParameter.type.name->includes('Real'))]
+Float
+[else]
+[aParameter.type.name /]
+[/if]
+[/template]
+
 [comment Class Name Related Templates/]
 
 [template public genClass(aClass : Class)]
@@ -93,11 +107,36 @@ class [aClass.genName().toUpperFirst()/]
 
 [template public genOperation(anOperation : Operation)]
 
-def [anOperation.genName()/]([anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genOperationParameter()->sep(', ')/])
+[anOperation.genParameterComments()/]
+def [anOperation.genName()/][anOperation.genParameters()/]
+  # TODO
 [if (anOperation.isVoid() = false)]
   [anOperation.genReturnValue()/]
 [/if]
 end
+
+[/template]
+
+[template public genParameters(anOperation : Operation) post(trim())]
+[if (anOperation.hasArgs()) ]
+([anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genOperationParameter()->sep(', ')/])
+[/if]
+[/template]
+
+[template public genParameterComments(anOperation : Operation) post(trim())]
+
+[if (anOperation.hasArgs()) ]
+# * *Args* :
+[anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genParameterComment()->sep('\n')/]
+[/if]
+[if (anOperation.isVoid() = false) ]
+# * *Returns* :
+[anOperation.ownedParameter->select(param : Parameter | (param.direction = ParameterDirectionKind::return))->first().genParameterComment()/]
+[/if]
+[/template]
+
+[template public genParameterComment(aParameter : Parameter)]
+#   - +[aParameter.genName()/]+ -> [aParameter.genType()/]
 [/template]
 
 [template public genOperationParameters(anOperation : Operation)]
@@ -108,7 +147,7 @@ end
 [aParameter.genName()/]
 [/template]
 
-[template public genDefaultType(aParameter : Parameter)]
+[template public genDefaultType(aParameter : Parameter) post(trim())]
 [if (aParameter.type->isEmpty() = true) ] nil
 [elseif (aParameter.type.toString().contains('String')) ] ""
 [elseif (aParameter.type.toString().contains('Integer')) ] 0
@@ -118,6 +157,10 @@ end
 [/if]
 [/template]
 
+[query public hasArgs(anOperation : Operation) : Boolean
+  = not (anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return))->isEmpty())
+/]
+
 [query public isVoid(anOperation : Operation) : Boolean
   = anOperation.ownedParameter->select(param : Parameter | (param.direction = ParameterDirectionKind::return))->isEmpty()
 /]
@@ -126,8 +169,8 @@ end
   rv : Parameter = anOperation.ownedParameter->select(param : Parameter | (param.direction = ParameterDirectionKind::return))->first();
 }
 ]
-  [rv.genName()/] = [rv.genDefaultType()/]
-  return [rv.genName()/]
+[rv.genName()/] = [rv.genDefaultType()/]
+[rv.genName()/]
 [/template]
 
 [template public initializeQualifierHash(anAttribute : Property)]

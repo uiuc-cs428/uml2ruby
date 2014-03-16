@@ -8,7 +8,6 @@ require_relative '../autogen/Apple.rb'
 require_relative '../autogen/Banana.rb'
 require_relative '../autogen/Beef.rb'
 
-
 class TestGeneralizationSuite < Test::Unit::TestCase
   def test_apple_is_valid_class
     pink_lady_apple = Apple.new
