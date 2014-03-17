@@ -182,6 +182,8 @@ end
 [for (com : Comment | aClass.ownedComment) separator('\n')]# [com._body.toString() /][/for]
 [/template]
 
-[template public genDependencies(aClass : Class)]
+[template public genDependencies(aClass : Class) post(trim())]
 [for (dep : Dependency | aClass.clientDependency) separator('\n')]require_relative '../autogen/[dep.supplier.name.concat('.rb') /]'[/for]
+[for (p : Property | aClass.attribute) separator('\n')][if (p.type.name.oclIsUndefined()._not())]require_relative '../autogen/[p.type.name.concat('.rb') /]'[/if][/for]
+[for (p : Property | aClass.attribute) separator('\n')][if (p.type.name.oclIsUndefined()._not())]require_relative '../autogen/[p.qualifier.type.name.concat('.rb') /]'[/if][/for]
 [/template]
