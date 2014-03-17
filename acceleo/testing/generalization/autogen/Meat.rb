@@ -1,4 +1,16 @@
+
+
 class Meat < Food
-	def initialize()
-	end
+  public
+    def initialize()
+
+    end
+
+
+
+  protected
+
+
+  private
+
 end

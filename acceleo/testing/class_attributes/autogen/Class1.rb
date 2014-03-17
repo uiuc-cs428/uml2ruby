@@ -1,6 +1,18 @@
+
+
 class Class1
-  attr_accessor :public_attribute
+  public
+    def initialize()
+
+    end
+
+      attr_accessor :public_attribute
+
 
   protected
-  attr_accessor :protected_attribute
+      attr_accessor :protected_attribute
+
+
+  private
+
 end

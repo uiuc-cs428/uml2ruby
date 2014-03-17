@@ -183,5 +183,5 @@ end
 [/template]
 
 [template public genDependencies(aClass : Class)]
-[for (dep : Dependency | aClass.clientDependency) separator('\n')]require 'acceleo/testing/dependency/autogen/[dep.supplier.name.concat('.rb') /]'[/for]
+[for (dep : Dependency | aClass.clientDependency) separator('\n')]require_relative '../autogen/[dep.supplier.name.concat('.rb') /]'[/for]
 [/template]
