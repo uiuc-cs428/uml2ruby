@@ -1,4 +1,4 @@
-require 'acceleo/testing/dependency/autogen/Car.rb'
+require_relative '../autogen/Car.rb'
 
 class Wheel
   public

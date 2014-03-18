@@ -1,6 +1,18 @@
+
+
 class Class2
-  attr_reader :read_only_attribute
+  public
+    def initialize()
+
+    end
+
+      attr_reader :read_only_attribute
+
+
+  protected
+
 
   private
-  attr_accessor :private_attribute
+      attr_accessor :private_attribute
+
 end

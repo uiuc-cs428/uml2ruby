@@ -1,8 +1,8 @@
 require 'test/unit'
 require 'rubygems'
 require 'tuxml'
-require 'acceleo/testing/empty_classes/autogen/Class1.rb'
-require 'acceleo/testing/empty_classes/autogen/Class2.rb'
+require_relative '../autogen/Class1.rb'
+require_relative '../autogen/Class2.rb'
 
 class EmptyClassSuite < Test::Unit::TestCase
 

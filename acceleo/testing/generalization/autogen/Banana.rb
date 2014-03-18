@@ -1,4 +1,16 @@
+
+
 class Banana < Fruit
-	def initialize()
-	end
+  public
+    def initialize()
+
+    end
+
+
+
+  protected
+
+
+  private
+
 end
