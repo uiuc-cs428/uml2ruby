@@ -9,7 +9,7 @@ class TestAssociationNavSuite < Test::Unit::TestCase
   def test_class1_protected_attribute_not_accessible
     c1 = Class1.new
     assert_raise NoMethodError do
-      c1.class3 = "abc123"
+      c1.class3 = Class3.new
     end
   end
 

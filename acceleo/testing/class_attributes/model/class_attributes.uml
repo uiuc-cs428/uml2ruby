@@ -18,6 +18,13 @@
         <value xsi:nil="true"/>
       </defaultValue>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_dCTJ4K4zEeOWlOQlpIcyNQ" name="class2" visibility="public" type="_4O4lgJozEeO8ZJ7qCYA7pA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gJmSAK4zEeOWlOQlpIcyNQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gJoHMK4zEeOWlOQlpIcyNQ" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_gJu04K4zEeOWlOQlpIcyNQ">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_4O4lgJozEeO8ZJ7qCYA7pA" name="Class2">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_4ogmcJozEeO8ZJ7qCYA7pA" name="read_only_attribute" visibility="public" isReadOnly="true">
