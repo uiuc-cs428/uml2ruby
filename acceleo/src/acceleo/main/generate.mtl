@@ -110,7 +110,6 @@ class [aClass.genName().toUpperFirst()/]
 [/template]
 
 [template public genOperation(anOperation : Operation)]
-
 [anOperation.genParameterComments()/]
 def [anOperation.genName()/][anOperation.genParameters()/]
   # TODO
@@ -118,7 +117,6 @@ def [anOperation.genName()/][anOperation.genParameters()/]
   [anOperation.genReturnValue()/]
 [/if]
 end
-
 [/template]
 
 [template public genParameters(anOperation : Operation) post(trim())]
