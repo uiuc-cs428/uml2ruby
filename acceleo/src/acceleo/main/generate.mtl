@@ -18,18 +18,22 @@
 [aClass.genDependencies()/]
 [aClass.genComments()/]
 [aClass.genClass()/]
-  public
-    def initialize()
-    [aClass.attribute.initializeQualifierHash()/]
-    end
 
-  [aClass.genAttributes(VisibilityKind::public)/][aClass.genOperations(VisibilityKind::public)/]
+  public
+  def initialize
+  [aClass.attribute.initializeQualifierHash()/]
+  end
+
+  [aClass.genAttributes(VisibilityKind::public)/]
+  [aClass.genOperations(VisibilityKind::public)/]
 
   protected
-  [aClass.genAttributes(VisibilityKind::protected)/][aClass.genOperations(VisibilityKind::protected)/]
+  [aClass.genAttributes(VisibilityKind::protected)/]
+  [aClass.genOperations(VisibilityKind::protected)/]
 
   private
-  [aClass.genAttributes(VisibilityKind::private)/][aClass.genOperations(VisibilityKind::private)/]
+  [aClass.genAttributes(VisibilityKind::private)/]
+  [aClass.genOperations(VisibilityKind::private)/]
 end
 [/file]
 
@@ -73,10 +77,10 @@ class [aClass.genName().toUpperFirst()/]
 [comment Attribute Related Templates/]
 
 [template public genAttributes(aClass : Class, visibilityKind : VisibilityKind)]
-[aClass.attribute->select(visibility = visibilityKind).genAttribute()/]
+[aClass.attribute->select(visibility = visibilityKind).genAttribute()->sep('\n')/]
 [/template]
 
-[template public genAttribute(anAttribute : Property)]
+[template public genAttribute(anAttribute : Property) post(trim())]
 [if (anAttribute.qualifier->isEmpty())]
   [if (anAttribute.isReadOnly = true) ]
     attr_reader :[anAttribute.genName()/]
@@ -173,7 +177,7 @@ end
 [rv.genName()/]
 [/template]
 
-[template public initializeQualifierHash(anAttribute : Property)]
+[template public initializeQualifierHash(anAttribute : Property) post(trim())]
 [if (anAttribute.qualifier->size() > 0)]
   @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = Hash.new[/if]
 [/template]
