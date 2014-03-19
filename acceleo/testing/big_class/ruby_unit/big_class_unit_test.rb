@@ -21,9 +21,9 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
       argument.name = "arg1"
       argument.direction = "in"
     end
-    assert_equal(argument.name, "arg1")
-    assert_equal(argument.direction, "in")
-    assert_equal(argument.default_value, nil)
+    assert_equal("arg1", argument.name)
+    assert_equal("in", argument.direction)
+    assert_equal("", argument.default_value)
   end
 
   def test_attribute_class
@@ -36,10 +36,10 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
       attribute.visibility = "public"
       attribute.type = "String"
     end
-    assert_equal(attribute.name, "name")
-    assert_equal(attribute.visibility, "public")
-    assert_equal(attribute.type, "String")
-    assert_equal(attribute.default_value, nil)
+    assert_equal("name", attribute.name)
+    assert_equal("public", attribute.visibility)
+    assert_equal("String", attribute.type)
+    assert_equal("", attribute.default_value)
   end
 
 =begin
@@ -70,15 +70,15 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
       fruit.name = "Fruit"
       apple.name = "Apple"
 
-      apple.parent = fruit
-      fruit.parent = food
+      apple.parent = "Fruit"
+      fruit.parent = "Food"
     end
-    assert_equal(apple.parent, fruit)
-    assert_equal(fruit.parent, food)
+    assert_equal("Fruit", apple.parent)
+    assert_equal("Food", fruit.parent)
 
     assert_equal(apple.name, "Apple")
-    assert_equal(apple.methods, nil)
-    assert_equal(apple.attributes, nil)
+    assert(apple.methods.is_a? ClassMethod)
+    assert(apple.attributes.is_a? Attribute)
   end
 
   def test_generator_class
@@ -104,11 +104,11 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
     assert_nothing_raised NoMethodError do
       method.name = "foo"
       method.visibility = "public"
-      method.arguments = [Argument.new]
     end
-    assert_equal(method.name, "foo")
-    assert_equal(method.visibility, "public")
-    assert_equal(method.arguments.size, 1)
+
+    assert_equal("foo", method.name)
+    assert_equal("public", method.visibility)
+    assert(method.arguments.is_a? Argument)
   end
 
 =begin
@@ -140,7 +140,7 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
     end
 
     assert_equal(sequence_object.method_invocations.first, foo)
-    assert_equal(sequence.object.method_invocations.last, bar)
+    assert_equal(sequence_object.method_invocations.last, bar)
   end
 
   def test_umldiagram_class
