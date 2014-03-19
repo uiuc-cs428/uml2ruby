@@ -139,8 +139,8 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
       sequence_object.method_invocations = [foo, bar]
     end
 
-    assert_equal(sequence_object.first, foo)
-    assert_equal(sequence.object.last, bar)
+    assert_equal(sequence_object.method_invocations.first, foo)
+    assert_equal(sequence.object.method_invocations.last, bar)
   end
 
   def test_umldiagram_class

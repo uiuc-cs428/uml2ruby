@@ -1,6 +1,7 @@
 
 
 class Car
+
   public
   def initialize
   
