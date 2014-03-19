@@ -56,7 +56,7 @@
         <value xsi:nil="true"/>
       </defaultValue>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_wzmmkJ3fEeODVOE2brWgLA" name="defaultValue" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wzmmkJ3fEeODVOE2brWgLA" name="default_value" visibility="public">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xILvcJ3fEeODVOE2brWgLA" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xINkoJ3fEeODVOE2brWgLA" value="1"/>
@@ -107,7 +107,7 @@
         <value xsi:nil="true"/>
       </defaultValue>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_htDeMJ3fEeODVOE2brWgLA" name="defaultValue" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_htDeMJ3fEeODVOE2brWgLA" name="default_value" visibility="public">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iIWTEJ3fEeODVOE2brWgLA" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iIXhMJ3fEeODVOE2brWgLA" value="1"/>
@@ -146,33 +146,36 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IbLIEZ3QEeODVOE2brWgLA" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IbLIEp3QEeODVOE2brWgLA" value="1"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_FoojcJ3aEeODVOE2brWgLA" name="generateRuby" visibility="public">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_FoojcJ3aEeODVOE2brWgLA" name="generate_ruby" visibility="public" concurrency="concurrent">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_PON9oJ3aEeODVOE2brWgLA" name="umlFilePath">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_XChncJ3aEeODVOE2brWgLA" name="outputDir">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_PzzxcK8GEeOC972okWLMGw" name="code" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_lKOh8J3aEeODVOE2brWgLA" name="genSequenceCode" visibility="private">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_lKOh8J3aEeODVOE2brWgLA" name="gen_sequence_code" visibility="private">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_su-FwJ3aEeODVOE2brWgLA" name="code" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_aLLIgJ3cEeODVOE2brWgLA" name="sequenceDiagram" type="_ONvIIJ3GEeODVOE2brWgLA"/>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_BBPsIJ3bEeODVOE2brWgLA" name="genClassCode" visibility="private">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_BBPsIJ3bEeODVOE2brWgLA" name="gen_class_code" visibility="private">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_JlT-8J3bEeODVOE2brWgLA" name="code" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_OxTtQJ3cEeODVOE2brWgLA" name="class_diagram" type="_OfwsQJ3GEeODVOE2brWgLA"/>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_By1hIJ3bEeODVOE2brWgLA" name="genGeneralization" visibility="private">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_By1hIJ3bEeODVOE2brWgLA" name="gen_generalization" visibility="private">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_rkbv0J3bEeODVOE2brWgLA" name="genGeneralization" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_o2yBUJ3cEeODVOE2brWgLA" name="class_diagram" type="_PLd7sJ3GEeODVOE2brWgLA"/>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_sf55kJ3bEeODVOE2brWgLA" name="genAttributes" visibility="private">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_sf55kJ3bEeODVOE2brWgLA" name="gen_attributes" visibility="private">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_24FOUJ3bEeODVOE2brWgLA" name="visibility">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
@@ -181,7 +184,7 @@
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_1iuIcJ3cEeODVOE2brWgLA" name="class_diagram" type="_PLd7sJ3GEeODVOE2brWgLA"/>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_B46egJ3cEeODVOE2brWgLA" name="genMethods" visibility="private">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_B46egJ3cEeODVOE2brWgLA" name="gen_methods" visibility="private">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_HE-6wJ3cEeODVOE2brWgLA" name="visibility">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
@@ -190,7 +193,7 @@
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_37A1gJ3cEeODVOE2brWgLA" name="class_diagram" type="_PLd7sJ3GEeODVOE2brWgLA"/>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_5S51gJ3cEeODVOE2brWgLA" name="genSequence" visibility="private">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_5S51gJ3cEeODVOE2brWgLA" name="gen_sequence" visibility="private">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_9UPkAJ3cEeODVOE2brWgLA" name="code" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
@@ -222,7 +225,7 @@
     </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_s7Y1UJ3TEeODVOE2brWgLA" name="SequenceObject">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_sKNdwJ3YEeODVOE2brWgLA" name="methodInvocations" type="_ia5lAJ3GEeODVOE2brWgLA" association="_sKPS8J3YEeODVOE2brWgLA">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_sKNdwJ3YEeODVOE2brWgLA" name="method_invocations" type="_ia5lAJ3GEeODVOE2brWgLA" association="_sKPS8J3YEeODVOE2brWgLA">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sKNdwZ3YEeODVOE2brWgLA"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sKNdwp3YEeODVOE2brWgLA" value="*"/>
     </ownedAttribute>
