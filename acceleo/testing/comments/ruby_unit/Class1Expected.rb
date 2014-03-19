@@ -8,9 +8,12 @@ class Class1
 
   
 
+
   protected
   
 
+
   private
   
+
 end

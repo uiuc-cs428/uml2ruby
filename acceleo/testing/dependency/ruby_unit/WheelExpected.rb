@@ -6,8 +6,14 @@ class Wheel
   
   end
 
+  
+  
 
   protected
+  
+  
 
   private
+  
+  
 end

@@ -7,9 +7,13 @@ class Car
   end
 
   
+  
+
   protected
+  
   
 
   private
   
+
 end
