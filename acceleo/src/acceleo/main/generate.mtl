@@ -179,9 +179,12 @@ end
 [if (anAttribute.qualifier->size() > 0)]
   @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = Hash.new
 [elseif (not anAttribute.type.oclIsUndefined())]
-[if (anAttribute.type.toString().contains('String')) ] ""
-[elseif (anAttribute.type.toString().contains('Integer')) ] 0
-[elseif (anAttribute.type.toString().contains('Real')) ] 0.0
+[if (anAttribute.type.toString().contains('String')) ]
+  @[anAttribute.genName()/] = ""
+[elseif (anAttribute.type.toString().contains('Integer')) ]
+  @[anAttribute.genName()/] = 0
+[elseif (anAttribute.type.toString().contains('Real')) ]
+  @[anAttribute.genName()/] = 0.0
 [else]
   @[anAttribute.genName()/] = [anAttribute.type.name/].new
 [/if]
