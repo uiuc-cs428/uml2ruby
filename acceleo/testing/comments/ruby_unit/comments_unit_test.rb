@@ -13,7 +13,7 @@ class CommentsClassSuite < Test::Unit::TestCase
       "# Attached Comment\n",
       "class Class1\n"
     ]
-    assert_equal(generatedCode.include? expected_code_snippet)
+    assert_equal(generated_code.include? expected_code_snippet)
   end
 
 end
