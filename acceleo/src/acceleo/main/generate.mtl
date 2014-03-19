@@ -183,7 +183,15 @@ end
 [/template]
 
 [template public genDependencies(aClass : Class) post(trim())]
-[for (dep : Dependency | aClass.clientDependency) separator('\n')]require_relative '../autogen/[dep.supplier.name.concat('.rb') /]'[/for]
-[for (p : Property | aClass.attribute) separator('\n')][if (p.type.name.oclIsUndefined()._not())]require_relative '../autogen/[p.type.name.concat('.rb') /]'[/if][/for]
-[for (p : Property | aClass.attribute) separator('\n')][if (p.type.name.oclIsUndefined()._not())]require_relative '../autogen/[p.qualifier.type.name.concat('.rb') /]'[/if][/for]
+
+[for (dep : Dependency | aClass.clientDependency) separator('\n')][if (dep.supplier.name->isEmpty()._not())]require_relative '../autogen/[dep.supplier.name.concat('.rb') /]' #1[/if][/for]
+[for (aClassifier: Classifier |  aClass.general) separator('\n')][if (aClassifier.name->isEmpty()._not())]require_relative '../autogen/[aClassifier.name.concat('.rb')/]' #2[/if][/for]
+[for (p : Property | aClass.attribute) separator('\n')][p.type.name/]
+[if     (p.type.oclIsUndefined()._not()._and(p.type->isEmpty() = false._and(p.type.name.oclIsUndefined()._not()._and(p.type.name.toString().contains('String')))))][p.type.name.toString().concat('.rb') /]#3a
+[elseif (p.type.oclIsUndefined()._not()._and(p.type->isEmpty() = false._and(p.type.name.oclIsUndefined()._not()._and(p.type.name.toString().contains('Integer')))))][p.type.name.toString().concat('.rb') /]#3b
+[elseif (p.type.oclIsUndefined()._not()._and(p.type->isEmpty() = false._and(p.type.name.oclIsUndefined()._not()._and(p.type.name.toString().contains('Real')))))][p.type.name.toString().concat('.rb') /]#3c
+[elseif (p.type.oclIsUndefined()._not()._and(p.type->isEmpty() = false._and(p.type.name.oclIsUndefined()._not())))]require_relative '../autogen/[p.type.name.toString().concat('.rb') /]'#3d
+[/if]
+[/for]
+[for (p : Property | aClass.attribute) separator('\n')][if (p.qualifier->isEmpty()._not()._and(p.qualifier.type->isEmpty()._not()))]require_relative '../autogen/[(p.qualifier.type.name.concat('.rb')) /]'#4[/if][/for]
 [/template]
