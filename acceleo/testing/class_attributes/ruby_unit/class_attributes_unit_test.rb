@@ -47,6 +47,11 @@ class TestAttributesSuite < Test::Unit::TestCase
       c2.private_attribute = "abc123"
     end
   end
+  
+  def test_class1_has_attribute_of_class2
+    c1 = Class1.new
+    assert(c1.class2.is_a?(Class2))
+  end
 
 end
 
