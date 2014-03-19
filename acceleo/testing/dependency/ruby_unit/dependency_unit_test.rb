@@ -7,9 +7,9 @@ require_relative '../autogen/Wheel.rb'
 class DependencyClassSuite < Test::Unit::TestCase
 
   def test_wheel_requires_car
-    expected = "acceleo/testing/dependency/ruby_unit/WheelExpected.rb"
+    autogen = "acceleo/testing/dependency/autogen/Wheel.rb"
 
-    expected_code = File.open(expected).readlines
+    generated_code = File.open(autogen).readlines
     assert_equal(expectedCode.first, "require_relative '../autogen/Car.rb'\n")
   end
 end

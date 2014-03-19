@@ -8,11 +8,13 @@ class CommentsClassSuite < Test::Unit::TestCase
 
   def test_expected_matches_generated_Class1
     autogen = "acceleo/testing/comments/autogen/Class1.rb"
-    expected = "acceleo/testing/comments/ruby_unit/Class1Expected.rb"
-    
-    generatedCode = File.open(autogen).readlines
-    expectedCode = File.open(expected).readlines
-    assert_equal(generatedCode, expectedCode)
+
+    generated_code = File.open(autogen).readlines
+    expected_code_snippet = [
+      "# Attached Comment\n",
+      "class Class1\n"
+    ]
+    assert_equal(generatedCode.include? expected_code_snippet)
   end
 
 end
