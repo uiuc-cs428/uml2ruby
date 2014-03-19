@@ -27,9 +27,4 @@ class TestAssociationNavSuite < Test::Unit::TestCase
     end
   end
 
-  def test_class3_public_attribute_read_write
-    c3 = Class3.new
-    c3.class1 = "abc123"
-    assert_equal(c3.class1, "abc123")
-  end
 end
