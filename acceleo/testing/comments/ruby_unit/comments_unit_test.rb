@@ -2,7 +2,6 @@ require 'test/unit'
 require 'rubygems'
 require 'tuxml'
 require_relative '../autogen/Class1.rb'
-require_relative 'Class1Expected.rb'
 
 class CommentsClassSuite < Test::Unit::TestCase
 
