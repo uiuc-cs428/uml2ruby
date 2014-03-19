@@ -13,7 +13,6 @@ class CommentsClassSuite < Test::Unit::TestCase
       "# Attached Comment\n",
       "class Class1\n"
     ]
-    puts generated_code.inspect
     assert_equal(expected_code_snippet, generated_code[1..2])
   end
 
