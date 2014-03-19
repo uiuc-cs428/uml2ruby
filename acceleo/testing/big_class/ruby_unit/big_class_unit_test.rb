@@ -5,7 +5,7 @@ require_relative '../autogen/Attribute.rb'
 #require_relative '../autogen/ClassDiagram.rb'
 require_relative '../autogen/ClassObject.rb'
 require_relative '../autogen/Generator.rb'
-require_relative '../autogen/Method.rb'
+require_relative '../autogen/ClassMethod.rb'
 #require_relative '../autogen/SequenceDiagram.rb'
 require_relative '../autogen/SequenceObject.rb'
 require_relative '../autogen/UMLDiagram.rb'
@@ -99,7 +99,7 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
   def test_method_class
     method = nil
     assert_nothing_raised NameError do
-      method = Method.new
+      method = ClassMethod.new
     end
     assert_nothing_raised NoMethodError do
       method.name = "foo"
@@ -134,8 +134,8 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
     foo = nil
     bar = nil
     assert_nothing_raised NoMethodError do
-      foo = Method.new
-      bar = Method.new
+      foo = ClassMethod.new
+      bar = ClassMethod.new
       sequence_object.method_invocations = [foo, bar]
     end
 
