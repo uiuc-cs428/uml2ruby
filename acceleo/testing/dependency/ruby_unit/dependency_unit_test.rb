@@ -3,27 +3,13 @@ require 'rubygems'
 require 'tuxml'
 require_relative '../autogen/Car.rb'
 require_relative '../autogen/Wheel.rb'
-require_relative './CarExpected.rb'
-require_relative './WheelExpected.rb'
 
 class DependencyClassSuite < Test::Unit::TestCase
 
-  def test_expected_matches_generated_Car
-    autogen = "acceleo/testing/dependency/autogen/Car.rb"
-    expected = "acceleo/testing/dependency/ruby_unit/CarExpected.rb"
-    
-    generatedCode = File.open(autogen).readlines
-    expectedCode = File.open(expected).readlines
-    assert_equal(generatedCode, expectedCode)
-  end
-  
-  def test_expected_matches_generated_Wheel
-    autogen = "acceleo/testing/dependency/autogen/Wheel.rb"
+  def test_wheel_requires_car
     expected = "acceleo/testing/dependency/ruby_unit/WheelExpected.rb"
-    
-    generatedCode = File.open(autogen).readlines
-    expectedCode = File.open(expected).readlines
-    assert_equal(generatedCode, expectedCode)
-  end
 
+    expected_code = File.open(expected).readlines
+    assert_equal(expectedCode.first, "require_relative '../autogen/Car.rb'\n")
+  end
 end
