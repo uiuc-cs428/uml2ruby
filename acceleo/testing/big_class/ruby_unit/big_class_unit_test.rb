@@ -139,7 +139,7 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
       sequence_object.method_invocations = [foo, bar]
     end
 
-    assert_equal(sequence.object.first, foo)
+    assert_equal(sequence_object.first, foo)
     assert_equal(sequence.object.last, bar)
   end
 
