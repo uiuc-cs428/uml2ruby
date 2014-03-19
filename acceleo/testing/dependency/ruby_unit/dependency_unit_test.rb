@@ -10,6 +10,6 @@ class DependencyClassSuite < Test::Unit::TestCase
     autogen = "acceleo/testing/dependency/autogen/Wheel.rb"
 
     generated_code = File.open(autogen).readlines
-    assert_equal(expectedCode.first, "require_relative '../autogen/Car.rb'\n")
+    assert_equal(generated_code.first, "require_relative '../autogen/Car.rb'\n")
   end
 end
