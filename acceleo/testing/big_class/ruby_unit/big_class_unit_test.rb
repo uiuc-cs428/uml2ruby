@@ -1,4 +1,5 @@
 require 'test/unit'
+require 'rubygems'
 require 'tuxml'
 require_relative '../autogen/Argument.rb'
 require_relative '../autogen/Attribute.rb'
