@@ -18,18 +18,22 @@
 [aClass.genDependencies()/]
 [aClass.genComments()/]
 [aClass.genClass()/]
-  public
-    def initialize()
-    [aClass.attribute.initializeQualifierHash()/]
-    end
 
-  [aClass.genAttributes(VisibilityKind::public)/][aClass.genOperations(VisibilityKind::public)/]
+  public
+  def initialize
+  [aClass.attribute.initializeAttributes()/]
+  end
+
+  [aClass.genAttributes(VisibilityKind::public)/]
+  [aClass.genOperations(VisibilityKind::public)/]
 
   protected
-  [aClass.genAttributes(VisibilityKind::protected)/][aClass.genOperations(VisibilityKind::protected)/]
+  [aClass.genAttributes(VisibilityKind::protected)/]
+  [aClass.genOperations(VisibilityKind::protected)/]
 
   private
-  [aClass.genAttributes(VisibilityKind::private)/][aClass.genOperations(VisibilityKind::private)/]
+  [aClass.genAttributes(VisibilityKind::private)/]
+  [aClass.genOperations(VisibilityKind::private)/]
 end
 [/file]
 
@@ -72,11 +76,11 @@ class [aClass.genName().toUpperFirst()/]
 
 [comment Attribute Related Templates/]
 
-[template public genAttributes(aClass : Class, visibilityKind : VisibilityKind)]
-[aClass.attribute->select(visibility = visibilityKind).genAttribute()/]
+[template public genAttributes(aClass : Class, visibilityKind : VisibilityKind) post(trim())]
+[aClass.attribute->select(visibility = visibilityKind).genAttribute()->sep('\n')/]
 [/template]
 
-[template public genAttribute(anAttribute : Property)]
+[template public genAttribute(anAttribute : Property) post(trim())]
 [if (anAttribute.qualifier->isEmpty())]
   [if (anAttribute.isReadOnly = true) ]
     attr_reader :[anAttribute.genName()/]
@@ -101,12 +105,11 @@ class [aClass.genName().toUpperFirst()/]
 
 [comment Operation Related Templates/]
 
-[template public genOperations(aClass : Class, visibilityKind : VisibilityKind)]
+[template public genOperations(aClass : Class, visibilityKind : VisibilityKind) post(trim())]
 [aClass.ownedOperation->select(visibility = visibilityKind).genOperation()/]
 [/template]
 
 [template public genOperation(anOperation : Operation)]
-
 [anOperation.genParameterComments()/]
 def [anOperation.genName()/][anOperation.genParameters()/]
   # TODO
@@ -114,16 +117,15 @@ def [anOperation.genName()/][anOperation.genParameters()/]
   [anOperation.genReturnValue()/]
 [/if]
 end
-
 [/template]
 
-[template public genParameters(anOperation : Operation) post(trim())]
+[template public genParameters(anOperation : Operation) post(trim()) ]
 [if (anOperation.hasArgs()) ]
 ([anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genOperationParameter()->sep(', ')/])
 [/if]
 [/template]
 
-[template public genParameterComments(anOperation : Operation) post(trim())]
+[template public genParameterComments(anOperation : Operation) ]
 
 [if (anOperation.hasArgs()) ]
 # * *Args* :
@@ -173,9 +175,20 @@ end
 [rv.genName()/]
 [/template]
 
-[template public initializeQualifierHash(anAttribute : Property)]
+[template public initializeAttributes(anAttribute : Property)]
 [if (anAttribute.qualifier->size() > 0)]
-  @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = Hash.new[/if]
+  @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = Hash.new
+[elseif (not anAttribute.type.oclIsUndefined())]
+[if (anAttribute.type.toString().contains('String')) ]
+  @[anAttribute.genName()/] = ""
+[elseif (anAttribute.type.toString().contains('Integer')) ]
+  @[anAttribute.genName()/] = 0
+[elseif (anAttribute.type.toString().contains('Real')) ]
+  @[anAttribute.genName()/] = 0.0
+[else]
+  @[anAttribute.genName()/] = [anAttribute.type.name/].new
+[/if]
+[/if]
 [/template]
 
 [template public genComments(aClass : Class)]

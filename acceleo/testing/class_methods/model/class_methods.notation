@@ -49,7 +49,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_o6ZnopzMEeODVOE2brWgLA"/>
     </children>
     <element xmi:type="uml:Class" href="class_methods.uml#_ojOdwJzMEeODVOE2brWgLA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oov28ZzMEeODVOE2brWgLA" x="18" y="90"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oov28ZzMEeODVOE2brWgLA" x="81" y="90"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_lv3lUZzMEeODVOE2brWgLA"/>
   <element xmi:type="uml:Model" href="class_methods.uml#_lsZakJzMEeODVOE2brWgLA"/>
