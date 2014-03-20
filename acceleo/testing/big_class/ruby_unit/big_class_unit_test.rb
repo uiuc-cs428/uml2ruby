@@ -3,11 +3,11 @@ require 'rubygems'
 require 'tuxml'
 require_relative '../autogen/Argument.rb'
 require_relative '../autogen/Attribute.rb'
-#require_relative '../autogen/ClassDiagram.rb'
+require_relative '../autogen/ClassDiagram.rb'
 require_relative '../autogen/ClassObject.rb'
 require_relative '../autogen/Generator.rb'
 require_relative '../autogen/ClassMethod.rb'
-#require_relative '../autogen/SequenceDiagram.rb'
+require_relative '../autogen/SequenceDiagram.rb'
 require_relative '../autogen/SequenceObject.rb'
 require_relative '../autogen/UMLDiagram.rb'
 
@@ -43,7 +43,6 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
     assert_equal("", attribute.default_value)
   end
 
-=begin
   def test_classdiagram_class
     class_diagram = nil
     assert_nothing_raised NameError do
@@ -55,7 +54,6 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
       class_diagram.classes = [ClassObject.new]
     end
   end
-=end
 
   def test_classobject_class
     food = nil
@@ -112,8 +110,8 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
     assert(method.arguments.is_a? Argument)
   end
 
-=begin
   def test_sequencediagram_class
+    sequence_diagram = nil
     assert_nothing_raised NameError do
       sequence_diagram = SequenceDiagram.new
     end
@@ -124,7 +122,6 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
       sequence_diagram.classes = [ClassObject.new]
     end
   end
-=end
 
   def test_sequenceobject_class
     sequence_object = nil
