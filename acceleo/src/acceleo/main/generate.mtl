@@ -195,6 +195,24 @@ end
 [for (com : Comment | aClass.ownedComment) separator('\n')]# [com._body.toString() /][/for]
 [/template]
 
-[template public genDependencies(aClass : Class)]
-[for (dep : Dependency | aClass.clientDependency) separator('\n')]require_relative '../autogen/[dep.supplier.name.concat('.rb') /]'[/for]
+[template public genDependencies(aClass : Class) post(trim())]
+[for (dep : Dependency | aClass.clientDependency) separator('\n')]
+[if (dep.supplier.name->isEmpty()._not())]require_relative '../autogen/[dep.supplier.name.concat('.rb') /]'
+[/if]
+[/for]
+[for (aClassifier: Classifier |  aClass.general) separator('\n')]
+[if (aClassifier.name->isEmpty()._not())]require_relative '../autogen/[aClassifier.name.concat('.rb')/]'
+[/if]
+[/for]
+[for (p : Property | aClass.attribute) separator('\n')]
+[if     (p.type.toString().contains('String'))]
+[elseif (p.type.toString().contains('Integer'))]
+[elseif (p.type.toString().contains('Real'))]
+[elseif (p.type.oclIsUndefined()._not()._and(p.type->isEmpty() = false._and(p.type.name.oclIsUndefined()._not())))]require_relative '../autogen/[p.type.name.toString().concat('.rb') /]'
+[/if]
+[/for]
+[for (p : Property | aClass.attribute) separator('\n')]
+[if (p.qualifier.type->first().oclIsUndefined()._not())]require_relative '../autogen/[(p.qualifier.type->first().toString().concat('.rb')) /]'#4
+[/if]
+[/for]
 [/template]

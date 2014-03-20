@@ -135,6 +135,9 @@
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_mxqw8J3GEeODVOE2brWgLA" name="Generator">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_S63-EK_MEeOiYrkta5WXOQ" annotatedElement="_mxqw8J3GEeODVOE2brWgLA">
+      <body>The Generator class is responsible for taking UML diagrams and converting them into Ruby Code.</body>
+    </ownedComment>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_S1P6QJ3QEeODVOE2brWgLA" name="rubyCode" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TnDxsJ3QEeODVOE2brWgLA"/>
