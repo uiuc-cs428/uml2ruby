@@ -2,7 +2,7 @@ require 'test/unit'
 require 'rubygems'
 require 'tuxml'
 
-class TestInitialNodeSuite < Test::Unit::TestCase
+class TestActivityNodeSuite < Test::Unit::TestCase
   def stringInFile(fileName, string)
     generatedCode = File.open(fileName).read
     assert(generatedCode.include?(string))
