@@ -5,6 +5,17 @@
 
 [file (anActivity.name.concat('.rb'), false, 'UTF-8')]
   #The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows
-  #The initial node is called "[anActivity.eAllContents(InitialNode)->first().name/]"
+  [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
+  #The initial node is called "[theInitialNode.name/]"
+  [theInitialNode.nextActivityNode()/]
+  [/let]
 [/file]
+[/template]
+
+[template public nextActivityNode(anActivityNode : ActivityNode)]
+	#[anActivityNode.name/]
+	[for(aControlFlow: ControlFlow | anActivityNode.outgoing)]
+	#  [aControlFlow.name/]
+	[nextActivityNode(aControlFlow.target)/]
+	[/for]
 [/template]

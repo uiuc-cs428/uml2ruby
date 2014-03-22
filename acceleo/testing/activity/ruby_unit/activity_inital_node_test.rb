@@ -9,12 +9,12 @@ class TestInitialNodeSuite < Test::Unit::TestCase
   end
   
   def test_activity_final_node
-    generatedCode = File.open('acceleo/testing/activity/autogen/SomeFunActivity.rb').readlines
-    assert(generatedCode[1].include?('ActivityFinalNode'))
+    generatedCode = File.open('acceleo/testing/activity/autogen/SomeFunActivity.rb').read
+    assert(generatedCode.include?('ActivityFinalNode'))
   end
   
   def test_flow_final_node
-    generatedCode = File.open('acceleo/testing/activity/autogen/SomeFunActivity.rb').readlines
-    assert(generatedCode[1].include?('FlowFinalNode'))
+    generatedCode = File.open('acceleo/testing/activity/autogen/SomeFunActivity.rb').read
+    assert(generatedCode.include?('FlowFinalNode'))
   end
 end
