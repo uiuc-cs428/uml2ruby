@@ -3,18 +3,20 @@ require 'rubygems'
 require 'tuxml'
 
 class TestInitialNodeSuite < Test::Unit::TestCase
+  def stringInFile(fileName, string)
+    generatedCode = File.open(fileName).read
+    assert(generatedCode.include?(string))
+  end
+    
   def test_initial_node
-    generatedCode = File.open('acceleo/testing/activity/autogen/SomeFunActivity.rb').readlines
-    assert(generatedCode[1].include?('The Good Node'))
+    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'The Good Node')
   end
   
   def test_activity_final_node
-    generatedCode = File.open('acceleo/testing/activity/autogen/SomeFunActivity.rb').read
-    assert(generatedCode.include?('ActivityFinalNode'))
+    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'ActivityFinalNode')
   end
   
   def test_flow_final_node
-    generatedCode = File.open('acceleo/testing/activity/autogen/SomeFunActivity.rb').read
-    assert(generatedCode.include?('FlowFinalNode'))
+    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'FlowFinalNode')
   end
 end
