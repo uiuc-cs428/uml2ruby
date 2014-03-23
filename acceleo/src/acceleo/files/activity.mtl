@@ -2,7 +2,6 @@
 [module activity('http://www.eclipse.org/uml2/4.0.0/UML')]
 
 [template public generateActivity(anActivity : Activity)]
-
 [file (anActivity.name.concat('.rb'), false, 'UTF-8')]
   #The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows
   [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
@@ -16,6 +15,11 @@
 	#[anActivityNode.name/]
 	[for(aControlFlow: ControlFlow | anActivityNode.outgoing)]
 	  #[aControlFlow.name/]
-	  [nextActivityNode(aControlFlow.target)/]
+      [if (aControlFlow.target.eGet('result').oclIsUndefined()._not())]#[aControlFlow.target.name/] -> Output Pin: [aControlFlow.target.eGet('result').name/], Value: [aControlFlow.target.eGet('value').name/]=[aControlFlow.target.eGet('value').eGet('value')/][else][nextActivityNode(aControlFlow.target)/][/if]
 [/for]
+[/template]
+
+[template public IsValueSpecAction(anActivityNode : ActivityNode) post(trim())]
+#[anActivityNode.name/]
+[if (anActivityNode.eGet('result').oclIsUndefined()._not())]#Output Pin: [anActivityNode.eGet('result').name/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/][/if]
 [/template]
