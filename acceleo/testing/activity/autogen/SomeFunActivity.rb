@@ -3,17 +3,21 @@
   	#The Good Node
   	  #ControlFlow
         	#DecisionNode
-        	  #ControlFlow4
-              	#OpaqueAction2
-              	  #ControlFlow5
-                    #ValueSpecificationAction1 -> Output Pin: Result, Value: IsLightOn=false
-              
         	  #ControlFlow1
               	#OpaqueAction
               	  #ControlFlow2
                     	#OpaqueAction1
                     	  #ControlFlow3
                           	#ActivityFinalNode
+                          
+                    
+              
+        	  #ControlFlow4
+              	#OpaqueAction2
+              	  #ControlFlow5
+                    #ValueSpecificationAction1 -> Output Pin: Result, Value: IsLightOn=false	#ValueSpecificationAction1
+                    	  #ControlFlow6
+                          	#FlowFinalNode
                           
                     
               

@@ -19,4 +19,8 @@ class TestActivityNodeSuite < Test::Unit::TestCase
   def test_flow_final_node
     stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'FlowFinalNode')
   end
+  
+  def test_value_specification_action
+    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'ValueSpecificationAction1')
+  end
 end

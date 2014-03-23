@@ -15,7 +15,7 @@
 	#[anActivityNode.name/]
 	[for(aControlFlow: ControlFlow | anActivityNode.outgoing)]
 	  #[aControlFlow.name/]
-      [if (aControlFlow.target.eGet('result').oclIsUndefined()._not())]#[aControlFlow.target.name/] -> Output Pin: [aControlFlow.target.eGet('result').name/], Value: [aControlFlow.target.eGet('value').name/]=[aControlFlow.target.eGet('value').eGet('value')/][else][nextActivityNode(aControlFlow.target)/][/if]
+      [if (aControlFlow.target.eGet('result').oclIsUndefined()._not())]#[aControlFlow.target.name/] -> Output Pin: [aControlFlow.target.eGet('result').name/], Value: [aControlFlow.target.eGet('value').name/]=[aControlFlow.target.eGet('value').eGet('value')/][nextActivityNode(aControlFlow.target)/][else][nextActivityNode(aControlFlow.target)/][/if]
 [/for]
 [/template]
 
