@@ -194,10 +194,16 @@ end
 [/template]
 
 [template public genDefault(anAttribute : Property) post(trim())]
+[if not (anAttribute.default.oclIsUndefined()) ]
+  [if (anAttribute.type.toString().contains('String')) ] "[anAttribute.default/]"
+  [else] [anAttribute.default/]
+  [/if]
+[else]
 [if (anAttribute.type.toString().contains('String')) ] ""
 [elseif (anAttribute.type.toString().contains('Integer')) ] 0
 [elseif (anAttribute.type.toString().contains('Real')) ] 0.0
 [else] [anAttribute.type.name/].new
+[/if]
 [/if]
 [/template]
 
