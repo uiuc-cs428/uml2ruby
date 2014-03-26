@@ -177,16 +177,32 @@ end
 
 [template public initializeAttributes(anAttribute : Property)]
 [if (anAttribute.qualifier->size() > 0)]
-  @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = Hash.new
+  @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = {}
 [elseif (not anAttribute.type.oclIsUndefined())]
-[if (anAttribute.type.toString().contains('String')) ]
-  @[anAttribute.genName()/] = ""
-[elseif (anAttribute.type.toString().contains('Integer')) ]
-  @[anAttribute.genName()/] = 0
-[elseif (anAttribute.type.toString().contains('Real')) ]
-  @[anAttribute.genName()/] = 0.0
+  [if (anAttribute.upper = -1) ]
+    [if (anAttribute.lower = 0)]
+  @[anAttribute.genName()/] = ['[]'/]
+    [else]
+  @[anAttribute.genName()/] = ['['/][anAttribute.genDefault()/][']'/]
+    [/if]
+  [elseif (anAttribute.lower = 0 and anAttribute.upper = 1) ]
+  @[anAttribute.genName()/] = nil
+  [else]
+  @[anAttribute.genName()/] = [anAttribute.genDefault()/]
+  [/if]
+[/if]
+[/template]
+
+[template public genDefault(anAttribute : Property) post(trim())]
+[if not (anAttribute.default.oclIsUndefined()) ]
+  [if (anAttribute.type.toString().contains('String')) ] "[anAttribute.default/]"
+  [else] [anAttribute.default/]
+  [/if]
 [else]
-  @[anAttribute.genName()/] = [anAttribute.type.name/].new
+[if (anAttribute.type.toString().contains('String')) ] ""
+[elseif (anAttribute.type.toString().contains('Integer')) ] 0
+[elseif (anAttribute.type.toString().contains('Real')) ] 0.0
+[else] [anAttribute.type.name/].new
 [/if]
 [/if]
 [/template]
