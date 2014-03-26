@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_PlwaALR6EeO78pIYeL98nQ" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_PlwaAbR6EeO78pIYeL98nQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_UhsvkLR6EeO78pIYeL98nQ" name="Burger">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_h-hroLR7EeO78pIYeL98nQ" name="condiments" type="_CGZccLR7EeO78pIYeL98nQ" association="_h-iSsLR7EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h-hrobR7EeO78pIYeL98nQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h-hrorR7EeO78pIYeL98nQ" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_N5kvkLR7EeO78pIYeL98nQ" name="bun" type="__BKw4LR6EeO78pIYeL98nQ" association="_N5l9sLR7EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_N5kvkbR7EeO78pIYeL98nQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_N5kvkrR7EeO78pIYeL98nQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MfED8LR8EeO78pIYeL98nQ" name="price" type="_6DF34LR7EeO78pIYeL98nQ" association="_MfFSELR8EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MfED8bR8EeO78pIYeL98nQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MfED8rR8EeO78pIYeL98nQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_cNZ3ALR6EeO78pIYeL98nQ" name="patties" type="_WEvPoLR6EeO78pIYeL98nQ" association="_cNbFILR6EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cNZ3AbR6EeO78pIYeL98nQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cNZ3ArR6EeO78pIYeL98nQ" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WEvPoLR6EeO78pIYeL98nQ" name="Patty"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_cNbFILR6EeO78pIYeL98nQ" name="" memberEnd="_cNbFIbR6EeO78pIYeL98nQ _cNZ3ALR6EeO78pIYeL98nQ">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cNbFIbR6EeO78pIYeL98nQ" name="" type="_UhsvkLR6EeO78pIYeL98nQ" association="_cNbFILR6EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cNbFIrR6EeO78pIYeL98nQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cNbFI7R6EeO78pIYeL98nQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="__BKw4LR6EeO78pIYeL98nQ" name="Bun"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CGZccLR7EeO78pIYeL98nQ" name="Condiment"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_N5l9sLR7EeO78pIYeL98nQ" name="" memberEnd="_N5l9sbR7EeO78pIYeL98nQ _N5kvkLR7EeO78pIYeL98nQ">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_N5l9sbR7EeO78pIYeL98nQ" name="" type="_UhsvkLR6EeO78pIYeL98nQ" association="_N5l9sLR7EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_N5l9srR7EeO78pIYeL98nQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_N5l9s7R7EeO78pIYeL98nQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_h-iSsLR7EeO78pIYeL98nQ" name="" memberEnd="_h-iSsbR7EeO78pIYeL98nQ _h-hroLR7EeO78pIYeL98nQ">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_h-iSsbR7EeO78pIYeL98nQ" name="" type="_UhsvkLR6EeO78pIYeL98nQ" association="_h-iSsLR7EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h-iSsrR7EeO78pIYeL98nQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h-iSs7R7EeO78pIYeL98nQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6DF34LR7EeO78pIYeL98nQ" name="Price"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MfFSELR8EeO78pIYeL98nQ" name="" memberEnd="_MfFSEbR8EeO78pIYeL98nQ _MfED8LR8EeO78pIYeL98nQ">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MfFSEbR8EeO78pIYeL98nQ" name="burger" type="_UhsvkLR6EeO78pIYeL98nQ" association="_MfFSELR8EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MfFSErR8EeO78pIYeL98nQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MfFSE7R8EeO78pIYeL98nQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>
