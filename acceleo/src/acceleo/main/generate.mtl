@@ -177,13 +177,13 @@ end
 
 [template public initializeAttributes(anAttribute : Property)]
 [if (anAttribute.qualifier->size() > 0)]
-  @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = Hash.new
+  @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = {}
 [elseif (not anAttribute.type.oclIsUndefined())]
   [if (anAttribute.upper = -1) ]
     [if (anAttribute.lower = 0)]
-  @[anAttribute.genName()/] = Array.new
+  @[anAttribute.genName()/] = ['[]'/]
     [else]
-  @[anAttribute.genName()/] = Array.new([anAttribute.genDefault()/])
+  @[anAttribute.genName()/] = ['['/][anAttribute.genDefault()/][']'/]
     [/if]
   [elseif (anAttribute.lower = 0 and anAttribute.upper = 1) ]
   @[anAttribute.genName()/] = nil
