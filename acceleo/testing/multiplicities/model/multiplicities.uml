@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_PlwaALR6EeO78pIYeL98nQ" name="Model">
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_PlwaALR6EeO78pIYeL98nQ" name="Model">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_PlwaAbR6EeO78pIYeL98nQ">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -19,6 +19,34 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_cNZ3ALR6EeO78pIYeL98nQ" name="patties" type="_WEvPoLR6EeO78pIYeL98nQ" association="_cNbFILR6EeO78pIYeL98nQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cNZ3AbR6EeO78pIYeL98nQ" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cNZ3ArR6EeO78pIYeL98nQ" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Zud0wLSNEeOFrpge8wZqoA" name="_patties" visibility="public" type="_WEvPoLR6EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Z_Hf4LSNEeOFrpge8wZqoA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Z_IG8LSNEeOFrpge8wZqoA" value="*"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_Z_J8ILSNEeOFrpge8wZqoA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_7f5u8LSNEeOFrpge8wZqoA" name="_bun" visibility="public" type="__BKw4LR6EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7sZS0LSNEeOFrpge8wZqoA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7sZ54LSNEeOFrpge8wZqoA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_7sc9MLSNEeOFrpge8wZqoA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_7_Vc8LSNEeOFrpge8wZqoA" name="_condiments" visibility="public" type="_CGZccLR7EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8IyT4LSNEeOFrpge8wZqoA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8Iy68LSNEeOFrpge8wZqoA" value="*"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_8I0JELSNEeOFrpge8wZqoA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_8bZG0LSNEeOFrpge8wZqoA" name="_price" visibility="public" type="_6DF34LR7EeO78pIYeL98nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8mxQYLSNEeOFrpge8wZqoA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8mx3cLSNEeOFrpge8wZqoA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_8mzsoLSNEeOFrpge8wZqoA">
+        <value xsi:nil="true"/>
+      </defaultValue>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_WEvPoLR6EeO78pIYeL98nQ" name="Patty"/>
