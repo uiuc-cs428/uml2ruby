@@ -44,9 +44,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__TPM0J3HEeODVOE2brWgLA" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__TQa8J3HEeODVOE2brWgLA" value="1"/>
-      <defaultValue xmi:type="uml:LiteralString" xmi:id="__TXIoJ3HEeODVOE2brWgLA">
-        <value xsi:nil="true"/>
-      </defaultValue>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="__TXIoJ3HEeODVOE2brWgLA" name="default" value="private"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_ljcg8J3fEeODVOE2brWgLA" name="name" visibility="public">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>

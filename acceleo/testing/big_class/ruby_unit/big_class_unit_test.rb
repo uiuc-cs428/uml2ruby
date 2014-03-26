@@ -76,8 +76,10 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
     assert_equal("Food", fruit.parent)
 
     assert_equal(apple.name, "Apple")
-    assert(apple.methods.is_a? ClassMethod)
-    assert(apple.attributes.is_a? Attribute)
+    assert(apple.methods.is_a? Array)
+    assert(apple.methods.size == 0)
+    assert(apple.attributes.is_a? Array)
+    assert(apple.attributes.size == 0)
   end
 
   def test_generator_class
@@ -107,7 +109,8 @@ class ClassDiagramIntegrationSuite < Test::Unit::TestCase
 
     assert_equal("foo", method.name)
     assert_equal("public", method.visibility)
-    assert(method.arguments.is_a? Argument)
+    assert(method.arguments.is_a? Array)
+    assert(method.arguments.size == 0)
   end
 
   def test_sequencediagram_class
