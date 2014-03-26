@@ -21,7 +21,6 @@ class TestMultiplicitiesSuite < Test::Unit::TestCase
     assert(burger._bun == nil)
     assert(burger._condiments.kind_of? Array)
     assert(burger._condiments.size == 0)
-    assert(burger._condiments.first.kind_of != Condiment)
     assert(burger._price.kind_of? Price)
   end
 
