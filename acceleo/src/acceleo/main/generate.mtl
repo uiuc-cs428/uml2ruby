@@ -222,7 +222,7 @@ Comment Related Templates
 ***************************************************************************
 /]
 
-[template public genComments(aClass : Class)]
+[template public genComments(aClass : Class) post(trim())]
 [for (com : Comment | aClass.ownedComment) separator('\n')]# [com._body.toString() /][/for]
 [/template]
 
@@ -232,7 +232,7 @@ Dependency Related Templates
 ***************************************************************************
 /]
 
-[template public genDependencies(aClass : Class)]
+[template public genDependencies(aClass : Class) post(trim())]
 [comment add requires for dependencies/]
 [aClass.clientDependency.supplier.name->asSet().genRequire()->sep('\n')/]
 [comment add requires for classifiers/]
