@@ -68,6 +68,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     public Generate() {
         // Empty implementation
+    	System.out.println("hello1");
     }
 
     /**
@@ -88,6 +89,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     public Generate(URI modelURI, File targetFolder,
             List<? extends Object> arguments) throws IOException {
+    	System.out.println("Hello2");
         initialize(modelURI, targetFolder, arguments);
     }
 
@@ -109,6 +111,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     public Generate(EObject model, File targetFolder,
             List<? extends Object> arguments) throws IOException {
+    	System.out.println("Hello3");
         initialize(model, targetFolder, arguments);
     }
     
@@ -124,6 +127,9 @@ public class Generate extends AbstractAcceleoGenerator {
             if (args.length < 2) {
                 System.out.println("Arguments not valid : {model, folder}.");
             } else {
+            	for(int i=0; i < args.length; i++) {
+            		System.out.println("Argument " + i + ": " + args[i]);
+            	}
                 URI modelURI = URI.createFileURI(args[0]);
                 File folder = new File(args[1]);
                 
@@ -176,6 +182,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     @Override
     public void doGenerate(Monitor monitor) throws IOException {
+    	System.out.println("Hello3");
         /*
          * TODO if you wish to change the generation as a whole, override this. The default behavior should
          * be sufficient in most cases. If you want to change the content of this method, do NOT forget to
@@ -212,6 +219,7 @@ public class Generate extends AbstractAcceleoGenerator {
     @Override
     public List<IAcceleoTextGenerationListener> getGenerationListeners() {
         List<IAcceleoTextGenerationListener> listeners = super.getGenerationListeners();
+        System.out.println("Hello4");
         /*
          * TODO if you need to listen to generation event, add listeners to the list here. If you want to change
          * the content of this method, do NOT forget to change the "@generated" tag in the Javadoc of this method
@@ -244,6 +252,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     @Override
     public IAcceleoGenerationStrategy getGenerationStrategy() {
+    	System.out.println("Hello5");
         return super.getGenerationStrategy();
     }
     
@@ -256,6 +265,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     @Override
     public String getModuleName() {
+    	System.out.println("Hello6");
         return MODULE_FILE_NAME;
     }
     
@@ -270,6 +280,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     @Override
     public List<String> getProperties() {
+    	System.out.println("Hello7");
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
          * tag in the Javadoc of this method to "@generated NOT". Without this new tag, any compilation
@@ -317,6 +328,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     @Override
     public void addPropertiesFile(String propertiesFile) {
+    	System.out.println("Hello8");
         this.propertiesFiles.add(propertiesFile);
     }
     
@@ -328,6 +340,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     @Override
     public String[] getTemplateNames() {
+    	System.out.println("Hello9");
         return TEMPLATE_NAMES;
     }
     
@@ -340,6 +353,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     @Override
     public void registerPackages(ResourceSet resourceSet) {
+    	System.out.println("Hello10");
         super.registerPackages(resourceSet);
         if (!isInWorkspace(org.eclipse.uml2.uml.UMLPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.uml2.uml.UMLPackage.eINSTANCE.getNsURI(), org.eclipse.uml2.uml.UMLPackage.eINSTANCE);
@@ -387,6 +401,7 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     @Override
     public void registerResourceFactories(ResourceSet resourceSet) {
+    	System.out.println("Hello11");
         super.registerResourceFactories(resourceSet);
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
