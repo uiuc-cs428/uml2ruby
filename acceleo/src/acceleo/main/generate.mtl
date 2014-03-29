@@ -238,7 +238,7 @@ Dependency Related Templates
 [comment add requires for classifiers/]
 [aClass.general->asSet().genRequire()->sep('\n')/]
 [comment add requires for attributes/]
-[aClass.attribute.type->asSet().genRequire()->sep('\n')/]
+[aClass.attribute.type.genRequire()->sep('\n')/]
 [/template]
 
 [template public genRequire(aDependency : Dependency) post(trim())]
