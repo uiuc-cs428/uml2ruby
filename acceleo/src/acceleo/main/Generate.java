@@ -10,10 +10,18 @@
  *******************************************************************************/
 package acceleo.main;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.Vector;
 
 import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
@@ -131,14 +139,10 @@ public class Generate extends AbstractAcceleoGenerator {
 			if (args.length < 2) {
 				System.out.println("Arguments not valid : {model, folder}.");
 			} else {
-				for (int i = 0; i < args.length; i++) {
-					System.out.println("Argument " + i + ": " + args[i]);
-				}
 				URI modelURI = URI.createFileURI(args[0]);
 				File folder = new File(args[1]);
 
 				List<String> arguments = new ArrayList<String>();
-
 				/*
 				 * If you want to change the content of this method, do NOT
 				 * forget to change the "@generated" tag in the Javadoc of this
@@ -174,10 +178,74 @@ public class Generate extends AbstractAcceleoGenerator {
 				}
 
 				generator.doGenerate(new BasicMonitor());
+
+				File curFile = new File(args[1]);
+				ArrayList<String> generatedFiles = new ArrayList<String>(
+						Arrays.asList(curFile.list()));
+
+				for (String fileName : generatedFiles) {
+					System.out.println("File name: " + fileName);
+					formatFile(args[1] + "/" + fileName);
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Rewrite input file to remove duplicate require statements and remove any
+	 * leading or duplicate new lines.
+	 * 
+	 * Note: The original file will be overwritten.
+	 * 
+	 * @param filePath Path to the file to reformat
+	 * @throws IOException
+	 */
+	private static void formatFile(String filePath) throws IOException {
+		Set<String> requireStatements = new HashSet<String>();
+		Vector<String> programLines = new Vector<String>();
+
+		BufferedReader inputFileReader = new BufferedReader(new FileReader(
+				filePath));
+		// Separate require and program statements to print all require
+		// statements together.
+		for (String curLine; (curLine = inputFileReader.readLine()) != null;) {
+			if (curLine.matches("^require.+ \'.+\'.*")) {
+				requireStatements.add(curLine);
+			} else {
+				programLines.add(curLine);
+			}
+		}
+		inputFileReader.close();
+
+		BufferedWriter outputFileWriter = new BufferedWriter(new FileWriter(
+				filePath));
+
+		for (String include : requireStatements) {
+			outputFileWriter.write(include + "\n");
+		}
+
+		// Print the contents of the file removing leading and duplicate new
+		// lines.
+		boolean foundFirstText = false;
+		String prevLine = "";
+		for (String curLine : programLines) {
+			if (foundFirstText
+					&& !(prevLine.matches("^\\s*$") && curLine
+							.matches("^\\s*$"))) {
+				outputFileWriter.write(curLine + "\n");
+			} else if (curLine.matches(".*\\S.*")) {
+				foundFirstText = true;
+				outputFileWriter.write("\n" + curLine + "\n");
+			} else {
+				continue;
+			}
+
+			prevLine = curLine;
+		}
+
+		outputFileWriter.close();
 	}
 
 	/**
@@ -236,7 +304,6 @@ public class Generate extends AbstractAcceleoGenerator {
 	public List<IAcceleoTextGenerationListener> getGenerationListeners() {
 		List<IAcceleoTextGenerationListener> listeners = super
 				.getGenerationListeners();
-		System.out.println("Hello4");
 		/*
 		 * TODO if you need to listen to generation event, add listeners to the
 		 * list here. If you want to change the content of this method, do NOT
