@@ -70,11 +70,11 @@ Attribute Related Templates
 [template public genType(aParameter : Parameter) post(trim())]
 [if (aParameter.type->isEmpty() = true) ]
 Undefined
-[elseif (aParameter.type.name->includes('String'))]
+[elseif (aParameter.type.toString().contains('String'))]
 String
-[elseif (aParameter.type.name->includes('Integer'))]
+[elseif (aParameter.type.toString().contains('Integer'))]
 Fixnum
-[elseif (aParameter.type.name->includes('Real'))]
+[elseif (aParameter.type.toString().contains('Real'))]
 Float
 [else]
 [aParameter.type.name /]
