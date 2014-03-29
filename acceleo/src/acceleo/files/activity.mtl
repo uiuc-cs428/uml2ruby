@@ -25,11 +25,6 @@ end
 [/for]
 [/template]
 
-[template public IsValueSpecAction(anActivityNode : ActivityNode) post(trim())]
-#[anActivityNode.name/]
-[if (anActivityNode.eGet('result')->first().oclIsUndefined()._not())]#Output Pin: [anActivityNode.eGet('result').name/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/][/if]
-[/template]
-
 [template public printNameAndAction(anActivityNode : ActivityNode) post(trim())]
 #[anActivityNode.name/]
      [if (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]#[anActivityNode.name/] -> Output Pin: [printReturnParameter(anActivityNode)/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
