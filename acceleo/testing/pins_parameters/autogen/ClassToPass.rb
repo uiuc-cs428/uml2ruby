@@ -8,7 +8,9 @@ class ClassToPass
   end
 
   
-  
+  def operation
+    # TODO
+  end
 
   protected
   

@@ -14,5 +14,9 @@ class TestActivityPinSuite < Test::Unit::TestCase
     OpaqueAction1(theObject)
     assert(true)
   end
+
+  def test_activity
+    Activity1()
+  end
     
 end
