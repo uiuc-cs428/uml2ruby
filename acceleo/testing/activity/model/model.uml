@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_WjqX0Ke3EeOzx_QlbxPRtg" name="model">
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_WjqX0Ke3EeOzx_QlbxPRtg" name="model">
   <packagedElement xmi:type="uml:Activity" xmi:id="_Wjs0EKe3EeOzx_QlbxPRtg" name="SomeFunActivity" node="_aQlVgKe3EeOzx_QlbxPRtg _5a-vkKi1EeOGPL1tbNOgVw _Q3XLYKi_EeOGPL1tbNOgVw _k5WnMLHMEeOCGcdt-7U0Pg _m77i8LHMEeOCGcdt-7U0Pg _oYmVQLHMEeOCGcdt-7U0Pg _0gJ88LHMEeOCGcdt-7U0Pg _QVhmoLKkEeOR9fst_4iRTw _4HDksLYKEeOtpqoEN2Izrg _7lrq4LYOEeOtpqoEN2Izrg">
     <ownedBehavior xmi:type="uml:Interaction" xmi:id="_78qngLYOEeOtpqoEN2Izrg" name="Interaction1">
       <fragment xmi:type="uml:InteractionUse" xmi:id="_78qngbYOEeOtpqoEN2Izrg" name="InteractionUse_Interaction1" refersTo="_78qngLYOEeOtpqoEN2Izrg"/>
     </ownedBehavior>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_4UKzoLYKEeOtpqoEN2Izrg" name="Operation1"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_4UKzoLYKEeOtpqoEN2Izrg" name="Operation1" method="_Z-8sILbPEeOqfKs6pnU-Zw">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_oW8FYLbPEeOqfKs6pnU-Zw" name="Param1" type="_ImjyELbREeOqfKs6pnU-Zw">
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_oW8FYbbPEeOqfKs6pnU-Zw" name="Zero"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_t4rPoLbPEeOqfKs6pnU-Zw" name="Param2" type="_ImjyELbREeOqfKs6pnU-Zw">
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_t4rPobbPEeOqfKs6pnU-Zw" name="One" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_o07sILbTEeOqfKs6pnU-Zw" name="Result" type="_ImjyELbREeOqfKs6pnU-Zw" direction="return"/>
+    </ownedOperation>
     <edge xmi:type="uml:ControlFlow" xmi:id="_Dxt54Ki2EeOGPL1tbNOgVw" name="ControlFlow" source="_5a-vkKi1EeOGPL1tbNOgVw" target="_0gJ88LHMEeOCGcdt-7U0Pg"/>
     <edge xmi:type="uml:ControlFlow" xmi:id="_8bcYgLHMEeOCGcdt-7U0Pg" name="ControlFlow1" source="_0gJ88LHMEeOCGcdt-7U0Pg" target="_aQlVgKe3EeOzx_QlbxPRtg"/>
     <edge xmi:type="uml:ControlFlow" xmi:id="_9qPG4LHMEeOCGcdt-7U0Pg" name="ControlFlow2" source="_aQlVgKe3EeOzx_QlbxPRtg" target="_Q3XLYKi_EeOGPL1tbNOgVw"/>
@@ -26,6 +34,24 @@
       <value xmi:type="uml:LiteralBoolean" xmi:id="_niqboLKkEeOR9fst_4iRTw" name="IsLightOn"/>
     </node>
     <node xmi:type="uml:CallOperationAction" xmi:id="_4HDksLYKEeOtpqoEN2Izrg" name="CallOperationAction1" outgoing="_6ykvwLYKEeOtpqoEN2Izrg" incoming="_XSdjkLKkEeOR9fst_4iRTw" onPort="_piQ-MLYNEeOtpqoEN2Izrg" operation="_4UKzoLYKEeOtpqoEN2Izrg">
+      <argument xmi:type="uml:InputPin" xmi:id="_pYvj1LbTEeOqfKs6pnU-Zw" name="Param1" type="_ImjyELbREeOqfKs6pnU-Zw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pYvj1rbTEeOqfKs6pnU-Zw" source="PinToParameterLink">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pYvj17bTEeOqfKs6pnU-Zw" key="PinToParameterLink" value="_oW8FYLbPEeOqfKs6pnU-Zw"/>
+        </eAnnotations>
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_pYvj1bbTEeOqfKs6pnU-Zw" value="1"/>
+      </argument>
+      <argument xmi:type="uml:InputPin" xmi:id="_pYvj0LbTEeOqfKs6pnU-Zw" name="Param2" type="_ImjyELbREeOqfKs6pnU-Zw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pYvj0rbTEeOqfKs6pnU-Zw" source="PinToParameterLink">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pYvj07bTEeOqfKs6pnU-Zw" key="PinToParameterLink" value="_t4rPoLbPEeOqfKs6pnU-Zw"/>
+        </eAnnotations>
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_pYvj0bbTEeOqfKs6pnU-Zw" value="1"/>
+      </argument>
+      <result xmi:type="uml:OutputPin" xmi:id="_pYvj2LbTEeOqfKs6pnU-Zw" name="Result" type="_ImjyELbREeOqfKs6pnU-Zw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pYynILbTEeOqfKs6pnU-Zw" source="PinToParameterLink">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pYynIbbTEeOqfKs6pnU-Zw" key="PinToParameterLink" value="_o07sILbTEeOqfKs6pnU-Zw"/>
+        </eAnnotations>
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_pYvj2bbTEeOqfKs6pnU-Zw" value="1"/>
+      </result>
       <target xmi:type="uml:InputPin" xmi:id="_4UaEMrYKEeOtpqoEN2Izrg" name="target" type="_Wjs0EKe3EeOzx_QlbxPRtg">
         <upperBound xmi:type="uml:LiteralInteger" xmi:id="_4UaEM7YKEeOtpqoEN2Izrg" value="1"/>
       </target>
@@ -34,7 +60,9 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Wb52MKi4EeOGPL1tbNOgVw" name="Class1">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_piQ-MLYNEeOtpqoEN2Izrg" name="Port1" type="_d-OTQLYNEeOtpqoEN2Izrg"/>
+    <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_Z-8sILbPEeOqfKs6pnU-Zw" name="FunctionBehavior1" specification="_4UKzoLYKEeOtpqoEN2Izrg"/>
   </packagedElement>
   <packagedElement xmi:type="uml:DataType" xmi:id="_5N5HQLKkEeOR9fst_4iRTw" name="OutputPin"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_d-OTQLYNEeOtpqoEN2Izrg" name="Port"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_ImjyELbREeOqfKs6pnU-Zw" name="Integer"/>
 </uml:Model>
