@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_VNgm4LdSEeOFrpge8wZqoA" name="model">
+  <packagedElement xmi:type="uml:Class" xmi:id="_WJnCwLdSEeOFrpge8wZqoA" clientDependency="_0LBn8LdSEeOFrpge8wZqoA" name="Class1">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_doOJYLdSEeOFrpge8wZqoA" name="class2Association" type="_W879ILdSEeOFrpge8wZqoA" association="_doOJY7dSEeOFrpge8wZqoA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_doOJYbdSEeOFrpge8wZqoA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_doOJYrdSEeOFrpge8wZqoA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_tssSkLdSEeOFrpge8wZqoA" name="class2Property" visibility="public" type="_W879ILdSEeOFrpge8wZqoA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uGkyMLdSEeOFrpge8wZqoA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uGkyMbdSEeOFrpge8wZqoA" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_uGujMLdSEeOFrpge8wZqoA">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_W879ILdSEeOFrpge8wZqoA" name="Class2"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_doOJY7dSEeOFrpge8wZqoA" name="" memberEnd="_doOJZLdSEeOFrpge8wZqoA _doOJYLdSEeOFrpge8wZqoA">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_doOJZLdSEeOFrpge8wZqoA" name="" type="_WJnCwLdSEeOFrpge8wZqoA" association="_doOJY7dSEeOFrpge8wZqoA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_doOJZbdSEeOFrpge8wZqoA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_doOJZrdSEeOFrpge8wZqoA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_0LBn8LdSEeOFrpge8wZqoA" name="" client="_WJnCwLdSEeOFrpge8wZqoA" supplier="_W879ILdSEeOFrpge8wZqoA"/>
+</uml:Model>
