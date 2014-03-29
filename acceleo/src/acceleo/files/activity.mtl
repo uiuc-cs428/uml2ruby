@@ -17,7 +17,7 @@ end
 [/file]
 [/template]
 
-[template public nextActivityNode(anActivityNode : ActivityNode) post(trim())]
+[template public nextActivityNode(anActivityNode : ActivityNode)]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)]
     [printNameAndAction(anActivityNode)/]
     [if (aControlFlow.target.outgoing->isEmpty())][printTerminatingNode(aControlFlow)/][else]#[aControlFlow.name/][/if]
@@ -32,21 +32,21 @@ end
 
 [template public printNameAndAction(anActivityNode : ActivityNode) post(trim())]
 #[anActivityNode.name/]
-     [if (anActivityNode.toString().contains('ValueSpecificationActionImpl')._and( anActivityNode.eGet('result')->first().oclIsUndefined()._not()._and( anActivityNode.eGet('value').oclIsUndefined()._not()) ))]#[anActivityNode.name/] -> Output Pin: [anActivityNode.eGet('result').name/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
-     [elseif (anActivityNode.toString().contains('CallOperationActionImpl')._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('operation').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/]), Result: [printReturnParameter(anActivityNode)/]
-     [elseif (anActivityNode.toString().contains('CallBehaviorActionImpl')._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('behavior').name/][/if]
+     [if (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]#[anActivityNode.name/] -> Output Pin: [printReturnParameter(anActivityNode)/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
+     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('operation').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/]), Result: [printReturnParameter(anActivityNode)/]
+     [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('behavior').name/][/if]
 [/template]
 
 [template public printOperationParameters(anActivityNode : ActivityNode) post(trim())]
-[for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.toString().contains('InputPinImpl') ))][parameter.eGet('type').name/] [parameter.eGet('name')/][if (parameter.followingSiblings()->isEmpty()._not())], [/if][/if][/for]
+[for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.oclIsTypeOf(InputPin) ))][parameter.eGet('type').name/] [parameter.eGet('name')/][if (parameter.followingSiblings()->isEmpty()._not())], [/if][/if][/for]
 [/template]
 
 [template public printReturnParameter(anActivityNode : ActivityNode) post(trim())]
-[for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.toString().contains('OutputPinImpl') ))][parameter.eGet('name')/][/if][/for]
+[for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/][/if][/for]
 [/template]
 
-[template public printTerminatingNode(aControlFlow : ControlFlow) post(trim())]
-[if (aControlFlow.target.toString().contains('FlowFinalNodeImpl'))]    #[aControlFlow.target.name/][elseif (aControlFlow.target.toString().contains('ActivityFinalNodeImpl'))]    #[aControlFlow.target.name/][/if]
+[template public printTerminatingNode(aControlFlow : ControlFlow)]
+[if (aControlFlow.target.oclIsTypeOf(FlowFinalNode))]    #[aControlFlow.target.name/][elseif (aControlFlow.target.oclIsTypeOf(ActivityFinalNode))]    #[aControlFlow.target.name/][/if]
 [/template]
 
 [template public genRequires(anActivityNode : ActivityNode)]
