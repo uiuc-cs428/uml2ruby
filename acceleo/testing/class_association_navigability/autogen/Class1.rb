@@ -1,6 +1,6 @@
-require_relative '../autogen/Class2.rb'
-
 require_relative '../autogen/Class3.rb'
+
+require_relative '../autogen/Class2.rb'
 
 class Class1
 

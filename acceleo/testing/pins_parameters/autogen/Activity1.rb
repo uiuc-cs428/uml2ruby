@@ -6,7 +6,7 @@
   	  
   
 require_relative('ClassToPass.rb')
-
+require_relative('ClassToPass.rb')
 
 def OpaqueAction
   #TODO fill in function
@@ -19,20 +19,9 @@ def OpaqueAction1(inputpin)
 end
 
 
-
-
-
 def Activity1
   objectflow = OpaqueAction()
   OpaqueAction1(objectflow)
   
-  
-  
-  
-  
 end
 
-def Activity1
-  objectFlow = OpaqueAction()
-  OpaqueAction1(objectFlow)
-end
