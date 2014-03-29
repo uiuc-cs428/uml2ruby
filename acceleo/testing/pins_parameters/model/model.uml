@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_5Qt2YLSUEeOaVb7mwcYjyg" name="model">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_5Q4OcLSUEeOaVb7mwcYjyg" name="Activity1" node="_9EbYkLSUEeOaVb7mwcYjyg _-JZckLSUEeOaVb7mwcYjyg __TXVULSUEeOaVb7mwcYjyg _agYgQLSVEeOaVb7mwcYjyg">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_YGM80LSVEeOaVb7mwcYjyg" name="ControlFlow" source="_9EbYkLSUEeOaVb7mwcYjyg" target="__TXVULSUEeOaVb7mwcYjyg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gJpO0LSVEeOaVb7mwcYjyg" name="ControlFlow1" source="_agYgQLSVEeOaVb7mwcYjyg" target="_-JZckLSUEeOaVb7mwcYjyg"/>
+    <edge xmi:type="uml:ObjectFlow" xmi:id="_g_XV4LSVEeOaVb7mwcYjyg" name="ObjectFlow" source="_OQ5EkLSVEeOaVb7mwcYjyg" target="_dnlhwLSVEeOaVb7mwcYjyg">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_g_ZyILSVEeOaVb7mwcYjyg" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_g_ZyIbSVEeOaVb7mwcYjyg" value="1"/>
+    </edge>
+    <node xmi:type="uml:InitialNode" xmi:id="_9EbYkLSUEeOaVb7mwcYjyg" name="InitialNode" outgoing="_YGM80LSVEeOaVb7mwcYjyg"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_-JZckLSUEeOaVb7mwcYjyg" name="ActivityFinalNode" incoming="_gJpO0LSVEeOaVb7mwcYjyg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="__TXVULSUEeOaVb7mwcYjyg" name="OpaqueAction" incoming="_YGM80LSVEeOaVb7mwcYjyg" language="" body="">
+      <outputValue xmi:type="uml:OutputPin" xmi:id="_OQ5EkLSVEeOaVb7mwcYjyg" name="OutputPin" outgoing="_g_XV4LSVEeOaVb7mwcYjyg" type="_h7RAYLU4EeOpt47QcztP_A">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_OQ6SsLSVEeOaVb7mwcYjyg" value="1"/>
+      </outputValue>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_agYgQLSVEeOaVb7mwcYjyg" name="OpaqueAction1" outgoing="_gJpO0LSVEeOaVb7mwcYjyg">
+      <inputValue xmi:type="uml:InputPin" xmi:id="_dnlhwLSVEeOaVb7mwcYjyg" name="InputPin" incoming="_g_XV4LSVEeOaVb7mwcYjyg" type="_h7RAYLU4EeOpt47QcztP_A">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_dnmv4LSVEeOaVb7mwcYjyg" value="1"/>
+      </inputValue>
+    </node>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_h7RAYLU4EeOpt47QcztP_A" name="ClassToPass">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_dnxFsLVKEeOpt47QcztP_A" name="operation"/>
+  </packagedElement>
+</uml:Model>

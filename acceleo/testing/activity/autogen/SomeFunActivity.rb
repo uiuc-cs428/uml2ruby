@@ -23,3 +23,24 @@
               
         
   
+
+def OpaqueAction
+  #TODO fill in function
+end
+
+def OpaqueAction1
+  #TODO fill in function
+end
+
+def OpaqueAction2
+  #TODO fill in function
+end
+
+
+def SomeFunActivity
+  OpaqueAction()
+  OpaqueAction1()
+  OpaqueAction2()
+  
+end
+
