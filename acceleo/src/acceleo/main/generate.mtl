@@ -234,15 +234,31 @@ Dependency Related Templates
 
 [template public genDependencies(aClass : Class) post(trim())]
 [comment add requires for dependencies/]
-[aClass.clientDependency.supplier.name->asSet().genRequire()->sep('\n')/]
+[aClass.clientDependency->asSet().genRequire()->sep('\n')/]
 [comment add requires for classifiers/]
-[aClass.general.name->asSet().genRequire()->sep('\n')/]
+[aClass.general->asSet().genRequire()->sep('\n')/]
 [comment add requires for attributes/]
-[aClass.attribute.type.name->asSet().genRequire()->sep('\n')/]
-[comment add requires for qualifiers/]
-[aClass.attribute.qualifier.name->asSet().genRequire()->sep('\n')/]
+[aClass.attribute.type->asSet().genRequire()->sep('\n')/]
 [/template]
 
-[template public genRequire(className : String)]
-require_relative '../autogen/[className/].rb'
+[template public genRequire(aDependency : Dependency) post(trim())]
+[if not (aDependency.supplier.name->isEmpty())]
+require_relative '../autogen/[aDependency.supplier.name/].rb'
+[/if]
+[/template]
+
+[template public genRequire(aClassifier : Classifier) post(trim())]
+[if not (aClassifier.name->isEmpty() or aClassifier.toString().contains('String') or
+         aClassifier.toString().contains('Integer') or aClassifier.toString().contains('Real')
+)]
+require_relative '../autogen/[aClassifier.name/].rb'
+[/if]
+[/template]
+
+[template public genRequire(aType : Type) post(trim())]
+[if not (aType.name->isEmpty() or aType.toString().contains('String') or
+         aType.toString().contains('Integer') or aType.toString().contains('Real')
+)]
+require_relative '../autogen/[aType.name/].rb'
+[/if]
 [/template]
