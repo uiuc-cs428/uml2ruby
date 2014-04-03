@@ -20,7 +20,7 @@ end
 [template public nextActivityNode(anActivityNode : ActivityNode)]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)]
     [printNameAndAction(anActivityNode)/]
-    [if (aControlFlow.target.outgoing->isEmpty())][printTerminatingNode(aControlFlow)/][else]#[aControlFlow.name/][/if]
+    [printControlFlow(aControlFlow)/]
 	[(nextActivityNode(aControlFlow.target))/]
 [/for]
 [/template]
@@ -42,6 +42,25 @@ end
 
 [template public printTerminatingNode(aControlFlow : ControlFlow)]
 [if (aControlFlow.target.oclIsTypeOf(FlowFinalNode))]    #[aControlFlow.target.name/][elseif (aControlFlow.target.oclIsTypeOf(ActivityFinalNode))]    #[aControlFlow.target.name/][/if]
+[/template]
+
+[template public printControlFlow(aControlFlow : ControlFlow) post(trim())]
+[if (aControlFlow.target.outgoing->isEmpty())]
+  [if (aControlFlow.target.oclIsTypeOf(FlowFinalNode) or 
+       aControlFlow.target.oclIsTypeOf(ActivityFinalNode))]
+    #[aControlFlow.target.name/]
+    [printControlFlowGuard(aControlFlow)/]
+  [/if]
+[else]
+#[aControlFlow.name/]
+[printControlFlowGuard(aControlFlow)/]
+[/if]
+[/template]
+
+[template public printControlFlowGuard(aControlFlow : ControlFlow) post(trim())]
+[if (not aControlFlow.guard->isEmpty())]
+#if [aControlFlow.guard.name/] == [aControlFlow.guard.eGet('value')/]
+[/if]
 [/template]
 
 [template public genRequires(anActivityNode : ActivityNode)]
