@@ -31,7 +31,7 @@ class TestAttributesSuite < Test::Unit::TestCase
 
   def test_class2_readonly_attribute_is_readable
     c2 = Class2.new
-    assert_equal(nil, c2.read_only_attribute)
+    assert_equal("", c2.read_only_attribute)
   end
 
   def test_class2_readonly_attribute_not_writable
