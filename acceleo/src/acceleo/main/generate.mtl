@@ -243,7 +243,7 @@ Dependency Related Templates
 
 [template public genRequire(aDependency : Dependency) post(trim())]
 [if not (aDependency.supplier.name->isEmpty())]
-require_relative '../autogen/[aDependency.supplier.name/].rb'
+require_relative '[aDependency.supplier.name/].rb'
 [/if]
 [/template]
 
@@ -251,7 +251,7 @@ require_relative '../autogen/[aDependency.supplier.name/].rb'
 [if not (aClassifier.name->isEmpty() or aClassifier.toString().contains('String') or
          aClassifier.toString().contains('Integer') or aClassifier.toString().contains('Real')
 )]
-require_relative '../autogen/[aClassifier.name/].rb'
+require_relative '[aClassifier.name/].rb'
 [/if]
 [/template]
 
