@@ -259,6 +259,6 @@ require_relative '../autogen/[aClassifier.name/].rb'
 [if not (aType.name->isEmpty() or aType.toString().contains('String') or
          aType.toString().contains('Integer') or aType.toString().contains('Real')
 )]
-require_relative '../autogen/[aType.name/].rb'
+require_relative '[aType.name/].rb'
 [/if]
 [/template]
