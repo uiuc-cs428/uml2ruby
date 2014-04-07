@@ -17,6 +17,16 @@ end
 [/file]
 [/template]
 
+[template public print(anActivityNode : ActivityNode)]
+[anActivityNode.name.replace(' ', '_')/]
+[/template]
+
+[template public print(aControlFlow : ControlFlow) post(trim())]
+[if (aControlFlow.name <> '')]
+#[aControlFlow.name/]
+[/if]
+[/template]
+
 [template public nextActivityNode(anActivityNode : ActivityNode)]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)]
     [printNameAndAction(anActivityNode)/]
@@ -26,10 +36,10 @@ end
 [/template]
 
 [template public printNameAndAction(anActivityNode : ActivityNode) post(trim())]
-#[anActivityNode.name/]
-     [if (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]#[anActivityNode.name/] -> Output Pin: [printReturnParameter(anActivityNode)/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
-     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('operation').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/]), Result: [printReturnParameter(anActivityNode)/]
-     [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('behavior').name/][/if]
+#[print(anActivityNode)/]
+     [if (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]#[print(anActivityNode)/] -> Output Pin: [printReturnParameter(anActivityNode)/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
+     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('operation').oclIsUndefined()._not() )))]#[print(anActivityNode)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/]), Result: [printReturnParameter(anActivityNode)/]
+     [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() )))]#[print(anActivityNode)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('behavior').name/][/if]
 [/template]
 
 [template public printOperationParameters(anActivityNode : ActivityNode) post(trim())]
@@ -48,18 +58,22 @@ end
 [if (aControlFlow.target.outgoing->isEmpty())]
   [if (aControlFlow.target.oclIsTypeOf(FlowFinalNode) or 
        aControlFlow.target.oclIsTypeOf(ActivityFinalNode))]
-    #[aControlFlow.target.name/]
+    [print(aControlFlow.target)/]
     [printControlFlowGuard(aControlFlow)/]
   [/if]
 [else]
-#[aControlFlow.name/]
+[print(aControlFlow)/]
 [printControlFlowGuard(aControlFlow)/]
 [/if]
 [/template]
 
 [template public printControlFlowGuard(aControlFlow : ControlFlow) post(trim())]
 [if (not aControlFlow.guard->isEmpty())]
+[if (aControlFlow.guard.name = 'else')]
+#else
+[else]
 #if [aControlFlow.guard.name/] == [aControlFlow.guard.eGet('value')/]
+[/if]
 [/if]
 [/template]
 
@@ -79,7 +93,7 @@ require_relative('[anActivityNode.oclAsType(OpaqueAction).output->first().type.n
 
 [template public genOpaqueActions(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
-def [anActivityNode.name/][if anActivityNode.oclAsType(OpaqueAction).input->size() > 0]([anActivityNode.oclAsType(OpaqueAction).input->first().name.toLower()/])[/if]
+def [print(anActivityNode)/][if anActivityNode.oclAsType(OpaqueAction).input->size() > 0]([anActivityNode.oclAsType(OpaqueAction).input->first().name.toLower()/])[/if]
   #TODO fill in function
   [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
   [anActivityNode.oclAsType(OpaqueAction).output->first().name.toLower()/] = [anActivityNode.oclAsType(OpaqueAction).output->first().type.name/].new
@@ -93,7 +107,7 @@ end
 
 [template public genActivity(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
-[if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.name/]([if anActivityNode.oclAsType(OpaqueAction).input->size() > 0][anActivityNode.oclAsType(OpaqueAction).input->first().incoming.oclAsType(ObjectFlow).name.toLower()/][/if])
+[if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][print(anActivityNode)/]([if anActivityNode.oclAsType(OpaqueAction).input->size() > 0][anActivityNode.oclAsType(OpaqueAction).input->first().incoming.oclAsType(ObjectFlow).name.toLower()/][/if])
 [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
 [for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing)][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
 [/if]
