@@ -61,7 +61,13 @@ require_relative('[anActivityNode.oclAsType(OpaqueAction).output->first().type.n
 [template public genOpaqueActions(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 def [anActivityNode.name/][if anActivityNode.oclAsType(OpaqueAction).input->size() > 0]([anActivityNode.oclAsType(OpaqueAction).input->first().name.toLower()/])[/if]
+  [if anActivityNode.oclAsType(OpaqueAction).language->includes('ruby') and not anActivityNode.oclAsType(OpaqueAction)._body->at(anActivityNode.oclAsType(OpaqueAction).language.indexOf('ruby')->first()).oclIsInvalid()]
+  [anActivityNode.oclAsType(OpaqueAction)._body->at(anActivityNode.oclAsType(OpaqueAction).language.indexOf('ruby')->first())/]
+  [elseif anActivityNode.oclAsType(OpaqueAction).language->includes('Ruby') and not anActivityNode.oclAsType(OpaqueAction)._body->at(anActivityNode.oclAsType(OpaqueAction).language.indexOf('Ruby')->first()).oclIsInvalid()]
+  [anActivityNode.oclAsType(OpaqueAction)._body->at(anActivityNode.oclAsType(OpaqueAction).language.indexOf('Ruby')->first())/]
+  [else]
   #TODO fill in function
+  [/if]
   [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
   [anActivityNode.oclAsType(OpaqueAction).output->first().name.toLower()/] = [anActivityNode.oclAsType(OpaqueAction).output->first().type.name/].new
   [anActivityNode.oclAsType(OpaqueAction).output->first().name.toLower()/]

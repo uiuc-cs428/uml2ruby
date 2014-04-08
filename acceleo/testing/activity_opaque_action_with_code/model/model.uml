@@ -9,9 +9,7 @@
     <edge xmi:type="uml:ControlFlow" xmi:id="_uwokYL68EeOS4smV0GKlTQ" name="ControlFlow5" source="_nrNZ0L68EeOS4smV0GKlTQ" target="_j1YskL2wEeOtD9LNE87Dzg"/>
     <node xmi:type="uml:OpaqueAction" xmi:id="_eUvugL2wEeOtD9LNE87Dzg" name="opaque_action_with_ruby" outgoing="_lcjesL2wEeOtD9LNE87Dzg" incoming="_gm6lcL2wEeOtD9LNE87Dzg">
       <language>ruby</language>
-      <body>puts &quot;running opaque_action_with_ruby&quot;
-return_value = 44
-return_value</body>
+      <body>return_value = 42</body>
     </node>
     <node xmi:type="uml:InitialNode" xmi:id="_fgGuYL2wEeOtD9LNE87Dzg" name="InitialNode" outgoing="_gm6lcL2wEeOtD9LNE87Dzg"/>
     <node xmi:type="uml:ActivityFinalNode" xmi:id="_j1YskL2wEeOtD9LNE87Dzg" name="ActivityFinalNode" incoming="_uwokYL68EeOS4smV0GKlTQ"/>
@@ -25,11 +23,13 @@ return_value</body>
     <node xmi:type="uml:OpaqueAction" xmi:id="_tjwlwL61EeOS4smV0GKlTQ" name="opaque_action_ruby_and_other" outgoing="_0rEmsL61EeOS4smV0GKlTQ" incoming="_D2HqAL61EeOS4smV0GKlTQ">
       <language>ruby</language>
       <language>C</language>
-      <body>puts &quot;opaque_action_ruby_and_other&quot;
-return_value = 44
-return_value</body>
+      <body>return_value = 42</body>
       <body>c code</body>
     </node>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_nrNZ0L68EeOS4smV0GKlTQ" name="opaque_action_ruby_external" outgoing="_uwokYL68EeOS4smV0GKlTQ" incoming="_0rEmsL61EeOS4smV0GKlTQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_nrNZ0L68EeOS4smV0GKlTQ" name="opaque_action_ruby_external" outgoing="_uwokYL68EeOS4smV0GKlTQ" incoming="_0rEmsL61EeOS4smV0GKlTQ">
+      <language>Ruby</language>
+      <body>require_relative '../ruby_unit/external.rb'
+external_function</body>
+    </node>
   </packagedElement>
 </uml:Model>
