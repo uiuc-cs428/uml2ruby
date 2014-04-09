@@ -58,25 +58,53 @@ require_relative('[anActivityNode.oclAsType(OpaqueAction).output->first().type.n
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genRequires(aControlFlow.target)/][/for]
 [/template]
 
+[comment genOpaqueActions adds function definitions for all of the opaque actions in the diagram (can actually include manual/external ruby code)/]
 [template public genOpaqueActions(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
-def [anActivityNode.name/][if anActivityNode.oclAsType(OpaqueAction).input->size() > 0]([anActivityNode.oclAsType(OpaqueAction).input->first().name.toLower()/])[/if]
+[let anOpaqueAction : OpaqueAction = anActivityNode]
+def [anOpaqueAction.print()/][if anOpaqueAction.input->size() > 0]([anOpaqueAction.input->first().name.toLower()/])[/if]
+  [if anOpaqueAction.validLanguage('ruby')]
+  [anOpaqueAction._body->at(anOpaqueAction.language.indexOf('ruby')->first())/]
+  [elseif anOpaqueAction.validLanguage('Ruby')]
+  [anOpaqueAction._body->at(anOpaqueAction.language.indexOf('Ruby')->first())/]
+  [else]
   #TODO fill in function
-  [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
-  [anActivityNode.oclAsType(OpaqueAction).output->first().name.toLower()/] = [anActivityNode.oclAsType(OpaqueAction).output->first().type.name/].new
-  [anActivityNode.oclAsType(OpaqueAction).output->first().name.toLower()/]
-[/if]
+  [/if]
+  [if anOpaqueAction.output->size() > 0]
+  [anOpaqueAction.output->first().name.toLower()/] = [anOpaqueAction.output->first().type.name/].new
+  [anOpaqueAction.output->first().name.toLower()/]
+  [/if]
 end
 
-[if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing)][genOpaqueActions(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if][/if]
+[if anOpaqueAction.output->size() > 0]
+[for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing)]
+[genOpaqueActions(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
+[/for]
+[/if]
+[/let]
+[/if]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genOpaqueActions(aControlFlow.target)/][/for]
 [/template]
 
+[query public validLanguage(anOpaqueAction : OpaqueAction, languageName : String) : Boolean = 
+  anOpaqueAction.language->includes(languageName) and not anOpaqueAction._body->at(anOpaqueAction.language.indexOf(languageName)->first()).oclIsInvalid()
+/]
+
 [template public genActivity(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
-[if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.name/]([if anActivityNode.oclAsType(OpaqueAction).input->size() > 0][anActivityNode.oclAsType(OpaqueAction).input->first().incoming.oclAsType(ObjectFlow).name.toLower()/][/if])
-[if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
-[for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing)][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
+[let anOpaqueAction : OpaqueAction = anActivityNode]
+[if anOpaqueAction.output->size() > 0]
+[anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.print()/]([if anOpaqueAction.input->size() > 0][anOpaqueAction.input->first().incoming.oclAsType(ObjectFlow).name.toLower()/]
+[/if])
+[if anOpaqueAction.output->size() > 0]
+[for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing)][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
+[/for]
+[/if]
+[/let]
 [/if]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genActivity(aControlFlow.target)/][/for]
+[/template]
+
+[template public print(anActivityNode : ActivityNode)]
+[anActivityNode.name.replaceAll(' ', '_')/]
 [/template]
