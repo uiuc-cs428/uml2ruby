@@ -62,7 +62,7 @@ require_relative('[anActivityNode.oclAsType(OpaqueAction).output->first().type.n
 [template public genOpaqueActions(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 [let anOpaqueAction : OpaqueAction = anActivityNode]
-def [anOpaqueAction.name/][if anOpaqueAction.input->size() > 0]([anOpaqueAction.input->first().name.toLower()/])[/if]
+def [anOpaqueAction.print()/][if anOpaqueAction.input->size() > 0]([anOpaqueAction.input->first().name.toLower()/])[/if]
   [if anOpaqueAction.validLanguage('ruby')]
   [anOpaqueAction._body->at(anOpaqueAction.language.indexOf('ruby')->first())/]
   [elseif anOpaqueAction.validLanguage('Ruby')]
@@ -76,8 +76,13 @@ def [anOpaqueAction.name/][if anOpaqueAction.input->size() > 0]([anOpaqueAction.
   [/if]
 end
 
-[if anOpaqueAction.output->size() > 0][for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing)][genOpaqueActions(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
-[/let][/if]
+[if anOpaqueAction.output->size() > 0]
+[for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing)]
+[genOpaqueActions(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
+[/for]
+[/if]
+[/let]
+[/if]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genOpaqueActions(aControlFlow.target)/][/for]
 [/template]
 
@@ -87,9 +92,19 @@ end
 
 [template public genActivity(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
-[if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.name/]([if anActivityNode.oclAsType(OpaqueAction).input->size() > 0][anActivityNode.oclAsType(OpaqueAction).input->first().incoming.oclAsType(ObjectFlow).name.toLower()/][/if])
-[if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
-[for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing)][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
+[let anOpaqueAction : OpaqueAction = anActivityNode]
+[if anOpaqueAction.output->size() > 0]
+[anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.print()/]([if anOpaqueAction.input->size() > 0][anOpaqueAction.input->first().incoming.oclAsType(ObjectFlow).name.toLower()/]
+[/if])
+[if anOpaqueAction.output->size() > 0]
+[for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing)][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
+[/for]
+[/if]
+[/let]
 [/if]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genActivity(aControlFlow.target)/][/for]
+[/template]
+
+[template public print(anActivityNode : ActivityNode)]
+[anActivityNode.name.replaceAll(' ', '_')/]
 [/template]
