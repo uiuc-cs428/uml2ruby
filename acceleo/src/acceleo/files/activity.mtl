@@ -5,13 +5,13 @@
 [file (anActivity.name.concat('.rb'), false, 'UTF-8')]
   #The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows
   [if (anActivity.name.contains('Behavior'))]
-  [genBehaviorActivity(anActivity)/]
   [else]
   [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
   #The initial node is called "[theInitialNode.name/]"
   [theInitialNode.nextActivityNode()/]
 [genRequires(theInitialNode)/]
 [genOpaqueActions(theInitialNode)/]
+[genCallBehaviorActions(theInitialNode)/]
 def [anActivity.name/]
   [genActivity(theInitialNode)/]
 end
@@ -117,9 +117,11 @@ end
 
 [template public genCallBehaviorActions(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(CallBehaviorAction)]
-def [anActivityNode.name/]
-  #TODO fill in function
-  #Call Behavior: [anActivityNode.eGet('behavior').name/]
+def [anActivityNode.eGet('behavior').name/][if (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()._not())]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
+  [genInputActivityParameterNodeInitialization(anActivityNode.eGet('behavior').oclAsType(Activity))/]
+  [let theInitialNode : ActivityParameterNode=anActivityNode.eGet('behavior').oclAsType(Activity).node->select(apn : ActivityNode | apn.oclIsTypeOf(ActivityParameterNode))->asSequence()->first()]
+  [theInitialNode.nextActivityNodeInBehavior()/]
+[/let]
 end
 [/if]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genCallBehaviorActions(aControlFlow.target)/][/for]
@@ -127,10 +129,7 @@ end
 
 [template public genActivity(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(CallBehaviorAction)][anActivityNode.name/]()[/if]
-[if anActivityNode.oclIsTypeOf(OpaqueAction)]
-[if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.name/]([if anActivityNode.oclAsType(OpaqueAction).input->size() > 0][anActivityNode.oclAsType(OpaqueAction).input->first().incoming.oclAsType(ObjectFlow).name.toLower()/][/if])
-[if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
-[for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing)][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
-[/if]
+[if anActivityNode.oclIsTypeOf(OpaqueAction)][if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.name/]([if anActivityNode.oclAsType(OpaqueAction).input->size() > 0][anActivityNode.oclAsType(OpaqueAction).input->first().incoming.oclAsType(ObjectFlow).name.toLower()/][/if])
+[if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing) separator('\n')][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if][/if]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genActivity(aControlFlow.target)/][/for]
 [/template]

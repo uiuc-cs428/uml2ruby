@@ -289,15 +289,8 @@
       </children>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WjuCQae3EeOzx_QlbxPRtg"/>
     </children>
-    <children xmi:type="notation:BasicCompartment" xmi:id="_dG2qML-AEeO3J5dYolckIg" visible="false" type="compartment_shape_display">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dG34UL-AEeO3J5dYolckIg" source="PapyrusCSSForceValue">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dG34Ub-AEeO3J5dYolckIg" key="mutable" value="true"/>
-      </eAnnotations>
-      <styles xmi:type="notation:TitleStyle" xmi:id="_dG2qMb-AEeO3J5dYolckIg"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dG2qMr-AEeO3J5dYolckIg"/>
-    </children>
     <element xmi:type="uml:Activity" href="model.uml#_Wjs0EKe3EeOzx_QlbxPRtg"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WjuCQqe3EeOzx_QlbxPRtg" width="997" height="625"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WjuCQqe3EeOzx_QlbxPRtg" width="613" height="625"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_WjuCQ6e3EeOzx_QlbxPRtg"/>
   <element xmi:type="uml:Activity" href="model.uml#_Wjs0EKe3EeOzx_QlbxPRtg"/>
