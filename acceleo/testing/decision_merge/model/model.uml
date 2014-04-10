@@ -21,7 +21,7 @@
     <node xmi:type="uml:InitialNode" xmi:id="_7FCl4LtGEeOPtbmmLQd-gw" name="InitialNode1" outgoing="_ZiME0LtHEeOPtbmmLQd-gw"/>
     <node xmi:type="uml:DecisionNode" xmi:id="_94Bq4LtGEeOPtbmmLQd-gw" name="DecisionNode1" outgoing="_acqJALtHEeOPtbmmLQd-gw _bPsvgLtHEeOPtbmmLQd-gw _cCxyQLtHEeOPtbmmLQd-gw" incoming="_ZiME0LtHEeOPtbmmLQd-gw"/>
     <node xmi:type="uml:MergeNode" xmi:id="_AyMV8LtHEeOPtbmmLQd-gw" name="MergeNode1" outgoing="__C8wcLtHEeOPtbmmLQd-gw" incoming="_e2hFMLtHEeOPtbmmLQd-gw _fneBALtHEeOPtbmmLQd-gw _hzvrULtHEeOPtbmmLQd-gw"/>
-    <node xmi:type="uml:ActivityFinalNode" xmi:id="_Ioqi8LtHEeOPtbmmLQd-gw" name="ActivityFinalNode1" incoming="__C8wcLtHEeOPtbmmLQd-gw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_Ioqi8LtHEeOPtbmmLQd-gw" name="" incoming="__C8wcLtHEeOPtbmmLQd-gw"/>
     <node xmi:type="uml:OpaqueAction" xmi:id="_Rg8LMLtHEeOPtbmmLQd-gw" name="Rush Order" outgoing="_hzvrULtHEeOPtbmmLQd-gw" incoming="_acqJALtHEeOPtbmmLQd-gw"/>
     <node xmi:type="uml:OpaqueAction" xmi:id="_SWZzkLtHEeOPtbmmLQd-gw" name="Priority Order" outgoing="_e2hFMLtHEeOPtbmmLQd-gw" incoming="_bPsvgLtHEeOPtbmmLQd-gw"/>
     <node xmi:type="uml:OpaqueAction" xmi:id="_TT7y0LtHEeOPtbmmLQd-gw" name="Standard Order" outgoing="_fneBALtHEeOPtbmmLQd-gw" incoming="_cCxyQLtHEeOPtbmmLQd-gw"/>
