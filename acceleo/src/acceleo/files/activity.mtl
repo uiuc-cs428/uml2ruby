@@ -12,13 +12,11 @@
   [theInitialNode.nextActivityNode()/]
 [genRequires(theInitialNode)/]
 [genOpaqueActions(theInitialNode)/]
-[genCallBehaviorActions(theInitialNode)/]
 def [anActivity.name/]
   [genActivity(theInitialNode)/]
 end
-  [/let]  
-  [/if]
-
+  [/let]
+[/if]
 [/file]
 [/template]
 
