@@ -4,17 +4,62 @@
 [template public generateActivity(anActivity : Activity)]
 [file (anActivity.name.concat('.rb'), false, 'UTF-8')]
   #The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows
+  [if (anActivity.name.contains('Behavior'))]
+  [genBehaviorActivity(anActivity)/]
+  [else]
   [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
   #The initial node is called "[theInitialNode.name/]"
   [theInitialNode.nextActivityNode()/]
 [genRequires(theInitialNode)/]
 [genOpaqueActions(theInitialNode)/]
+[genCallBehaviorActions(theInitialNode)/]
 def [anActivity.name/]
   [genActivity(theInitialNode)/]
 end
-  [/let]
+  [/let]  
+  [/if]
 
 [/file]
+[/template]
+
+[template public genBehaviorActivity(anActivity : Activity) post(trim())]
+def [anActivity.name/][if (anActivity.ownedParameter->asSet()->isEmpty()._not())]([genInputActivityParameterNodes(anActivity)/])[/if]
+  [genInputActivityParameterNodeInitialization(anActivity)/]
+  [let theInitialNode : ActivityParameterNode=anActivity.node->select(apn : ActivityNode | apn.oclIsTypeOf(ActivityParameterNode))->asSequence()->first()]
+  [theInitialNode.nextActivityNodeInBehavior()/]
+[/let]
+end
+[/template]
+
+[template public genInputActivityParameterNodes(anActivity : Activity) post(trim())]
+[for(activityParameter : Parameter | anActivity.ownedParameter)]
+[if (activityParameter.direction.toString().contains('in'))][activityParameter.name.toLowerFirst()/][/if][if (activityParameter.followingSiblings()->isEmpty())][elseif (activityParameter.followingSiblings()->first().eGet('direction').toString().contains('in'))], [/if]
+[/for]
+[/template]
+
+[template public genInputActivityParameterNodeInitialization(anActivity : Activity)]
+[for(activityParameter : Parameter | anActivity.ownedParameter)]
+[if (activityParameter.direction.toString().contains('in'))]an[activityParameter.name/] = [activityParameter.name.toLowerFirst()/][/if][if (activityParameter.followingSiblings()->isEmpty())][/if]
+[/for]
+[/template]
+
+[template public nextActivityNodeInBehavior(anActivityNode : ActivityNode) post(trim())]
+[for(aControlFlow: ControlFlow | anActivityNode.outgoing)]
+ [generateActionCallInBehavior(anActivityNode)/]
+[if (aControlFlow.target.oclIsTypeOf(ActivityParameterNode))][printOutputActivityParameterNode(aControlFlow)/][else]# [aControlFlow.name/][/if]
+[(nextActivityNodeInBehavior(aControlFlow.target))/]
+[/for]
+[/template]
+
+[template public generateActionCallInBehavior(anActivityNode : ActivityNode) post(trim())]
+[if (anActivityNode.oclIsTypeOf(OpaqueAction))][anActivityNode.name/]()
+[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))][anActivityNode.name/]()
+[elseif (anActivityNode.oclIsTypeOf(CallOperationAction))][anActivityNode.name/]()
+[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction)._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() ))][anActivityNode.name/]()[/if]
+[/template]
+
+[template public printOutputActivityParameterNode(aControlFlow : ControlFlow) post(trim())]
+[if (aControlFlow.target.oclIsTypeOf(ActivityParameterNode))]return an[aControlFlow.target.name/][/if]
 [/template]
 
 [template public nextActivityNode(anActivityNode : ActivityNode)]
@@ -29,7 +74,7 @@ end
 #[anActivityNode.name/]
      [if (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]#[anActivityNode.name/] -> Output Pin: [printReturnParameter(anActivityNode)/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
      [elseif (anActivityNode.oclIsTypeOf(CallOperationAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('operation').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/]), Result: [printReturnParameter(anActivityNode)/]
-     [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('behavior').name/][/if]
+     [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction)._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() ))]#[(anActivityNode.name)/] -> Operation: [anActivityNode.eGet('behavior').name/][/if]
 [/template]
 
 [template public printOperationParameters(anActivityNode : ActivityNode) post(trim())]
@@ -72,7 +117,18 @@ end
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genOpaqueActions(aControlFlow.target)/][/for]
 [/template]
 
+[template public genCallBehaviorActions(anActivityNode : ActivityNode)]
+[if anActivityNode.oclIsTypeOf(CallBehaviorAction)]
+def [anActivityNode.name/]
+  #TODO fill in function
+  #Call Behavior: [anActivityNode.eGet('behavior').name/]
+end
+[/if]
+[for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genCallBehaviorActions(aControlFlow.target)/][/for]
+[/template]
+
 [template public genActivity(anActivityNode : ActivityNode)]
+[if anActivityNode.oclIsTypeOf(CallBehaviorAction)][anActivityNode.name/]()[/if]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.name/]([if anActivityNode.oclAsType(OpaqueAction).input->size() > 0][anActivityNode.oclAsType(OpaqueAction).input->first().incoming.oclAsType(ObjectFlow).name.toLower()/][/if])
 [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
