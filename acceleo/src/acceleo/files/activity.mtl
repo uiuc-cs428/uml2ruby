@@ -32,6 +32,16 @@ end
      [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('behavior').name/][/if]
 [/template]
 
+[template public printControlFlowGuard(aControlFlow : ControlFlow) post(trim())]
+[if not (aControlFlow.guard->isEmpty())]
+[if (aControlFlow.guard.name = 'else')]
+#else
+[else]
+#if [aControlFlow.guard.name/] == [aControlFlow.guard.eGet('value')/]
+[/if]
+[/if]
+[/template]
+
 [template public printOperationParameters(anActivityNode : ActivityNode) post(trim())]
 [for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.oclIsTypeOf(InputPin) ))][parameter.eGet('type').name/] [parameter.eGet('name')/][if (parameter.followingSiblings()->isEmpty()._not())], [/if][/if][/for]
 [/template]
@@ -90,7 +100,7 @@ end
   anOpaqueAction.language->includes(languageName) and not anOpaqueAction._body->at(anOpaqueAction.language.indexOf(languageName)->first()).oclIsInvalid()
 /]
 
-[template public genActivity(anActivityNode : ActivityNode)]
+[template public genActivity(anActivityNode : ActivityNode) post(trim())]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 [let anOpaqueAction : OpaqueAction = anActivityNode]
 [if anOpaqueAction.output->size() > 0]
@@ -102,8 +112,20 @@ end
 [/if]
 [/let]
 [/if]
-[for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genActivity(aControlFlow.target)/][/for]
-[/template]
+[comment: Print control flow guards/]
+[for (aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
+[if not (aControlFlow.guard.oclIsUndefined() = false and aControlFlow.guard.name = 'else')]
+[printControlFlowGuard(aControlFlow)/]
+[(genActivity(aControlFlow.target))/]
+[/if]
+[/for]
+[comment: Ensure that the else clause is always printed last/]
+[for (aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
+[if (aControlFlow.guard.oclIsUndefined() = false and aControlFlow.guard.name = 'else')]
+[printControlFlowGuard(aControlFlow)/]
+[(genActivity(aControlFlow.target))/]
+[/if]
+[/for][/template]
 
 [template public print(anActivityNode : ActivityNode)]
 [anActivityNode.name.replaceAll(' ', '_')/]
