@@ -8,13 +8,13 @@
     <edge xmi:type="uml:ControlFlow" xmi:id="_n6COcMF5EeOX0sL-iTaczQ" name="" source="_ifDMcMF5EeOX0sL-iTaczQ" target="_jdB3oMF5EeOX0sL-iTaczQ"/>
     <edge xmi:type="uml:ControlFlow" xmi:id="_p21SUMF5EeOX0sL-iTaczQ" name="" source="_jdB3oMF5EeOX0sL-iTaczQ" target="_lj1zIMF5EeOX0sL-iTaczQ"/>
     <node xmi:type="uml:InitialNode" xmi:id="_g3TLgMF5EeOX0sL-iTaczQ" name="InitialNode1" outgoing="_mxl_sMF5EeOX0sL-iTaczQ"/>
-    <node xmi:type="uml:ValueSpecificationAction" xmi:id="_ifDMcMF5EeOX0sL-iTaczQ" name="Return Integer" outgoing="_n6COcMF5EeOX0sL-iTaczQ" incoming="_mxl_sMF5EeOX0sL-iTaczQ">
+    <node xmi:type="uml:ValueSpecificationAction" xmi:id="_ifDMcMF5EeOX0sL-iTaczQ" name="return integer" outgoing="_n6COcMF5EeOX0sL-iTaczQ" incoming="_mxl_sMF5EeOX0sL-iTaczQ">
       <result xmi:type="uml:OutputPin" xmi:id="_soIN4MF8EeOX0sL-iTaczQ" name="int">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </result>
       <value xmi:type="uml:LiteralInteger" xmi:id="_w3M2YMF8EeOX0sL-iTaczQ" name="int" value="42"/>
     </node>
-    <node xmi:type="uml:ValueSpecificationAction" xmi:id="_jdB3oMF5EeOX0sL-iTaczQ" name="Return String" outgoing="_p21SUMF5EeOX0sL-iTaczQ" incoming="_n6COcMF5EeOX0sL-iTaczQ">
+    <node xmi:type="uml:ValueSpecificationAction" xmi:id="_jdB3oMF5EeOX0sL-iTaczQ" name="return string" outgoing="_p21SUMF5EeOX0sL-iTaczQ" incoming="_n6COcMF5EeOX0sL-iTaczQ">
       <result xmi:type="uml:OutputPin" xmi:id="_fAyHEMF_EeOX0sL-iTaczQ" name="str"/>
       <value xmi:type="uml:LiteralString" xmi:id="_qGIq4MF_EeOX0sL-iTaczQ" name="str" value="foo"/>
     </node>
