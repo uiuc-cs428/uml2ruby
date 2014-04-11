@@ -9,6 +9,7 @@
   [theInitialNode.nextActivityNode()/]
 [genRequires(theInitialNode)/]
 [genOpaqueActions(theInitialNode)/]
+[genValueSpecificationActions(theInitialNode)/]
 def [anActivity.name/]
   [genActivity(theInitialNode)/]
 end
@@ -92,7 +93,23 @@ end
 [/for]
 [/if]
 [/let]
+[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]
+[let valSpecAction : ValueSpecificationAction = anActivityNode]
+def [anActivityNode.print()/]
+  #TODO fill in function
+  [if (valSpecAction.value.oclIsUndefined()) ] nil
+  [else]
+  [if valSpecAction.value.toString().contains('LiteralStringImpl')]
+  [valSpecAction.value.name/] = "[valSpecAction.value.eGet('value')/]"
+  [else]
+  [valSpecAction.value.name/] = [valSpecAction.value.eGet('value')/]
+  [/if]
+  [valSpecAction.value.name/]
+  [/if]
+end
+[/let]
 [/if]
+
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genOpaqueActions(aControlFlow.target)/][/for]
 [/template]
 
@@ -111,7 +128,10 @@ end
 [/for]
 [/if]
 [/let]
+[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]
+[anActivityNode.print()/]
 [/if]
+
 [comment: Print control flow guards/]
 [for (aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
 [if not (aControlFlow.guard.oclIsUndefined() = false and aControlFlow.guard.name = 'else')]
