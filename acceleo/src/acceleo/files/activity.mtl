@@ -3,11 +3,20 @@
 
 [template public generateActivity(anActivity : Activity)]
 [file (anActivity.name.concat('.rb'), false, 'UTF-8')]
-  #The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows
-  [if (anActivity.name.contains('Behavior'))]
-  [else]
+# The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows
+# [anActivity.name/] , contains initial node: [not anActivity.eAllContents(InitialNode)->first().oclIsUndefined()/]  , [not anActivity.ownedParameter->isEmpty()/]  , [anActivity.node->selectByType(ActivityParameterNode)->isEmpty()/]
+# initial node: [anActivity.eAllContents(InitialNode)->first()/]
+# owned parameters: [anActivity.ownedParameter/]
+# activity parameter nodes: [anActivity.node/]
+[if (anActivity.name.contains('Behavior'))]
+# See code generated in the parent activity
+[elseif (anActivity.eAllContents(InitialNode)->first().oclIsUndefined())]
+# this activity does not have an initial node
+ [genBehaviorActivity(anActivity)/]
+[else]
+  [genInputActivityParameterNodes(anActivity)/]
   [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
-  #The initial node is called "[theInitialNode.name/]"
+  # The initial node is called "[theInitialNode.name/]"
   [theInitialNode.nextActivityNode()/]
 [genRequires(theInitialNode)/]
 [genOpaqueActions(theInitialNode)/]
@@ -19,6 +28,7 @@ end
 [/if]
 [/file]
 [/template]
+
 
 [template public genBehaviorActivity(anActivity : Activity) post(trim())]
 def [anActivity.name/][if (anActivity.ownedParameter->asSet()->isEmpty()._not())]([genInputActivityParameterNodes(anActivity)/])[/if]

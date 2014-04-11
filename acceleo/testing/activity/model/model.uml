@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_WjqX0Ke3EeOzx_QlbxPRtg" name="model">
-  <packagedElement xmi:type="uml:Activity" xmi:id="_Wjs0EKe3EeOzx_QlbxPRtg" name="SomeFunActivity" node="_aQlVgKe3EeOzx_QlbxPRtg _5a-vkKi1EeOGPL1tbNOgVw _Q3XLYKi_EeOGPL1tbNOgVw _k5WnMLHMEeOCGcdt-7U0Pg _m77i8LHMEeOCGcdt-7U0Pg _oYmVQLHMEeOCGcdt-7U0Pg _0gJ88LHMEeOCGcdt-7U0Pg _QVhmoLKkEeOR9fst_4iRTw _4HDksLYKEeOtpqoEN2Izrg _lyfsAL99EeOmAbH3vdETnQ">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_Wjs0EKe3EeOzx_QlbxPRtg" name="SomeFunActivity" node="_aQlVgKe3EeOzx_QlbxPRtg _5a-vkKi1EeOGPL1tbNOgVw _Q3XLYKi_EeOGPL1tbNOgVw _k5WnMLHMEeOCGcdt-7U0Pg _m77i8LHMEeOCGcdt-7U0Pg _oYmVQLHMEeOCGcdt-7U0Pg _0gJ88LHMEeOCGcdt-7U0Pg _QVhmoLKkEeOR9fst_4iRTw _4HDksLYKEeOtpqoEN2Izrg _lyfsAL99EeOmAbH3vdETnQ _ptfm8MG3EeOiLLmjEUaEGw">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_CPi0ML35EeO-IeZrAm9Ipw" name="Port2"/>
     <ownedBehavior xmi:type="uml:Activity" xmi:id="_bGu3cL9-EeOmAbH3vdETnQ" name="BehaviorActivity" node="_3-6jsL9-EeOmAbH3vdETnQ _FlegAL9_EeOmAbH3vdETnQ _HmpGgL9_EeOmAbH3vdETnQ _JKdCoL9_EeOmAbH3vdETnQ _LeErEL9_EeOmAbH3vdETnQ">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_AgfjML9_EeOmAbH3vdETnQ" name="Order"/>
@@ -39,6 +39,7 @@
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_o07sILbTEeOqfKs6pnU-Zw" name="Result" type="_ImjyELbREeOqfKs6pnU-Zw" direction="return"/>
     </ownedOperation>
+    <ownedParameter xmi:type="uml:Parameter" xmi:id="_vIRNkMG3EeOiLLmjEUaEGw" name="Input1"/>
     <edge xmi:type="uml:ControlFlow" xmi:id="_Dxt54Ki2EeOGPL1tbNOgVw" name="ControlFlow" source="_5a-vkKi1EeOGPL1tbNOgVw" target="_0gJ88LHMEeOCGcdt-7U0Pg"/>
     <edge xmi:type="uml:ControlFlow" xmi:id="_8bcYgLHMEeOCGcdt-7U0Pg" name="ControlFlow1" source="_0gJ88LHMEeOCGcdt-7U0Pg" target="_aQlVgKe3EeOzx_QlbxPRtg"/>
     <edge xmi:type="uml:ControlFlow" xmi:id="_9qPG4LHMEeOCGcdt-7U0Pg" name="ControlFlow2" source="_aQlVgKe3EeOzx_QlbxPRtg" target="_Q3XLYKi_EeOGPL1tbNOgVw"/>
@@ -95,6 +96,9 @@
         </eAnnotations>
         <upperBound xmi:type="uml:LiteralInteger" xmi:id="_QCOywb9_EeOmAbH3vdETnQ" value="1"/>
       </result>
+    </node>
+    <node xmi:type="uml:ActivityParameterNode" xmi:id="_ptfm8MG3EeOiLLmjEUaEGw" name="ActivityParameterNode1" parameter="_vIRNkMG3EeOiLLmjEUaEGw">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_pthcIMG3EeOiLLmjEUaEGw" value="1"/>
     </node>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Wb52MKi4EeOGPL1tbNOgVw" name="Class1">
