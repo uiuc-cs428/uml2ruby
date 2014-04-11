@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_SGE4sMESEeOq1OpIk9p4Fg" name="model" URI="" viewpoint="">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_b-qtcMEdEeOq1OpIk9p4Fg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_bryOsMESEeOq1OpIk9p4Fg" name="Person">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_b21j8MEZEeOq1OpIk9p4Fg" name="skill" type="_chXy4MESEeOq1OpIk9p4Fg" association="_b22LAsEZEeOq1OpIk9p4Fg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b22LAMEZEeOq1OpIk9p4Fg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b22LAcEZEeOq1OpIk9p4Fg" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_chXy4MESEeOq1OpIk9p4Fg" name="Skill"/>
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_RMESEMETEeOq1OpIk9p4Fg" name="Compentency" memberEnd="_RMESEcETEeOq1OpIk9p4Fg _RMBOwMETEeOq1OpIk9p4Fg" navigableOwnedEnd="_RMESEcETEeOq1OpIk9p4Fg _RMBOwMETEeOq1OpIk9p4Fg">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_h5IFQMETEeOq1OpIk9p4Fg" name="competency_level" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZZUK4MEUEeOq1OpIk9p4Fg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZZUx8MEUEeOq1OpIk9p4Fg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_ZZWAEMEUEeOq1OpIk9p4Fg">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_RMESEcETEeOq1OpIk9p4Fg" name="person" type="_bryOsMESEeOq1OpIk9p4Fg" association="_RMESEMETEeOq1OpIk9p4Fg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RMESEsETEeOq1OpIk9p4Fg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RMESE8ETEeOq1OpIk9p4Fg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_RMBOwMETEeOq1OpIk9p4Fg" name="skill" type="_chXy4MESEeOq1OpIk9p4Fg" association="_RMESEMETEeOq1OpIk9p4Fg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RMDD8METEeOq1OpIk9p4Fg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RMDD8cETEeOq1OpIk9p4Fg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_b22LAsEZEeOq1OpIk9p4Fg" name="Experience" memberEnd="_b22yEMEZEeOq1OpIk9p4Fg _b21j8MEZEeOq1OpIk9p4Fg">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_fO4d0MEZEeOq1OpIk9p4Fg" name="get_years"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_b22yEMEZEeOq1OpIk9p4Fg" name="person" type="_bryOsMESEeOq1OpIk9p4Fg" association="_b22LAsEZEeOq1OpIk9p4Fg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b22yEcEZEeOq1OpIk9p4Fg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b22yEsEZEeOq1OpIk9p4Fg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>
