@@ -25,7 +25,7 @@
       </node>
       <node xmi:type="uml:DecisionNode" xmi:id="_FlegAL9_EeOmAbH3vdETnQ" name="DecisionNode1" outgoing="_Z35QUL9_EeOmAbH3vdETnQ _fn45AL9_EeOmAbH3vdETnQ" incoming="_BxIDoL-KEeO3J5dYolckIg"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_HmpGgL9_EeOmAbH3vdETnQ" name="RegularDelivery" outgoing="_WD-dUL-AEeOmAbH3vdETnQ" incoming="_fn45AL9_EeOmAbH3vdETnQ"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_JKdCoL9_EeOmAbH3vdETnQ" name="Rushed Delivery" outgoing="_XLISoL-AEeOmAbH3vdETnQ" incoming="_Z35QUL9_EeOmAbH3vdETnQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_JKdCoL9_EeOmAbH3vdETnQ" name="RushedDelivery" outgoing="_XLISoL-AEeOmAbH3vdETnQ" incoming="_Z35QUL9_EeOmAbH3vdETnQ"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_LeErEL9_EeOmAbH3vdETnQ" name="Order" incoming="_WD-dUL-AEeOmAbH3vdETnQ _XLISoL-AEeOmAbH3vdETnQ" isControlType="true" parameter="_PrGFIL9_EeOmAbH3vdETnQ">
         <upperBound xmi:type="uml:LiteralInteger" xmi:id="_LeFSIL9_EeOmAbH3vdETnQ" value="1"/>
       </node>
