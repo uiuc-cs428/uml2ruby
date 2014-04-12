@@ -28,16 +28,18 @@ end
 [template public printNameAndAction(anActivityNode : ActivityNode) post(trim())]
 #[anActivityNode.name/]
      [if (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]#[anActivityNode.name/] -> Output Pin: [printReturnParameter(anActivityNode)/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
-     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('operation').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/]), Result: [printReturnParameter(anActivityNode)/]
+     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction) and (not anActivityNode.eGet('operation').oclIsUndefined() ))]
+[printReturnParameter(anActivityNode)/][anActivityNode.eGet('operation').class.name/].[anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/])
      [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('behavior').name/][/if]
 [/template]
 
 [template public printOperationParameters(anActivityNode : ActivityNode) post(trim())]
-[for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.oclIsTypeOf(InputPin) ))][parameter.eGet('type').name/] [parameter.eGet('name')/][if (parameter.followingSiblings()->isEmpty()._not())], [/if][/if][/for]
+[for(parameter : Element | anActivityNode.ownedElement)]
+[if (not parameter.oclIsUndefined() and parameter.oclIsTypeOf(InputPin))][parameter.eGet('name')/][/if][/for]
 [/template]
 
 [template public printReturnParameter(anActivityNode : ActivityNode) post(trim())]
-[for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/][/if][/for]
+[for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/]=[/if][/for]
 [/template]
 
 [template public printTerminatingNode(aControlFlow : ControlFlow)]
