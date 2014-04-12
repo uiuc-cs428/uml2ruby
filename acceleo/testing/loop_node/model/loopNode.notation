@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_U4hrgMJtEeOmjsd_IOEcNg" type="PapyrusUMLActivityDiagram" name="LoopNode" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_U4hrgcJtEeOmjsd_IOEcNg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_U4hrgsJtEeOmjsd_IOEcNg" type="5001"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_U4hrg8JtEeOmjsd_IOEcNg" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_U4hrhMJtEeOmjsd_IOEcNg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_U4hrhcJtEeOmjsd_IOEcNg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_U4hrhsJtEeOmjsd_IOEcNg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U4hrh8JtEeOmjsd_IOEcNg"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_U4hriMJtEeOmjsd_IOEcNg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_U4hricJtEeOmjsd_IOEcNg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_U4hrisJtEeOmjsd_IOEcNg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U4hri8JtEeOmjsd_IOEcNg"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_U4hrjMJtEeOmjsd_IOEcNg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_U4hrjcJtEeOmjsd_IOEcNg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_U4hrjsJtEeOmjsd_IOEcNg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U4hrj8JtEeOmjsd_IOEcNg"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_U4hrkMJtEeOmjsd_IOEcNg" type="7004">
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U4hrkcJtEeOmjsd_IOEcNg"/>
+    </children>
+    <element xmi:type="uml:Activity" href="loopNode.uml#_U4eoMMJtEeOmjsd_IOEcNg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U4hrksJtEeOmjsd_IOEcNg"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_U4hrk8JtEeOmjsd_IOEcNg"/>
+  <element xmi:type="uml:Activity" href="loopNode.uml#_U4eoMMJtEeOmjsd_IOEcNg"/>
+</notation:Diagram>
