@@ -132,8 +132,12 @@ end
 [/template]
 
 [template public genActivity(anActivityNode : ActivityNode)]
-[if anActivityNode.oclIsTypeOf(CallBehaviorAction)][anActivityNode.name/]()[/if]
+[if anActivityNode.oclIsTypeOf(CallBehaviorAction)][printReturnActivityParameterNodeIfExists(anActivityNode)/][anActivityNode.name/]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)][if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.name/]([if anActivityNode.oclAsType(OpaqueAction).input->size() > 0][anActivityNode.oclAsType(OpaqueAction).input->first().incoming.oclAsType(ObjectFlow).name.toLower()/][/if])
 [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0][for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing) separator('\n')][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if][/if]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genActivity(aControlFlow.target)/][/for]
 [/template]
+
+[template printReturnActivityParameterNodeIfExists(anActivityNode : ActivityNode) post(trim())]
+[if (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()._not())][for (param : Parameter | anActivityNode.eGet('behavior').ownedParameter->asSet())][if (param.direction.toString().contains('return'))][param.name.toLowerFirst()/] = [/if][/for][/if]
+[/template] 
