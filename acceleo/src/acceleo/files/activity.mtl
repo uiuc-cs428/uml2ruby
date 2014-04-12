@@ -5,7 +5,6 @@
 [file (anActivity.name.concat('.rb'), false, 'UTF-8')]
 # The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows 
 [if (anActivity.eAllContents(InitialNode)->first().oclIsUndefined())]
-# this activity does not have an initial node
  [genBehaviorActivity(anActivity)/]
 [else]
   [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
