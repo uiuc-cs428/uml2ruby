@@ -8,7 +8,7 @@
   #The initial node is called "[theInitialNode.name/]"
   [theInitialNode.nextActivityNode()/]
 [genRequires(theInitialNode)/]
-[genOpaqueActions(theInitialNode)/]
+[genMethodsFromActions(theInitialNode)/]
 def [anActivity.name/]
   [genActivity(theInitialNode)/]
 end
@@ -18,7 +18,7 @@ end
 [/template]
 
 [template public nextActivityNode(anActivityNode : ActivityNode)]
-[for(aControlFlow: ControlFlow | anActivityNode.outgoing)]
+[for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
     [printNameAndAction(anActivityNode)/]
     [if (aControlFlow.target.outgoing->isEmpty())][printTerminatingNode(aControlFlow)/][else]#[aControlFlow.name/][/if]
 	[(nextActivityNode(aControlFlow.target))/]
@@ -63,13 +63,13 @@ require_relative('[anActivityNode.oclAsType(OpaqueAction).input->first().type.na
 require_relative('[anActivityNode.oclAsType(OpaqueAction).output->first().type.name/].rb')
 [/if]
 [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
-[for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing)][genRequires(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
+[for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow))][genRequires(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
 [/if]
-[for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genRequires(aControlFlow.target)/][/for]
+[for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genRequires(aControlFlow.target)/][/for]
 [/template]
 
-[comment genOpaqueActions adds function definitions for all of the opaque actions in the diagram (can actually include manual/external ruby code)/]
-[template public genOpaqueActions(anActivityNode : ActivityNode)]
+[comment genOpaqueActions adds function definitions for all of the opaque/value-specification actions in the diagram (can actually include manual/external ruby code)/]
+[template public genMethodsFromActions(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 [let anOpaqueAction : OpaqueAction = anActivityNode]
 def [anOpaqueAction.print()/][if anOpaqueAction.input->size() > 0]([anOpaqueAction.input->first().name.toLower()/])[/if]
@@ -87,13 +87,29 @@ def [anOpaqueAction.print()/][if anOpaqueAction.input->size() > 0]([anOpaqueActi
 end
 
 [if anOpaqueAction.output->size() > 0]
-[for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing)]
-[genOpaqueActions(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
+[for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow))]
+[genMethodsFromActions(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
 [/for]
 [/if]
 [/let]
+[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]
+[let valSpecAction : ValueSpecificationAction = anActivityNode]
+def [anActivityNode.print()/]
+  #TODO fill in function
+  [if (valSpecAction.value.oclIsUndefined()) ] nil
+  [else]
+  [if valSpecAction.value.toString().contains('LiteralStringImpl')]
+  [valSpecAction.value.name/] = "[valSpecAction.value.eGet('value')/]"
+  [else]
+  [valSpecAction.value.name/] = [valSpecAction.value.eGet('value')/]
+  [/if]
+  [valSpecAction.value.name/]
+  [/if]
+end
+[/let]
 [/if]
-[for(aControlFlow: ControlFlow | anActivityNode.outgoing)][genOpaqueActions(aControlFlow.target)/][/for]
+
+[for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genMethodsFromActions(aControlFlow.target)/][/for]
 [/template]
 
 [query public validLanguage(anOpaqueAction : OpaqueAction, languageName : String) : Boolean = 
@@ -107,11 +123,14 @@ end
 [anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.print()/]([if anOpaqueAction.input->size() > 0][anOpaqueAction.input->first().incoming.oclAsType(ObjectFlow).name.toLower()/]
 [/if])
 [if anOpaqueAction.output->size() > 0]
-[for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing)][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
+[for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow))][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
 [/for]
 [/if]
 [/let]
+[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]
+[anActivityNode.print()/]
 [/if]
+
 [comment: Print control flow guards/]
 [for (aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
 [if not (aControlFlow.guard.oclIsUndefined() = false and aControlFlow.guard.name = 'else')]
