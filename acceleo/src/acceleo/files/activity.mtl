@@ -3,6 +3,7 @@
 
 [template public generateActivity(anActivity : Activity)]
 [file (anActivity.name.concat('.rb'), false, 'UTF-8')]
+[genComments(anActivity)/]
   #The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows
   [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
   #The initial node is called "[theInitialNode.name/]"
@@ -131,4 +132,11 @@ end
 
 [template public print(anActivityNode : ActivityNode)]
 [anActivityNode.name.replaceAll(' ', '_')/]
+[/template]
+
+[comment: Print all of the comments for the given activity/]
+[template public genComments(anActivity : Activity)]
+[for (aComment: Comment | anActivity.ownedComment)]
+#[aComment._body/]
+[/for]
 [/template]

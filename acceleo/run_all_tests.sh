@@ -20,4 +20,4 @@ TUXML_OUTPUT_FILE=testActivityPins.xml ruby acceleo/testing/pins_parameters/ruby
 TUXML_OUTPUT_FILE=testActionRubyCode.xml ruby acceleo/testing/activity_opaque_action_with_code/ruby_unit/activity_action_with_code_test.rb --runner xml
 TUXML_OUTPUT_FILE=testControlGuards.xml ruby acceleo/testing/control_guards/ruby_unit/control_guards_test.rb --runner xml
 TUXML_OUTPUT_FILE=testCallOperation.xml ruby acceleo/testing/activity_call_operation/ruby_unit/call_operation_node_test.rb --runner xml
-
+TUXML_OUTPUT_FILE=testActivityComments.xml ruby acceleo/testing/activity_comments/ruby_unit/activity_comments_test.rb --runner xml
