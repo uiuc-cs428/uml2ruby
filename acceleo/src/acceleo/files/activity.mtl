@@ -25,7 +25,7 @@ end
 [template public genBehaviorActivity(anActivity : Activity) post(trim())]
 def [anActivity.name/][if (anActivity.ownedParameter->asSet()->isEmpty()._not())]([genInputActivityParameterNodes(anActivity)/])[/if]
   [genActivityParameterNodeInitialization(anActivity)/]
-  [let theInitialNode : ActivityParameterNode=anActivity.node->select(apn : ActivityNode | apn.oclIsTypeOf(ActivityParameterNode))->asSequence()->first()]
+  [let theInitialNode : ActivityParameterNode=anActivity.node->select(apn : ActivityNode | apn.oclIsTypeOf(ActivityParameterNode) and apn.eGet('parameter').direction.toString().contains('in'))->asSequence()->first()]
   [theInitialNode.nextActivityNodeInBehavior()/]
 [/let]
 end
