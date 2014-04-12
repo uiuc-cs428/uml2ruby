@@ -1,4 +1,4 @@
-require_relative '../autogen/Class3.rb'
+require_relative 'Class3.rb'
 
 class Class2
 
@@ -8,13 +8,8 @@ class Class2
   
   end
 
-  
-  
-
   protected
   
-  
-
   private
   attr_accessor :class3
   

@@ -7,14 +7,8 @@ class Class1
   
   end
 
-  
-  
-
   protected
   
-  
-
   private
-  
   
 end

@@ -1,5 +1,4 @@
 
-
 class Class2
 
   public
@@ -7,14 +6,8 @@ class Class2
   
   end
 
-  
-  
-
   protected
   
-  
-
   private
-  
   
 end

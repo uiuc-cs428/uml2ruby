@@ -1,4 +1,4 @@
-require_relative '../autogen/Meat.rb'
+require_relative 'Meat.rb'
 
 class Beef < Meat
 
@@ -7,14 +7,8 @@ class Beef < Meat
   
   end
 
-  
-  
-
   protected
   
-  
-
   private
-  
   
 end

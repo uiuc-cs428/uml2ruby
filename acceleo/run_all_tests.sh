@@ -18,3 +18,5 @@ TUXML_OUTPUT_FILE=testBigClass.xml ruby acceleo/testing/big_class/ruby_unit/big_
 TUXML_OUTPUT_FILE=testActivity.xml ruby acceleo/testing/activity/ruby_unit/activity_node_test.rb --runner xml
 TUXML_OUTPUT_FILE=testActivityPins.xml ruby acceleo/testing/pins_parameters/ruby_unit/activity_pin_test.rb --runner xml
 TUXML_OUTPUT_FILE=testActivityPins.xml ruby acceleo/testing/activity_parameter_node/ruby_unit/activity_parameter_node_test.rb --runner xml
+TUXML_OUTPUT_FILE=testActionRubyCode.xml ruby acceleo/testing/activity_opaque_action_with_code/ruby_unit/activity_action_with_code_test.rb --runner xml
+TUXML_OUTPUT_FILE=testControlGuards.xml ruby acceleo/testing/control_guards/ruby_unit/control_guards_test.rb --runner xml

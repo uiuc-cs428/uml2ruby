@@ -1,4 +1,4 @@
-require_relative '../autogen/Fruit.rb'
+require_relative 'Fruit.rb'
 
 class Banana < Fruit
 
@@ -7,14 +7,8 @@ class Banana < Fruit
   
   end
 
-  
-  
-
   protected
   
-  
-
   private
-  
   
 end

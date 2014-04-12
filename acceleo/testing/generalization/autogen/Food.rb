@@ -1,5 +1,4 @@
 
-
 class Food
 
   public
@@ -7,14 +6,8 @@ class Food
   
   end
 
-  
-  
-
   protected
   
-  
-
   private
-  
   
 end
