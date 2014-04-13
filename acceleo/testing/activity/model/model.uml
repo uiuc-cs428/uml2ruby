@@ -58,7 +58,7 @@
     <node xmi:type="uml:DecisionNode" xmi:id="_0gJ88LHMEeOCGcdt-7U0Pg" name="DecisionNode" outgoing="_8bcYgLHMEeOCGcdt-7U0Pg _AIJ60LHNEeOCGcdt-7U0Pg" incoming="_Dxt54Ki2EeOGPL1tbNOgVw"/>
     <node xmi:type="uml:ValueSpecificationAction" xmi:id="_QVhmoLKkEeOR9fst_4iRTw" name="ValueSpecificationAction1" outgoing="_XSdjkLKkEeOR9fst_4iRTw" incoming="_AuHHkLHNEeOCGcdt-7U0Pg">
       <result xmi:type="uml:OutputPin" xmi:id="_j0YzELKkEeOR9fst_4iRTw" name="Result" type="_5N5HQLKkEeOR9fst_4iRTw"/>
-      <value xmi:type="uml:LiteralBoolean" xmi:id="_niqboLKkEeOR9fst_4iRTw" name="IsLightOn"/>
+      <value xmi:type="uml:LiteralBoolean" xmi:id="_niqboLKkEeOR9fst_4iRTw" name="isLightOn"/>
     </node>
     <node xmi:type="uml:CallOperationAction" xmi:id="_4HDksLYKEeOtpqoEN2Izrg" name="CallOperationAction1" outgoing="_wUttkL99EeOmAbH3vdETnQ" incoming="_XSdjkLKkEeOR9fst_4iRTw" onPort="_piQ-MLYNEeOtpqoEN2Izrg" operation="_4UKzoLYKEeOtpqoEN2Izrg">
       <argument xmi:type="uml:InputPin" xmi:id="_pYvj1LbTEeOqfKs6pnU-Zw" name="Param1" type="_ImjyELbREeOqfKs6pnU-Zw">

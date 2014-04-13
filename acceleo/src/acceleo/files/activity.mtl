@@ -147,7 +147,7 @@ def [anActivityNode.print()/]
   [if valSpecAction.value.toString().contains('LiteralStringImpl')]
   [valSpecAction.value.name/] = "[valSpecAction.value.eGet('value')/]"
   [elseif valSpecAction.value.toString().contains('LiteralBooleanImpl')]
-  $[valSpecAction.value.name/] = [valSpecAction.value.eGet('value')/]
+  [valSpecAction.value.name/] = [valSpecAction.value.eGet('value')/]
   [else]
   [valSpecAction.value.name/] = [valSpecAction.value.eGet('value')/]
   [/if]
