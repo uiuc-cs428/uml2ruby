@@ -56,7 +56,7 @@ end
 [if (anActivityNode.oclIsTypeOf(OpaqueAction))][anActivityNode.name/]()
 [elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))][anActivityNode.name/]()
 [elseif (anActivityNode.oclIsTypeOf(CallOperationAction))][anActivityNode.name/]()
-[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction)._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() ))][anActivityNode.name/]()[/if]
+[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))][anActivityNode.name/]()[/if]
 [/template]
 
 [template public printOutputActivityParameterNode(aControlFlow : ControlFlow) post(trim())]
@@ -74,8 +74,8 @@ end
 [template public printNameAndAction(anActivityNode : ActivityNode) post(trim())]
 #[anActivityNode.name/]
      [if (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]#[anActivityNode.name/] -> Output Pin: [printReturnParameter(anActivityNode)/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
-     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction)._and( anActivityNode.eGet('onPort').oclIsUndefined()._not()._and( anActivityNode.eGet('operation').oclIsUndefined()._not() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/]), Result: [printReturnParameter(anActivityNode)/]
-     [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction)._and( anActivityNode.eGet('behavior').oclIsUndefined()._not() ))]#[(anActivityNode.name)/] -> Operation: [anActivityNode.eGet('behavior').name/][/if]
+     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction) and ( not anActivityNode.eGet('onPort').oclIsUndefined() and ( not anActivityNode.eGet('operation').oclIsUndefined() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/]), Result: [printReturnParameter(anActivityNode)/]
+     [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))]#[(anActivityNode.name)/] -> Operation: [anActivityNode.eGet('behavior').name/][/if]
 [/template]
 
 [template public printControlFlowGuard(aControlFlow : ControlFlow) post(trim())]
@@ -89,11 +89,11 @@ end
 [/template]
 
 [template public printOperationParameters(anActivityNode : ActivityNode) post(trim())]
-[for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.oclIsTypeOf(InputPin) ))][parameter.eGet('type').name/] [parameter.eGet('name')/][if (parameter.followingSiblings()->isEmpty()._not())], [/if][/if][/for]
+[for(parameter : Element | anActivityNode.ownedElement)][if ((not parameter.oclIsUndefined()) and ( parameter.oclIsTypeOf(InputPin) ))][parameter.eGet('type').name/] [parameter.eGet('name')/][if (not parameter.followingSiblings()->isEmpty())], [/if][/if][/for]
 [/template]
 
 [template public printReturnParameter(anActivityNode : ActivityNode) post(trim())]
-[for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/][/if][/for]
+[for(parameter : Element | anActivityNode.ownedElement)][if ((not parameter.oclIsUndefined()) and ( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/][/if][/for]
 [/template]
 
 [template public printTerminatingNode(aControlFlow : ControlFlow)]
@@ -163,7 +163,7 @@ end
 
 [template public genCallBehaviorActions(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(CallBehaviorAction)]
-def [anActivityNode.eGet('behavior').name/][if (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()._not())]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
+def [anActivityNode.eGet('behavior').name/][if (not (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()))]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
   [genActivityParameterNodeInitialization(anActivityNode.eGet('behavior').oclAsType(Activity))/]
   [let theInitialNode : ActivityParameterNode=anActivityNode.eGet('behavior').oclAsType(Activity).node->select(apn : ActivityNode | apn.oclIsTypeOf(ActivityParameterNode))->asSequence()->first()]
   [theInitialNode.nextActivityNodeInBehavior()/]
@@ -174,7 +174,7 @@ end
 [/template]
 
 [template printReturnActivityParameterNodeIfExists(anActivityNode : ActivityNode) post(trim())]
-[if (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()._not())][for (param : Parameter | anActivityNode.eGet('behavior').ownedParameter->asSet())][if (param.direction.toString().contains('return'))][param.name.toLowerFirst()/] = [/if][/for][/if]
+[if (not (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()))][for (param : Parameter | anActivityNode.eGet('behavior').ownedParameter->asSet())][if (param.direction.toString().contains('return'))][param.name.toLowerFirst()/] = [/if][/for][/if]
 [/template] 
 
 [query public validLanguage(anOpaqueAction : OpaqueAction, languageName : String) : Boolean = 
