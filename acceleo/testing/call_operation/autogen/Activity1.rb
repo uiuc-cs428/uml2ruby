@@ -1,8 +1,10 @@
 
+#User comment about the intention of the activity
+#Interesting details about design decisions
+
 # The activity "Activity1" has 11 nodes and 4 control flows 
   # The initial node is called "InitialNode1"
       #InitialNode1
-      invalid.invalid()
       #ControlFlow1
   	    #CallOperationAction1
   	    SaveThis=Class1.operation1(Parameter1)

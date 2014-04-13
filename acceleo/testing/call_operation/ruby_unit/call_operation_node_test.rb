@@ -6,7 +6,7 @@ class TestActivityCallOperationNodeSuite < Test::Unit::TestCase
   def assertRegexInFile(fileName, string)
     assert(regexFoundInFile(fileName, string), "String not found: " + string)      
   end
-    
+
   def regexFoundInFile(fileName, string)
     File.open(fileName, "r") do |file|
       file.each do |line|

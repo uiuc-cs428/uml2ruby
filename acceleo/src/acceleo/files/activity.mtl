@@ -3,6 +3,7 @@
 
 [template public generateActivity(anActivity : Activity)]
 [file (anActivity.name.concat('.rb'), false, 'UTF-8')]
+[genComments(anActivity)/]
 # The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows 
 [if (anActivity.eAllContents(InitialNode)->first().oclIsUndefined())]
  [genBehaviorActivity(anActivity)/]
@@ -74,8 +75,11 @@ end
 [template public printNameAndAction(anActivityNode : ActivityNode) post(trim())]
 #[anActivityNode.name/]
      [if (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]#[anActivityNode.name/] -> Output Pin: [printReturnParameter(anActivityNode)/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
-     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction) and ( not anActivityNode.eGet('onPort').oclIsUndefined() and ( not anActivityNode.eGet('operation').oclIsUndefined() )))]#[(anActivityNode.name)/] -> On port: [(anActivityNode.eGet('onPort').name)/], Operation: [anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/]), Result: [printReturnParameter(anActivityNode)/]
+     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))][genClassMethod(anActivityNode)/]
      [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))]#[(anActivityNode.name)/] -> Operation: [anActivityNode.eGet('behavior').name/][/if]
+[/template]
+
+[template genClassMethod(anActivityNode : ActivityNode)]
 [printReturnParameter(anActivityNode)/][anActivityNode.eGet('operation').class.name/].[anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/])
 [/template]
 
@@ -216,4 +220,11 @@ end
 
 [template public print(anActivityNode : ActivityNode)]
 [anActivityNode.name.replaceAll(' ', '_')/]
+[/template]
+
+[comment: Print all of the comments for the given activity/]
+[template public genComments(anActivity : Activity)]
+[for (aComment: Comment | anActivity.ownedComment)]
+#[aComment._body/]
+[/for]
 [/template]

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_C4tAIMNCEeOsJ_OT0A4XLw" name="model">
   <packagedElement xmi:type="uml:Activity" xmi:id="_C5S2AMNCEeOsJ_OT0A4XLw" name="Activity1" node="_ERyS8MNCEeOsJ_OT0A4XLw _MPwPEMNCEeOsJ_OT0A4XLw _PT-OAMNCEeOsJ_OT0A4XLw _gbBOgMNCEeOsJ_OT0A4XLw _jpTvcMNCEeOsJ_OT0A4XLw">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_4XN3AMNEEeOsJ_OT0A4XLw">
+      <body>Interesting details about design decisions</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_6FL0sMNEEeOsJ_OT0A4XLw">
+      <body>User comment about the intention of the activity</body>
+    </ownedComment>
     <edge xmi:type="uml:ControlFlow" xmi:id="_P7HtkMNCEeOsJ_OT0A4XLw" name="ControlFlow1" source="_ERyS8MNCEeOsJ_OT0A4XLw" target="_MPwPEMNCEeOsJ_OT0A4XLw"/>
     <edge xmi:type="uml:ControlFlow" xmi:id="_mQInwMNCEeOsJ_OT0A4XLw" name="ControlFlow2" source="_MPwPEMNCEeOsJ_OT0A4XLw" target="_gbBOgMNCEeOsJ_OT0A4XLw"/>
     <edge xmi:type="uml:ControlFlow" xmi:id="_mu5nYMNCEeOsJ_OT0A4XLw" name="ControlFlow3" source="_gbBOgMNCEeOsJ_OT0A4XLw" target="_jpTvcMNCEeOsJ_OT0A4XLw"/>
