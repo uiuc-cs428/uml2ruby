@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_U4bk4MJtEeOmjsd_IOEcNg" name="model">
-  <packagedElement xmi:type="uml:Activity" xmi:id="_U4eoMMJtEeOmjsd_IOEcNg" name="Activity1"/>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_U4eoMMJtEeOmjsd_IOEcNg" name="Activity1" group="_87X0YMKkEeOaX8RSO9NpYw" node="_AmmI8MKlEeOaX8RSO9NpYw _B956IMKlEeOaX8RSO9NpYw _EBgwoMKlEeOaX8RSO9NpYw _NfBz8MKlEeOaX8RSO9NpYw _qhoAcMKlEeOaX8RSO9NpYw">
+    <group xmi:type="uml:LoopNode" xmi:id="_87X0YMKkEeOaX8RSO9NpYw" name="LoopNode1" mustIsolate="true" bodyPart="_AmmI8MKlEeOaX8RSO9NpYw" decider="_NfBz8MKlEeOaX8RSO9NpYw" isTestedFirst="true" setupPart="_B956IMKlEeOaX8RSO9NpYw _EBgwoMKlEeOaX8RSO9NpYw" test="_qhoAcMKlEeOaX8RSO9NpYw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_AmmI8MKlEeOaX8RSO9NpYw" name="Increment i">
+      <language>Ruby</language>
+      <body>$i +=1</body>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_B956IMKlEeOaX8RSO9NpYw" name="Initialize i">
+      <language>Ruby</language>
+      <body>$i = 0</body>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_EBgwoMKlEeOaX8RSO9NpYw" name="Initialize num">
+      <language>Ruby</language>
+      <body>$num = 10</body>
+    </node>
+    <node xmi:type="uml:OutputPin" xmi:id="_NfBz8MKlEeOaX8RSO9NpYw" name="LoopVariableLessThanLimit">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_NfE3QMKlEeOaX8RSO9NpYw" value="1"/>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_qhoAcMKlEeOaX8RSO9NpYw" name="Condition">
+      <language>Ruby</language>
+      <body>$i &lt; $num</body>
+    </node>
+  </packagedElement>
 </uml:Model>

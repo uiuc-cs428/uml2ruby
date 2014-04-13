@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_U4hrgMJtEeOmjsd_IOEcNg" type="PapyrusUMLActivityDiagram" name="LoopNode" measurementUnit="Pixel">
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_U4hrgMJtEeOmjsd_IOEcNg" type="PapyrusUMLActivityDiagram" name="LoopNode" measurementUnit="Pixel">
   <children xmi:type="notation:Shape" xmi:id="_U4hrgcJtEeOmjsd_IOEcNg" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_U4hrgsJtEeOmjsd_IOEcNg" type="5001"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_U4hrg8JtEeOmjsd_IOEcNg" type="5002"/>
@@ -19,10 +19,26 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U4hrj8JtEeOmjsd_IOEcNg"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_U4hrkMJtEeOmjsd_IOEcNg" type="7004">
+      <children xmi:type="notation:Shape" xmi:id="_87qIQMKkEeOaX8RSO9NpYw" type="3071">
+        <children xmi:type="notation:DecorationNode" xmi:id="_87qIQ8KkEeOaX8RSO9NpYw" type="5121"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_87qIRMKkEeOaX8RSO9NpYw" type="7010">
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_87qIRcKkEeOaX8RSO9NpYw"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_87qIQcKkEeOaX8RSO9NpYw"/>
+        <element xmi:type="uml:LoopNode" href="loopNode.uml#_87X0YMKkEeOaX8RSO9NpYw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_87qIQsKkEeOaX8RSO9NpYw" x="87" y="18" width="141" height="107"/>
+      </children>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U4hrkcJtEeOmjsd_IOEcNg"/>
     </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_yw_EAMKkEeOaX8RSO9NpYw" visible="false" type="compartment_shape_display">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yxCHUMKkEeOaX8RSO9NpYw" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yxCHUcKkEeOaX8RSO9NpYw" key="mutable" value="true"/>
+      </eAnnotations>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_yw_EAcKkEeOaX8RSO9NpYw"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yw_EAsKkEeOaX8RSO9NpYw"/>
+    </children>
     <element xmi:type="uml:Activity" href="loopNode.uml#_U4eoMMJtEeOmjsd_IOEcNg"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U4hrksJtEeOmjsd_IOEcNg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U4hrksJtEeOmjsd_IOEcNg" width="349" height="217"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_U4hrk8JtEeOmjsd_IOEcNg"/>
   <element xmi:type="uml:Activity" href="loopNode.uml#_U4eoMMJtEeOmjsd_IOEcNg"/>
