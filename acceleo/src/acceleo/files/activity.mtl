@@ -107,6 +107,12 @@ def [anActivityNode.print()/]
   [/if]
 end
 [/let]
+[elseif (anActivityNode.oclIsTypeOf(LoopNode))]
+[let loopNode : LoopNode = anActivityNode]
+def [anActivityNode.print()/]
+  [anActivityNode/]
+end
+[/let]
 [/if]
 
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genMethodsFromActions(aControlFlow.target)/][/for]
@@ -149,3 +155,4 @@ end
 [template public print(anActivityNode : ActivityNode)]
 [anActivityNode.name.replaceAll(' ', '_')/]
 [/template]
+
