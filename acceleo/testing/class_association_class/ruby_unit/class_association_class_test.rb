@@ -38,7 +38,7 @@ class TestAssociationClassSuite < Test::Unit::TestCase
   end
   
   def test_experience_operation
-    experience = experience.new
+    experience = Experience.new
     assert(defined? experience.get_years)
   end
   

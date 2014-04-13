@@ -10,7 +10,7 @@
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_chXy4MESEeOq1OpIk9p4Fg" name="Skill"/>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_RMESEMETEeOq1OpIk9p4Fg" name="Compentency" memberEnd="_RMESEcETEeOq1OpIk9p4Fg _RMBOwMETEeOq1OpIk9p4Fg" navigableOwnedEnd="_RMESEcETEeOq1OpIk9p4Fg _RMBOwMETEeOq1OpIk9p4Fg">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_RMESEMETEeOq1OpIk9p4Fg" name="Competency" memberEnd="_RMESEcETEeOq1OpIk9p4Fg _RMBOwMETEeOq1OpIk9p4Fg" navigableOwnedEnd="_RMESEcETEeOq1OpIk9p4Fg _RMBOwMETEeOq1OpIk9p4Fg">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_h5IFQMETEeOq1OpIk9p4Fg" name="competency_level" visibility="public">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZZUK4MEUEeOq1OpIk9p4Fg" value="1"/>
