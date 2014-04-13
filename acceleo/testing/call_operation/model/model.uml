@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_C4tAIMNCEeOsJ_OT0A4XLw" name="model">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_C5S2AMNCEeOsJ_OT0A4XLw" name="Activity1" node="_ERyS8MNCEeOsJ_OT0A4XLw _MPwPEMNCEeOsJ_OT0A4XLw _PT-OAMNCEeOsJ_OT0A4XLw _gbBOgMNCEeOsJ_OT0A4XLw _jpTvcMNCEeOsJ_OT0A4XLw">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_4XN3AMNEEeOsJ_OT0A4XLw">
+      <body>Interesting details about design decisions</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_6FL0sMNEEeOsJ_OT0A4XLw">
+      <body>User comment about the intention of the activity</body>
+    </ownedComment>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_P7HtkMNCEeOsJ_OT0A4XLw" name="ControlFlow1" source="_ERyS8MNCEeOsJ_OT0A4XLw" target="_MPwPEMNCEeOsJ_OT0A4XLw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_mQInwMNCEeOsJ_OT0A4XLw" name="ControlFlow2" source="_MPwPEMNCEeOsJ_OT0A4XLw" target="_gbBOgMNCEeOsJ_OT0A4XLw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_mu5nYMNCEeOsJ_OT0A4XLw" name="ControlFlow3" source="_gbBOgMNCEeOsJ_OT0A4XLw" target="_jpTvcMNCEeOsJ_OT0A4XLw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_nQSdMMNCEeOsJ_OT0A4XLw" name="ControlFlow4" source="_jpTvcMNCEeOsJ_OT0A4XLw" target="_PT-OAMNCEeOsJ_OT0A4XLw"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_ERyS8MNCEeOsJ_OT0A4XLw" name="InitialNode1" outgoing="_P7HtkMNCEeOsJ_OT0A4XLw"/>
+    <node xmi:type="uml:CallOperationAction" xmi:id="_MPwPEMNCEeOsJ_OT0A4XLw" name="CallOperationAction1" outgoing="_mQInwMNCEeOsJ_OT0A4XLw" incoming="_P7HtkMNCEeOsJ_OT0A4XLw" operation="_Kg9yAMNCEeOsJ_OT0A4XLw">
+      <argument xmi:type="uml:InputPin" xmi:id="_dKhHEMNCEeOsJ_OT0A4XLw" name="Parameter1">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dKhHEsNCEeOsJ_OT0A4XLw" source="PinToParameterLink">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dKhHE8NCEeOsJ_OT0A4XLw" key="PinToParameterLink" value="_dKAJsMNCEeOsJ_OT0A4XLw"/>
+        </eAnnotations>
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_dKhHEcNCEeOsJ_OT0A4XLw" value="1"/>
+      </argument>
+      <result xmi:type="uml:OutputPin" xmi:id="_bgIB0MNCEeOsJ_OT0A4XLw" name="SaveThis">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bgIo4MNCEeOsJ_OT0A4XLw" source="PinToParameterLink">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bgJP8MNCEeOsJ_OT0A4XLw" key="PinToParameterLink" value="_be2PcMNCEeOsJ_OT0A4XLw"/>
+        </eAnnotations>
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_bgIB0cNCEeOsJ_OT0A4XLw" value="1"/>
+      </result>
+      <target xmi:type="uml:InputPin" xmi:id="_NFQTssNCEeOsJ_OT0A4XLw" name="" type="_JFAxYMNCEeOsJ_OT0A4XLw">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_NFQTs8NCEeOsJ_OT0A4XLw" value="1"/>
+      </target>
+    </node>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_PT-OAMNCEeOsJ_OT0A4XLw" name="ActivityFinalNode1" incoming="_nQSdMMNCEeOsJ_OT0A4XLw"/>
+    <node xmi:type="uml:CallOperationAction" xmi:id="_gbBOgMNCEeOsJ_OT0A4XLw" name="CallOperationAction2" outgoing="_mu5nYMNCEeOsJ_OT0A4XLw" incoming="_mQInwMNCEeOsJ_OT0A4XLw" operation="_Xn8PUMNCEeOsJ_OT0A4XLw">
+      <argument xmi:type="uml:InputPin" xmi:id="_iCsW8MNCEeOsJ_OT0A4XLw" name="Parameter1">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_iCuMIMNCEeOsJ_OT0A4XLw" source="PinToParameterLink">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_iCuMIcNCEeOsJ_OT0A4XLw" key="PinToParameterLink" value="_iB8JAMNCEeOsJ_OT0A4XLw"/>
+        </eAnnotations>
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_iCsW8cNCEeOsJ_OT0A4XLw" value="1"/>
+      </argument>
+      <target xmi:type="uml:InputPin" xmi:id="_hVmAYsNCEeOsJ_OT0A4XLw" name="" type="_JFAxYMNCEeOsJ_OT0A4XLw">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_hVmAY8NCEeOsJ_OT0A4XLw" value="1"/>
+      </target>
+    </node>
+    <node xmi:type="uml:CallOperationAction" xmi:id="_jpTvcMNCEeOsJ_OT0A4XLw" name="CallOperationAction3" outgoing="_nQSdMMNCEeOsJ_OT0A4XLw" incoming="_mu5nYMNCEeOsJ_OT0A4XLw" operation="_ZaSWsMNCEeOsJ_OT0A4XLw">
+      <target xmi:type="uml:InputPin" xmi:id="_kd2x0sNCEeOsJ_OT0A4XLw" name="" type="_Yu_-AMNCEeOsJ_OT0A4XLw">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_kd2x08NCEeOsJ_OT0A4XLw" value="1"/>
+      </target>
+    </node>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JFAxYMNCEeOsJ_OT0A4XLw" name="Class1">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Kg9yAMNCEeOsJ_OT0A4XLw" name="operation1">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_be2PcMNCEeOsJ_OT0A4XLw" name="SaveThis" direction="out"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dKAJsMNCEeOsJ_OT0A4XLw" name="Parameter1"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Xn8PUMNCEeOsJ_OT0A4XLw" name="operation2">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_iB8JAMNCEeOsJ_OT0A4XLw" name="Parameter1"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Yu_-AMNCEeOsJ_OT0A4XLw" name="Class2">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ZaSWsMNCEeOsJ_OT0A4XLw" name="operation1"/>
+  </packagedElement>
+</uml:Model>
