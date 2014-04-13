@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_dY05gMF5EeOX0sL-iTaczQ" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_dY05gcF5EeOX0sL-iTaczQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_dZBt0MF5EeOX0sL-iTaczQ" name="ValueSpecificationAction" node="_g3TLgMF5EeOX0sL-iTaczQ _ifDMcMF5EeOX0sL-iTaczQ _jdB3oMF5EeOX0sL-iTaczQ _lj1zIMF5EeOX0sL-iTaczQ">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_mxl_sMF5EeOX0sL-iTaczQ" name="" source="_g3TLgMF5EeOX0sL-iTaczQ" target="_ifDMcMF5EeOX0sL-iTaczQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_n6COcMF5EeOX0sL-iTaczQ" name="" source="_ifDMcMF5EeOX0sL-iTaczQ" target="_jdB3oMF5EeOX0sL-iTaczQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_p21SUMF5EeOX0sL-iTaczQ" name="" source="_jdB3oMF5EeOX0sL-iTaczQ" target="_lj1zIMF5EeOX0sL-iTaczQ"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_g3TLgMF5EeOX0sL-iTaczQ" name="InitialNode1" outgoing="_mxl_sMF5EeOX0sL-iTaczQ"/>
+    <node xmi:type="uml:ValueSpecificationAction" xmi:id="_ifDMcMF5EeOX0sL-iTaczQ" name="return integer" outgoing="_n6COcMF5EeOX0sL-iTaczQ" incoming="_mxl_sMF5EeOX0sL-iTaczQ">
+      <result xmi:type="uml:OutputPin" xmi:id="_soIN4MF8EeOX0sL-iTaczQ" name="int">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </result>
+      <value xmi:type="uml:LiteralInteger" xmi:id="_w3M2YMF8EeOX0sL-iTaczQ" name="int" value="42"/>
+    </node>
+    <node xmi:type="uml:ValueSpecificationAction" xmi:id="_jdB3oMF5EeOX0sL-iTaczQ" name="return string" outgoing="_p21SUMF5EeOX0sL-iTaczQ" incoming="_n6COcMF5EeOX0sL-iTaczQ">
+      <result xmi:type="uml:OutputPin" xmi:id="_fAyHEMF_EeOX0sL-iTaczQ" name="str"/>
+      <value xmi:type="uml:LiteralString" xmi:id="_qGIq4MF_EeOX0sL-iTaczQ" name="str" value="foo"/>
+    </node>
+    <node xmi:type="uml:FlowFinalNode" xmi:id="_lj1zIMF5EeOX0sL-iTaczQ" name="FlowFinalNode1" incoming="_p21SUMF5EeOX0sL-iTaczQ"/>
+  </packagedElement>
+</uml:Model>
