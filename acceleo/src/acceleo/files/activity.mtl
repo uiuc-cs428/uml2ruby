@@ -24,7 +24,7 @@ end
 
 
 [template public genBehaviorActivity(anActivity : Activity) post(trim())]
-def [anActivity.name/][if (anActivity.ownedParameter->asSet()->isEmpty()._not())]([genInputActivityParameterNodes(anActivity)/])[/if]
+def [anActivity.name/][if (not anActivity.ownedParameter->asSet()->isEmpty())]([genInputActivityParameterNodes(anActivity)/])[/if]
   [genActivityParameterNodeInitialization(anActivity)/]
   [let theInitialNode : ActivityParameterNode=anActivity.node->select(apn : ActivityNode | apn.oclIsTypeOf(ActivityParameterNode) and apn.eGet('parameter').direction.toString().contains('in'))->asSequence()->first()]
   [theInitialNode.nextActivityNodeInBehavior()/]
@@ -99,7 +99,7 @@ end
 [/template]
 
 [template public printReturnParameter(anActivityNode : ActivityNode) post(trim())]
-[for(parameter : Element | anActivityNode.ownedElement)][if (parameter.oclIsUndefined()._not()._and( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/]=[/if][/for]
+[for(parameter : Element | anActivityNode.ownedElement)][if (not parameter.oclIsUndefined() and ( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/]=[/if][/for]
 [/template]
 
 [template public printTerminatingNode(aControlFlow : ControlFlow)]
