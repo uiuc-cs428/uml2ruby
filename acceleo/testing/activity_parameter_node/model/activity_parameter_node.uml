@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_h3qkEMHAEeOiLLmjEUaEGw" name="model">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_h3tAUMHAEeOiLLmjEUaEGw" name="Activity1" node="_kdtZQMHAEeOiLLmjEUaEGw _mURSQMHAEeOiLLmjEUaEGw _ohILYMHAEeOiLLmjEUaEGw _us7mUMHAEeOiLLmjEUaEGw _33IsEMHAEeOiLLmjEUaEGw">
+    <ownedParameter xmi:type="uml:Parameter" xmi:id="_-0efYMHFEeOiLLmjEUaEGw" name="Input1"/>
+    <ownedParameter xmi:type="uml:Parameter" xmi:id="_AYvHcMHGEeOiLLmjEUaEGw" name="Input2"/>
+    <ownedParameter xmi:type="uml:Parameter" xmi:id="_C4DpkMHGEeOiLLmjEUaEGw" name="Input3" direction="return"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_zHNZQMHAEeOiLLmjEUaEGw" name="ControlFlow1" source="_kdtZQMHAEeOiLLmjEUaEGw" target="_us7mUMHAEeOiLLmjEUaEGw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_zxOmoMHAEeOiLLmjEUaEGw" name="ControlFlow2" source="_mURSQMHAEeOiLLmjEUaEGw" target="_us7mUMHAEeOiLLmjEUaEGw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_4zVOkMHAEeOiLLmjEUaEGw" name="ControlFlow3" source="_us7mUMHAEeOiLLmjEUaEGw" target="_33IsEMHAEeOiLLmjEUaEGw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_5NSmsMHAEeOiLLmjEUaEGw" name="ControlFlow4" source="_33IsEMHAEeOiLLmjEUaEGw" target="_ohILYMHAEeOiLLmjEUaEGw"/>
+    <node xmi:type="uml:ActivityParameterNode" xmi:id="_kdtZQMHAEeOiLLmjEUaEGw" name="Input1" outgoing="_zHNZQMHAEeOiLLmjEUaEGw" isControlType="true" parameter="_-0efYMHFEeOiLLmjEUaEGw">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_kdtZQcHAEeOiLLmjEUaEGw" value="1"/>
+    </node>
+    <node xmi:type="uml:ActivityParameterNode" xmi:id="_mURSQMHAEeOiLLmjEUaEGw" name="Input2" outgoing="_zxOmoMHAEeOiLLmjEUaEGw" isControlType="true" parameter="_AYvHcMHGEeOiLLmjEUaEGw">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_mUR5UMHAEeOiLLmjEUaEGw" value="1"/>
+    </node>
+    <node xmi:type="uml:ActivityParameterNode" xmi:id="_ohILYMHAEeOiLLmjEUaEGw" name="Input3" incoming="_5NSmsMHAEeOiLLmjEUaEGw" isControlType="true" parameter="_C4DpkMHGEeOiLLmjEUaEGw">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_ohILYcHAEeOiLLmjEUaEGw" value="1"/>
+    </node>
+    <node xmi:type="uml:MergeNode" xmi:id="_us7mUMHAEeOiLLmjEUaEGw" name="MergeNode1" outgoing="_4zVOkMHAEeOiLLmjEUaEGw" incoming="_zHNZQMHAEeOiLLmjEUaEGw _zxOmoMHAEeOiLLmjEUaEGw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_33IsEMHAEeOiLLmjEUaEGw" name="OpaqueAction1" outgoing="_5NSmsMHAEeOiLLmjEUaEGw" incoming="_4zVOkMHAEeOiLLmjEUaEGw"/>
+  </packagedElement>
+</uml:Model>
