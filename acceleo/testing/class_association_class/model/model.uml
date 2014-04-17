@@ -30,7 +30,7 @@
   </packagedElement>
   <packagedElement xmi:type="uml:AssociationClass" xmi:id="_b22LAsEZEeOq1OpIk9p4Fg" name="Experience" memberEnd="_b22yEMEZEeOq1OpIk9p4Fg _b21j8MEZEeOq1OpIk9p4Fg">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_fO4d0MEZEeOq1OpIk9p4Fg" name="get_years"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_b22yEMEZEeOq1OpIk9p4Fg" name="person" type="_bryOsMESEeOq1OpIk9p4Fg" association="_b22LAsEZEeOq1OpIk9p4Fg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_b22yEMEZEeOq1OpIk9p4Fg" name="person" visibility="private" type="_bryOsMESEeOq1OpIk9p4Fg" association="_b22LAsEZEeOq1OpIk9p4Fg">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b22yEcEZEeOq1OpIk9p4Fg" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b22yEsEZEeOq1OpIk9p4Fg" value="1"/>
     </ownedEnd>

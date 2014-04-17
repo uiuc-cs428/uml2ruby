@@ -14,15 +14,17 @@
   end
 
   [aClass.genAttributes(VisibilityKind::public)/]
-  [aClass.genAssociationClassAttributes()/]
+  [aClass.genAssociationClassAttributes(VisibilityKind::public)/]
   [aClass.genOperations(VisibilityKind::public)/]
 
   protected
   [aClass.genAttributes(VisibilityKind::protected)/]
+  [aClass.genAssociationClassAttributes(VisibilityKind::protected)/]
   [aClass.genOperations(VisibilityKind::protected)/]
 
   private
   [aClass.genAttributes(VisibilityKind::private)/]
+  [aClass.genAssociationClassAttributes(VisibilityKind::private)/]
   [aClass.genOperations(VisibilityKind::private)/]
 end
 [/file]
@@ -124,7 +126,7 @@ Float
 [template public initializeAttributes(anAttribute : Property)]
 [if (anAttribute.qualifier->size() > 0)]
   @[anAttribute.type.name.toLowerFirst()/]By[anAttribute.qualifier.name.toUpperFirst()/] = {}
-[elseif (not anAttribute.type.oclIsUndefined())]
+[elseif (not anAttribute.type.oclIsUndefined() and not (not anAttribute.association.oclIsUndefined() and anAttribute.association.oclIsTypeOf(AssociationClass)))]
   [if (anAttribute.upper = -1) ]
     [if (anAttribute.lower = 0)]
   @[anAttribute.genName()/] = ['[]'/]
@@ -153,11 +155,19 @@ Float
 [/if]
 [/template]
 
-[template public genAssociationClassAttributes(aClass: Class)]
+[template public genAssociationClassAttributes(aClass: Class, visibilityKind : VisibilityKind)]
+  [if (aClass.oclIsTypeOf(AssociationClass))]
+    [if (aClass.oclAsType(AssociationClass).memberEnd->first().visibility = visibilityKind)]
+attr_accessor :[aClass.oclAsType(AssociationClass).memberEnd->first().type.name.toLower()/] #Association Class attribute linking to [aClass.oclAsType(AssociationClass).memberEnd->first().type.name/]  
+    [/if]
+    [if (aClass.oclAsType(AssociationClass).memberEnd->last().visibility = visibilityKind)]
+attr_accessor :[aClass.oclAsType(AssociationClass).memberEnd->last().type.name.toLower()/] #Association Class attribute linking to [aClass.oclAsType(AssociationClass).memberEnd->last().type.name/]
+    [/if] 
+  [/if]
   [if (aClass.owner.oclIsTypeOf(Model))]
     [for (anAssocClass : AssociationClass | aClass.owner.oclAsType(Model).eAllContents(AssociationClass))]
       [for (aMemberEnd : Property | anAssocClass.memberEnd)]
-        [if (aMemberEnd.type = aClass)]
+        [if (aMemberEnd.type = aClass and aMemberEnd.visibility = visibilityKind)]
 [aMemberEnd.genAttribute()/]
         [/if]
       [/for]
@@ -251,7 +261,9 @@ Dependency Related Templates
 [comment add requires for dependencies/]
 [aClass.clientDependency->asSet().genRequire()->sep('\n')/]
 [comment add requires for classifiers/]
-[aClass.general->asSet().genRequire()->sep('\n')/]
+[for (aClassifier: Classifier |  aClass.general)]
+require_relative '[aClassifier.name/].rb'
+[/for]
 [comment add requires for attributes/]
 [aClass.attribute->asSet().genRequire()->sep('\n')/]
 [comment add requires for association classes/]
@@ -261,14 +273,6 @@ Dependency Related Templates
 [template public genRequire(aDependency : Dependency) post(trim())]
 [if not (aDependency.supplier.name->isEmpty())]
 require_relative '[aDependency.supplier.name/].rb'
-[/if]
-[/template]
-
-[template public genRequire(aClassifier : Classifier) post(trim())]
-[if not (aClassifier.name->isEmpty() or aClassifier.toString().contains('String') or
-         aClassifier.toString().contains('Integer') or aClassifier.toString().contains('Real')
-)]
-require_relative '[aClassifier.name/].rb'
 [/if]
 [/template]
 
@@ -293,4 +297,3 @@ require_relative '[anAssocClass.name/].rb'
     [/for]
   [/if]
 [/template]
-

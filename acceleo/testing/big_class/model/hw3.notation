@@ -390,7 +390,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_myPYsp3GEeODVOE2brWgLA"/>
     </children>
     <element xmi:type="uml:Class" href="hw3.uml#_mxqw8J3GEeODVOE2brWgLA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mxvCYZ3GEeODVOE2brWgLA" x="-312" y="108"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mxvCYZ3GEeODVOE2brWgLA" x="-368" y="118"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_s7e78J3TEeODVOE2brWgLA" type="2008">
     <children xmi:type="notation:DecorationNode" xmi:id="_s7fjAJ3TEeODVOE2brWgLA" type="5029"/>
