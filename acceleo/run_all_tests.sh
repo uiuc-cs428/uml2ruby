@@ -22,4 +22,5 @@ TUXML_OUTPUT_FILE=testControlGuards.xml ruby acceleo/testing/control_guards/ruby
 TUXML_OUTPUT_FILE=testAssociationClass.xml ruby acceleo/testing/class_association_class/ruby_unit/class_association_class_test.rb --runner xml
 TUXML_OUTPUT_FILE=testValueSpecificationAction.xml ruby acceleo/testing/value_specification_action/ruby_unit/value_specification_action_test.rb --runner xml
 TUXML_OUTPUT_FILE=testActivityParameterNodes.xml ruby acceleo/testing/activity_parameter_node/ruby_unit/activity_parameter_node_test.rb --runner xml
-
+TUXML_OUTPUT_FILE=testActivityComments.xml ruby acceleo/testing/call_operation/ruby_unit/activity_comments_test.rb --runner xml
+TUXML_OUTPUT_FILE=testCallOperation.xml ruby acceleo/testing/call_operation/ruby_unit/call_operation_node_test.rb --runner xml
