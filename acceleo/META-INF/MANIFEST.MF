@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Acceleo Acceleo Module Runtime Plug-in
-Bundle-SymbolicName: acceleo
+Bundle-SymbolicName: acceleo;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: acceleo.Activator
 Bundle-Vendor: Eclipse Modeling Project
