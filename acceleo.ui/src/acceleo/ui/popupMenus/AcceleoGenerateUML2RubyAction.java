@@ -71,7 +71,7 @@ public class AcceleoGenerateUML2RubyAction extends ActionDelegate implements IAc
 							IFile model = (IFile)filesIt.next();
 							URI modelURI = URI.createPlatformResourceURI(model.getFullPath().toString(), true);
 							try {
-								IContainer target = model.getProject().getFolder("autogen");
+								IContainer target = model.getProject().getFolder("rubysrc");
 								GenerateAll generator = new GenerateAll(modelURI, target, getArguments());
 								generator.doGenerate(monitor);
 							} catch (IOException e) {
