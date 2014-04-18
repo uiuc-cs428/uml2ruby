@@ -9,7 +9,7 @@
 
 [if(element.oclIsTypeOf(Activity))]
   [generateActivity(element.oclAsType(Activity))/]
-[elseif(element.oclIsTypeOf(Class))]
+[elseif(element.oclIsKindOf(Class))]
   [classFile(element.oclAsType(Class))/]
 [/if]
 [/template]
