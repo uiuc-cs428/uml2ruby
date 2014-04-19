@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_o1Te0MdWEeOt3oEOHR5x2Q" name="model">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_o1o2AMdWEeOt3oEOHR5x2Q" name="Process Order" node="_sM2M8MdXEeOt3oEOHR5x2Q _tL1kwMdXEeOt3oEOHR5x2Q _23cucMdXEeOt3oEOHR5x2Q _2lniIMdYEeOIXdSWbTkRJQ _KoBggMdZEeOIXdSWbTkRJQ _Pfx5oMdZEeOIXdSWbTkRJQ">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_ZEAMcMdaEeOIXdSWbTkRJQ">
+      <body>Only deliver the Order with Overnight Delivery if it is a Rush Order.</body>
+    </ownedComment>
+    <ownedBehavior xmi:type="uml:Activity" xmi:id="_UV3UQMdYEeOt3oEOHR5x2Q" name="Deliver Order" node="_qPlkIMdZEeOIXdSWbTkRJQ _3Uyf0MdZEeOIXdSWbTkRJQ _9JJrIMdZEeOIXdSWbTkRJQ __wSFcMdZEeOIXdSWbTkRJQ _CwKW8MdaEeOIXdSWbTkRJQ _DNrZYMdaEeOIXdSWbTkRJQ">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_JXsEkMdaEeOIXdSWbTkRJQ" name="ControlFlow1" source="_qPlkIMdZEeOIXdSWbTkRJQ" target="_3Uyf0MdZEeOIXdSWbTkRJQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_J6sD8MdaEeOIXdSWbTkRJQ" name="ControlFlow2" source="_3Uyf0MdZEeOIXdSWbTkRJQ" target="_9JJrIMdZEeOIXdSWbTkRJQ">
+        <guard xmi:type="uml:LiteralString" xmi:id="_c-f2oMdbEeOIXdSWbTkRJQ" name="else" value="else"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_KW6s8MdaEeOIXdSWbTkRJQ" name="ControlFlow3" source="_3Uyf0MdZEeOIXdSWbTkRJQ" target="__wSFcMdZEeOIXdSWbTkRJQ">
+        <guard xmi:type="uml:LiteralString" xmi:id="_eJ1oYMdbEeOIXdSWbTkRJQ" name="order" value="rush"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_K3fDYMdaEeOIXdSWbTkRJQ" name="ControlFlow4" source="__wSFcMdZEeOIXdSWbTkRJQ" target="_CwKW8MdaEeOIXdSWbTkRJQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_LPFrEMdaEeOIXdSWbTkRJQ" name="ControlFlow5" source="_9JJrIMdZEeOIXdSWbTkRJQ" target="_CwKW8MdaEeOIXdSWbTkRJQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_NN-ZoMdaEeOIXdSWbTkRJQ" name="ControlFlow6" source="_CwKW8MdaEeOIXdSWbTkRJQ" target="_DNrZYMdaEeOIXdSWbTkRJQ"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_qPlkIMdZEeOIXdSWbTkRJQ" name="Order" outgoing="_JXsEkMdaEeOIXdSWbTkRJQ" isControlType="true" parameter="_1Pp_UMdZEeOIXdSWbTkRJQ">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_qPlkIcdZEeOIXdSWbTkRJQ" value="1"/>
+      </node>
+      <node xmi:type="uml:DecisionNode" xmi:id="_3Uyf0MdZEeOIXdSWbTkRJQ" name="DecisionNode1" outgoing="_J6sD8MdaEeOIXdSWbTkRJQ _KW6s8MdaEeOIXdSWbTkRJQ" incoming="_JXsEkMdaEeOIXdSWbTkRJQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_9JJrIMdZEeOIXdSWbTkRJQ" name="Regular Delivery" outgoing="_LPFrEMdaEeOIXdSWbTkRJQ" incoming="_J6sD8MdaEeOIXdSWbTkRJQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="__wSFcMdZEeOIXdSWbTkRJQ" name="Overnight Delivery" outgoing="_K3fDYMdaEeOIXdSWbTkRJQ" incoming="_KW6s8MdaEeOIXdSWbTkRJQ"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_CwKW8MdaEeOIXdSWbTkRJQ" name="MergeNode1" outgoing="_NN-ZoMdaEeOIXdSWbTkRJQ" incoming="_K3fDYMdaEeOIXdSWbTkRJQ _LPFrEMdaEeOIXdSWbTkRJQ"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_DNrZYMdaEeOIXdSWbTkRJQ" name="Order" incoming="_NN-ZoMdaEeOIXdSWbTkRJQ" isControlType="true" parameter="_HsKW4MdaEeOIXdSWbTkRJQ">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_DNrZYcdaEeOIXdSWbTkRJQ" value="1"/>
+      </node>
+    </ownedBehavior>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_4d02YMdXEeOt3oEOHR5x2Q" name="FillOrder"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_qKFjoMdaEeOIXdSWbTkRJQ" name="Class1">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_tDn8kMdaEeOIXdSWbTkRJQ" name="FillOrder"/>
+    </nestedClassifier>
+    <ownedParameter xmi:type="uml:Parameter" xmi:id="_1Pp_UMdZEeOIXdSWbTkRJQ" name="Order"/>
+    <ownedParameter xmi:type="uml:Parameter" xmi:id="_HsKW4MdaEeOIXdSWbTkRJQ" name="ReturnOrder" direction="return"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ksI_IMdYEeOt3oEOHR5x2Q" name="ControlFlow1" source="_sM2M8MdXEeOt3oEOHR5x2Q" target="_tL1kwMdXEeOt3oEOHR5x2Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_leu5sMdYEeOt3oEOHR5x2Q" name="ControlFlow2" source="_tL1kwMdXEeOt3oEOHR5x2Q" target="_23cucMdXEeOt3oEOHR5x2Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_QPCMUMdZEeOIXdSWbTkRJQ" name="ControlFlow5" source="_KoBggMdZEeOIXdSWbTkRJQ" target="_Pfx5oMdZEeOIXdSWbTkRJQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_hWk8EMdZEeOIXdSWbTkRJQ" name="ControlFlow3" source="_23cucMdXEeOt3oEOHR5x2Q" target="_2lniIMdYEeOIXdSWbTkRJQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_h4SiAMdZEeOIXdSWbTkRJQ" name="ControlFlow4" source="_2lniIMdYEeOIXdSWbTkRJQ" target="_KoBggMdZEeOIXdSWbTkRJQ"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_sM2M8MdXEeOt3oEOHR5x2Q" name="InitialNode1" outgoing="_ksI_IMdYEeOt3oEOHR5x2Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_tL1kwMdXEeOt3oEOHR5x2Q" name="Receive Order" outgoing="_leu5sMdYEeOt3oEOHR5x2Q" incoming="_ksI_IMdYEeOt3oEOHR5x2Q"/>
+    <node xmi:type="uml:CallOperationAction" xmi:id="_23cucMdXEeOt3oEOHR5x2Q" name="Fill Order" outgoing="_hWk8EMdZEeOIXdSWbTkRJQ" incoming="_leu5sMdYEeOt3oEOHR5x2Q" operation="_tDn8kMdaEeOIXdSWbTkRJQ"/>
+    <node xmi:type="uml:CallBehaviorAction" xmi:id="_2lniIMdYEeOIXdSWbTkRJQ" name="Regular Delivery" outgoing="_h4SiAMdZEeOIXdSWbTkRJQ" incoming="_hWk8EMdZEeOIXdSWbTkRJQ" behavior="_UV3UQMdYEeOt3oEOHR5x2Q"/>
+    <node xmi:type="uml:ValueSpecificationAction" xmi:id="_KoBggMdZEeOIXdSWbTkRJQ" name="Close Order" outgoing="_QPCMUMdZEeOIXdSWbTkRJQ" incoming="_h4SiAMdZEeOIXdSWbTkRJQ">
+      <result xmi:type="uml:OutputPin" xmi:id="_A6JloMdcEeOIXdSWbTkRJQ" name="int" type="_DewQYMdcEeOIXdSWbTkRJQ"/>
+      <value xmi:type="uml:LiteralInteger" xmi:id="_KnnJcMdcEeOIXdSWbTkRJQ" name="orderClosed" value="1"/>
+    </node>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_Pfx5oMdZEeOIXdSWbTkRJQ" name="ActivityFinalNode1" incoming="_QPCMUMdZEeOIXdSWbTkRJQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DewQYMdcEeOIXdSWbTkRJQ" name="Integer"/>
+</uml:Model>
