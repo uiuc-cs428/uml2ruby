@@ -152,9 +152,9 @@ def [anOpaqueAction.print()/][if anOpaqueAction.input->size() > 0]([anOpaqueActi
   [/if]
   [/if]
   [if anOpaqueAction.validLanguage('ruby')]
-[anOpaqueAction._body->at(anOpaqueAction.language.indexOf('ruby')->first())/]
+  [anOpaqueAction._body->at(anOpaqueAction.language.indexOf('ruby')->first())/]
   [elseif anOpaqueAction.validLanguage('Ruby')]
-[anOpaqueAction._body->at(anOpaqueAction.language.indexOf('Ruby')->first())/]
+  [anOpaqueAction._body->at(anOpaqueAction.language.indexOf('Ruby')->first())/]
   [else]
   #TODO fill in function
   [/if]
