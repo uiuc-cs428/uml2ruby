@@ -9,8 +9,6 @@
  [genBehaviorActivity(anActivity)/]
 [else]
   [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
-  # The initial node is called "[theInitialNode.name/]"
-  [theInitialNode.nextActivityNode()/]
 [genRequires(theInitialNode)/]
 [genCallBehaviorActions(theInitialNode)/]
 [genMethodsFromActions(theInitialNode)/]
@@ -47,8 +45,9 @@ end
 
 [template public nextActivityNodeInBehavior(anActivityNode : ActivityNode) post(trim())]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing)]
+ [printControlFlowGuard(aControlFlow)/]
  [generateActionCallInBehavior(anActivityNode)/]
-[if (aControlFlow.target.oclIsTypeOf(ActivityParameterNode))][printOutputActivityParameterNode(aControlFlow)/][else]# [aControlFlow.name/][/if]
+[if (aControlFlow.target.oclIsTypeOf(ActivityParameterNode))][printOutputActivityParameterNode(aControlFlow)/][else][comment # [aControlFlow.name/][/if]
 [(nextActivityNodeInBehavior(aControlFlow.target))/]
 [/for]
 [/template]
@@ -57,7 +56,8 @@ end
 [if (anActivityNode.oclIsTypeOf(OpaqueAction))][anActivityNode.print()/]()
 [elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))][anActivityNode.print()/]()
 [elseif (anActivityNode.oclIsTypeOf(CallOperationAction))][anActivityNode.print()/]()
-[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))][anActivityNode.print()/]()[/if]
+[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))][anActivityNode.print()/]()
+[/if]
 [/template]
 
 [template public printOutputActivityParameterNode(aControlFlow : ControlFlow) post(trim())]
@@ -216,7 +216,8 @@ end
 [printControlFlowGuard(aControlFlow)/]
 [(genActivity(aControlFlow.target))/]
 [/if]
-[/for][/template]
+[/for]
+[/template]
 
 [template public print(anActivityNode : ActivityNode)]
 [anActivityNode.name.replaceAll(' ', '_')/]
@@ -226,5 +227,22 @@ end
 [template public genComments(anActivity : Activity)]
 [for (aComment: Comment | anActivity.ownedComment)]
 #[aComment._body/]
+[/for]
+[/template]
+
+[template public printGuardsInBehavior(anActivityNode : ActivityNode)]
+[comment: Print control flow guards/]
+[for (aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
+[if not (aControlFlow.guard.oclIsUndefined() = false and aControlFlow.guard.name = 'else')]
+cf [printControlFlowGuard(aControlFlow)/]
+[generateActionCallInBehavior(aControlFlow.target)/]
+[/if]
+[/for]
+[comment: Ensure that the else clause is always printed last/]
+[for (aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
+[if (aControlFlow.guard.oclIsUndefined() = false and aControlFlow.guard.name = 'else')]
+cf [printControlFlowGuard(aControlFlow)/]
+[generateActionCallInBehavior(aControlFlow.target)/]
+[/if]
 [/for]
 [/template]
