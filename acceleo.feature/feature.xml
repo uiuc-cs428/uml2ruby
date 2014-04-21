@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="UML2Ruby"
+      label="UML2Ruby Code Generator"
+      version="1.0.0.qualifier">
+
+   <description url="https://github.com/uiuc-cs428/uml2ruby">
+      Converts UML diagrams created in Papyrus or another Eclipse Modeling Framework (EMF) based editor to Ruby code.  Supports Class and Activity diagrams currently.  Details at https://github.com/uiuc-cs428/uml2ruby/wiki.
+
+Developed using Eclipse, Acceleo and Papyrus.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="UML2Ruby"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="UML2Ruby.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
