@@ -5,18 +5,18 @@ require_relative '../autogen/Activity1.rb'
 
 class TestActivityPinSuite < Test::Unit::TestCase
   def test_return_type()
-    theObject = opaqueAction()
+    theObject = OpaqueAction()
     assert_equal(theObject.class, ClassToPass)
   end
 
   def test_input
     theObject = ClassToPass.new
-    opaqueAction1(theObject)
+    OpaqueAction1(theObject)
     assert(true)
   end
 
   def test_activity
-    activity1()
+    Activity1()
   end
     
 end
