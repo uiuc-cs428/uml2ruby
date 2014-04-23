@@ -129,6 +129,9 @@ require_relative('[anActivityNode.oclAsType(OpaqueAction).output->first().type.n
 [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
 [for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow))][genRequires(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
 [/if]
+[if (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))]
+require_relative('[anActivityNode.eGet('operation').class.name/].rb')
+[/if]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genRequires(aControlFlow.target)/][/for]
 [/template]
 
