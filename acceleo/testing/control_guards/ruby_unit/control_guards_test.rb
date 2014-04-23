@@ -13,9 +13,9 @@ class TestControlGuardsSuite < Test::Unit::TestCase
       "  #else\n"
     ]
     calls = [
-      "  rush_Order()\n",
-      "  priority_Order()\n",
-      "  standard_Order()\n"
+      "  Rush_Order()\n",
+      "  Priority_Order()\n",
+      "  Standard_Order()\n"
     ]
     line_nums = {}
 
