@@ -12,7 +12,7 @@
 [genRequires(theInitialNode)/]
 [genCallBehaviorActions(theInitialNode)/]
 [genMethodsFromActions(theInitialNode)/]
-def [anActivity.name.replaceAll(' ', '_').toLowerFirst()/]
+def [anActivity.name.replaceAll(' ', '_')/]
   [genActivity(theInitialNode)/]
 end
   [/let]
@@ -22,7 +22,7 @@ end
 
 
 [template public genBehaviorActivity(anActivity : Activity) post(trim())]
-def [anActivity.name.replaceAll(' ', '_').toLowerFirst()/][if (not anActivity.ownedParameter->asSet()->isEmpty())]([genInputActivityParameterNodes(anActivity)/])[/if]
+def [anActivity.name.replaceAll(' ', '_')/][if (not anActivity.ownedParameter->asSet()->isEmpty())]([genInputActivityParameterNodes(anActivity)/])[/if]
   [genActivityParameterNodeInitialization(anActivity)/]
   [let theInitialNode : ActivityParameterNode=anActivity.node->select(apn : ActivityNode | apn.oclIsTypeOf(ActivityParameterNode) and apn.eGet('parameter').direction.toString().contains('in'))->asSequence()->first()]
   [theInitialNode.nextActivityNodeInBehavior()/]
@@ -53,10 +53,10 @@ end
 [/template]
 
 [template public generateActionCallInBehavior(anActivityNode : ActivityNode) post(trim())]
-[if (anActivityNode.oclIsTypeOf(OpaqueAction))][anActivityNode.printAndToLowerFirst()/]()
-[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))][anActivityNode.printAndToLowerFirst()/]()
-[elseif (anActivityNode.oclIsTypeOf(CallOperationAction))][anActivityNode.printAndToLowerFirst()/]()
-[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))][anActivityNode.printAndToLowerFirst()/]()
+[if (anActivityNode.oclIsTypeOf(OpaqueAction))][anActivityNode.print()/]()
+[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))][anActivityNode.print()/]()
+[elseif (anActivityNode.oclIsTypeOf(CallOperationAction))][anActivityNode.print()/]()
+[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))][anActivityNode.print()/]()
 [/if]
 [/template]
 
@@ -139,7 +139,7 @@ require_relative('[anActivityNode.eGet('operation').class.name/].rb')
 [template public genMethodsFromActions(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 [let anOpaqueAction : OpaqueAction = anActivityNode]
-def [anOpaqueAction.printAndToLowerFirst()/][if anOpaqueAction.input->size() > 0]([anOpaqueAction.input->first().name.toLower()/])[/if]
+def [anOpaqueAction.print()/][if anOpaqueAction.input->size() > 0]([anOpaqueAction.input->first().name.toLower()/])[/if]
   [if (anOpaqueAction.output->size() > 0)]
   [comment anOpaqueAction.output->first().type.toString()/]
   [if (anOpaqueAction.output->first().type.toString().contains('String'))]
@@ -174,7 +174,7 @@ end
 [/let]
 [elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]
 [let valSpecAction : ValueSpecificationAction = anActivityNode]
-def [anActivityNode.printAndToLowerFirst()/]
+def [anActivityNode.print()/]
   #TODO fill in function
   [if (valSpecAction.value.oclIsUndefined()) ] nil
   [else]
@@ -198,7 +198,7 @@ end
 
 [template public genCallBehaviorActions(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(CallBehaviorAction)]
-def [anActivityNode.eGet('behavior').name.replaceAll(' ', '_').toLowerFirst()/][if (not (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()))]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
+def [anActivityNode.eGet('behavior').name.replaceAll(' ', '_')/][if (not (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()))]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
   [genActivityParameterNodeInitialization(anActivityNode.eGet('behavior').oclAsType(Activity))/]
   [let theInitialNode : ActivityParameterNode=anActivityNode.eGet('behavior').oclAsType(Activity).node->select(apn : ActivityNode | apn.oclIsTypeOf(ActivityParameterNode))->asSequence()->first()]
   [theInitialNode.nextActivityNodeInBehavior()/]
@@ -217,11 +217,11 @@ end
 /]
 
 [template public genActivity(anActivityNode : ActivityNode) post(trim())]
-[if anActivityNode.oclIsTypeOf(CallBehaviorAction)][printReturnActivityParameterNodeIfExists(anActivityNode)/][anActivityNode.printAndToLowerFirst()/]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
+[if anActivityNode.oclIsTypeOf(CallBehaviorAction)][printReturnActivityParameterNodeIfExists(anActivityNode)/][anActivityNode.print()/]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 [let anOpaqueAction : OpaqueAction = anActivityNode]
 [if anOpaqueAction.output->size() > 0]
-[anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.printAndToLowerFirst()/]([if anOpaqueAction.input->size() > 0][anOpaqueAction.input->first().incoming.oclAsType(ObjectFlow).name.toLower()/]
+[anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.print()/]([if anOpaqueAction.input->size() > 0][anOpaqueAction.input->first().incoming.oclAsType(ObjectFlow).name.toLower()/]
 [/if])
 [if anOpaqueAction.output->size() > 0]
 [for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow))][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
@@ -229,7 +229,7 @@ end
 [/if]
 [/let]
 [elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]
-[anActivityNode.printAndToLowerFirst()/]
+[anActivityNode.print()/]
 [/if]
 
 [comment: Print control flow guards/]
@@ -250,10 +250,6 @@ end
 
 [template public print(anActivityNode : ActivityNode)]
 [anActivityNode.name.replaceAll(' ', '_')/]
-[/template]
-
-[template public printAndToLowerFirst(anActivityNode : ActivityNode)]
-[anActivityNode.name.replaceAll(' ', '_').toLowerFirst()/]
 [/template]
 
 [comment: Print all of the comments for the given activity/]

@@ -9,7 +9,7 @@ class TestActivityNodeSuite < Test::Unit::TestCase
   end
     
   def test_activity_behavior_defined
-    stringInFile('acceleo/testing/activity_parameter_node/autogen/Activity1.rb', 'def activity1(input1,')
+    stringInFile('acceleo/testing/activity_parameter_node/autogen/Activity1.rb', 'def Activity1(input1,')
   end
   
   def test_activity_parameter_node_initialization

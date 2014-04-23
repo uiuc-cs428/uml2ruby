@@ -9,15 +9,15 @@ class TestActivityNodeSuite < Test::Unit::TestCase
   end
   
   def test_value_specification_action
-    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'def valueSpecificationAction1')
+    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'def ValueSpecificationAction1')
   end
   
   def test_call_behavior_action
-    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'def behaviorActivity(order)')
+    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'def BehaviorActivity(order)')
   end
   
   def test_call_behavior_action_method_defined
-    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'returnOrder =behaviorActivity(order)')
+    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'returnOrder =BehaviorActivity(order)')
   end
 
   
@@ -27,8 +27,8 @@ class TestActivityNodeSuite < Test::Unit::TestCase
   end
   
   def test_behavior_activity_opaque_actions
-    stringInFile('acceleo/testing/activity/autogen/BehaviorActivity.rb', 'rushedDelivery()')
-    stringInFile('acceleo/testing/activity/autogen/BehaviorActivity.rb', 'regularDelivery()')
+    stringInFile('acceleo/testing/activity/autogen/BehaviorActivity.rb', 'RushedDelivery()')
+    stringInFile('acceleo/testing/activity/autogen/BehaviorActivity.rb', 'RegularDelivery()')
   end
   
   def test_behavior_activity_opaque_actions
