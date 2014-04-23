@@ -189,7 +189,7 @@ def [anActivityNode.printAndToLowerFirst()/]
   [/if]
 end
 [/let]
-[elseif (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))][genClassMethod(anActivityNode)/]
+[elseif (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))]#[genClassMethod(anActivityNode)/]
 [/if]
 
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genMethodsFromActions(aControlFlow.target)/][/for]
