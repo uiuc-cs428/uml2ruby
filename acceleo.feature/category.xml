@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/UML2Ruby_1.0.0.qualifier.jar" id="UML2Ruby" version="1.0.0.qualifier">
+      <category name="accelleo.UML2Ruby"/>
+   </feature>
+   <category-def name="accelleo.UML2Ruby" label="UML2Ruby"/>
+</site>
