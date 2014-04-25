@@ -99,7 +99,7 @@ end
 [/template]
 
 [template public printReturnParameter(anActivityNode : ActivityNode) post(trim())]
-[for(parameter : Element | anActivityNode.ownedElement)][if (not parameter.oclIsUndefined() and ( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/]=[/if][/for]
+[for(parameter : Element | anActivityNode.ownedElement)][if (not parameter.oclIsUndefined() and ( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/] = [/if][/for]
 [/template]
 
 [template public printTerminatingNode(aControlFlow : ControlFlow)]
