@@ -20,14 +20,14 @@ class TestActivityCallOperationNodeSuite < Test::Unit::TestCase
   end
   
   def test_result_assigned_to_class
-    assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '#SaveThis\=Class1.operation1\(Parameter1\)')
+    assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '^\s*saveThis\=Class1.operation1\(Parameter1\)')
   end
   
   def test_class_operation_without_result
-    assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '^\s*#Class1.operation2\(Parameter1\)')
+    assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '^\s*Class1.operation2\(Parameter1\)')
   end
   
   def test_class_operation_with_no_parameter
-    assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '^\s*#Class2.operation1\(\)')
+    assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '^\s*Class2.operation1\(\)')
   end
 end

@@ -19,7 +19,7 @@
         </eAnnotations>
         <upperBound xmi:type="uml:LiteralInteger" xmi:id="_dKhHEcNCEeOsJ_OT0A4XLw" value="1"/>
       </argument>
-      <result xmi:type="uml:OutputPin" xmi:id="_bgIB0MNCEeOsJ_OT0A4XLw" name="SaveThis">
+      <result xmi:type="uml:OutputPin" xmi:id="_bgIB0MNCEeOsJ_OT0A4XLw" name="saveThis">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bgIo4MNCEeOsJ_OT0A4XLw" source="PinToParameterLink">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bgJP8MNCEeOsJ_OT0A4XLw" key="PinToParameterLink" value="_be2PcMNCEeOsJ_OT0A4XLw"/>
         </eAnnotations>

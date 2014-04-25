@@ -189,7 +189,6 @@ def [anActivityNode.print()/]
   [/if]
 end
 [/let]
-[elseif (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))]#[genClassMethod(anActivityNode)/]
 [/if]
 
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genMethodsFromActions(aControlFlow.target)/][/for]
@@ -218,6 +217,7 @@ end
 
 [template public genActivity(anActivityNode : ActivityNode) post(trim())]
 [if anActivityNode.oclIsTypeOf(CallBehaviorAction)][printReturnActivityParameterNodeIfExists(anActivityNode)/][anActivityNode.print()/]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
+[if (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))][genClassMethod(anActivityNode)/][/if]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 [let anOpaqueAction : OpaqueAction = anActivityNode]
 [if anOpaqueAction.output->size() > 0]
