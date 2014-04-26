@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Acceleo Acceleo Module Runtime Plug-in
-Bundle-SymbolicName: acceleo
-Bundle-Version: 1.0.0.qualifier
+Bundle-Name: UML2Ruby Model to Text
+Bundle-SymbolicName: UML2Ruby;singleton:=true
+Bundle-Version: 2.1.0.qualifier
 Bundle-Activator: acceleo.Activator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.core.runtime,
