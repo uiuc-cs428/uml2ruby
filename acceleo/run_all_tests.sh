@@ -25,4 +25,4 @@ TUXML_OUTPUT_FILE=testActivityParameterNodes.xml ruby acceleo/testing/activity_p
 TUXML_OUTPUT_FILE=testActivityComments.xml ruby acceleo/testing/call_operation/ruby_unit/activity_comments_test.rb --runner xml
 TUXML_OUTPUT_FILE=testCallOperation.xml ruby acceleo/testing/call_operation/ruby_unit/call_operation_node_test.rb --runner xml
 TUXML_OUTPUT_FILE=testBigActivity.xml ruby acceleo/testing/big_activity/ruby_unit/big_activity_unit_test.rb --runner xml
-TUXML_OUTPUT_FILE=testRandomVariableAssignment.xml ruby acceleo/testing/random_variable_assignment/ruby_unit/random_variable_assignment_test.rb --runner xml
+#TUXML_OUTPUT_FILE=testRandomVariableAssignment.xml ruby acceleo/testing/random_variable_assignment/ruby_unit/random_variable_assignment_test.rb --runner xml
