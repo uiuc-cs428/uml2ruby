@@ -26,7 +26,7 @@ class BigActivitySuite < Test::Unit::TestCase
   end 
   
   def test_call_behavior_action_method_call
-    stringInFile('acceleo/testing/big_activity/autogen/Process_Order.rb', 'returnOrder =Deliver_Order(order)')
+    stringInFile('acceleo/testing/big_activity/autogen/Process_Order.rb', 'returnOrder = Deliver_Order(order)')
   end 
   
   def test_comment_in_activity_diagram
