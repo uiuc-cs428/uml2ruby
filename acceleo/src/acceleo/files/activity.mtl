@@ -109,22 +109,23 @@ end
 [template public genRequires(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 [if anActivityNode.oclAsType(OpaqueAction).input->size() > 0]
-[if not (anActivityNode.oclAsType(OpaqueAction).input->first().type.toString().contains('String') or
-     anActivityNode.oclAsType(OpaqueAction).input->first().type.toString().contains('Integer') or
-     anActivityNode.oclAsType(OpaqueAction).input->first().type.toString().contains('Real') or
-     anActivityNode.oclAsType(OpaqueAction).input->first().type.toString().contains('Boolean')
+[for (anInput : InputPin | anActivityNode.oclAsType(OpaqueAction).input)]
+[if not (anInput.type.toString().contains('String') or anInput.type.toString().contains('Integer') or
+         anInput.type.toString().contains('Real') or anInput.type.toString().contains('Boolean')
 )]
-require_relative('[anActivityNode.oclAsType(OpaqueAction).input->first().type.name/].rb')
+require_relative('[anInput.type.name/].rb')
 [/if]
+[/for]
 [/if]
 [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
-[if not (anActivityNode.oclAsType(OpaqueAction).output->first().type.toString().contains('String') or
-     anActivityNode.oclAsType(OpaqueAction).output->first().type.toString().contains('Integer') or
-     anActivityNode.oclAsType(OpaqueAction).output->first().type.toString().contains('Real') or
-     anActivityNode.oclAsType(OpaqueAction).output->first().type.toString().contains('Boolean')
+[for (anOutput : OutputPin | anActivityNode.oclAsType(OpaqueAction).output)]
+
+[if not (anOutput.type.toString().contains('String') or anOutput.type.toString().contains('Integer') or
+         anOutput.type.toString().contains('Real') or anOutput.type.toString().contains('Boolean')
 )]
-require_relative('[anActivityNode.oclAsType(OpaqueAction).output->first().type.name/].rb')
+require_relative('[anOutput.type.name/].rb')
 [/if]
+[/for]
 [/if]
 [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
 [for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow))][genRequires(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
