@@ -10,7 +10,7 @@
 [else]
   [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
 [genRequires(theInitialNode)/]
-[genCallBehaviorActions(theInitialNode)/]
+[comment [genCallBehaviorActions(theInitialNode)/]
 [genMethodsFromActions(theInitialNode)/]
 def [anActivity.name.replaceAll(' ', '_')/]
   [genActivity(theInitialNode)/]
@@ -132,6 +132,9 @@ require_relative('[anOutput.type.name/].rb')
 [/if]
 [if (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))]
 require_relative('[anActivityNode.eGet('operation').class.name/].rb')
+[/if]
+[if (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( ( not anActivityNode.eGet('behavior').oclIsUndefined() )))]
+require_relative('[anActivityNode.print()/].rb')
 [/if]
 [comment Iterate over the entire diagram /]
 [for (anActivityEdge : ActivityEdge | anActivityNode.outgoing)]

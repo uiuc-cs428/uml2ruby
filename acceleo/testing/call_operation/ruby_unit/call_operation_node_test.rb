@@ -18,7 +18,7 @@ class TestActivityCallOperationNodeSuite < Test::Unit::TestCase
       return false
     end
   end
-  
+ 
   def test_result_assigned_to_class
     assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '^\s*saveThis \= Class1.operation1\(Parameter1\)')
   end
