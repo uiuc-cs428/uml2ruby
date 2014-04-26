@@ -98,7 +98,7 @@ end
 [if (not parameter.oclIsUndefined() and parameter.oclIsTypeOf(InputPin))][parameter.eGet('name')/][/if][/for]
 [/template]
 
-[template public printReturnParameter(anActivityNode : ActivityNode) post(trim())]
+[template public printReturnParameter(anActivityNode : ActivityNode) post(replaceAll('\n',''))]
 [for(parameter : Element | anActivityNode.ownedElement)][if (not parameter.oclIsUndefined() and ( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/] = [/if][/for]
 [/template]
 
@@ -210,7 +210,7 @@ end
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genCallBehaviorActions(aControlFlow.target)/][/for]
 [/template]
 
-[template public printReturnActivityParameterNodeIfExists(anActivityNode : ActivityNode) post(trim())]
+[template public printReturnActivityParameterNodeIfExists(anActivityNode : ActivityNode) post(replaceAll('\n',''))]
 [if (not (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()))][for (param : Parameter | anActivityNode.eGet('behavior').ownedParameter->asSet())][if (param.direction.toString().contains('return'))][param.name.toLowerFirst()/] = [/if][/for][/if]
 [/template] 
 
