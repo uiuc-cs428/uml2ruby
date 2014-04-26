@@ -211,7 +211,7 @@ public class Generate extends AbstractAcceleoGenerator {
 		// Separate require and program statements to print all require
 		// statements together.
 		for (String curLine; (curLine = inputFileReader.readLine()) != null;) {
-			if (curLine.matches("^require.+ \'.+\'.*")) {
+			if (curLine.matches("^require.+\'.+\'.*")) {
 				requireStatements.add(curLine);
 			} else {
 				programLines.add(curLine);
