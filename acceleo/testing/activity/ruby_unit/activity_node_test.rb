@@ -12,12 +12,8 @@ class TestActivityNodeSuite < Test::Unit::TestCase
     stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'def ValueSpecificationAction1')
   end
   
-  def test_call_behavior_action
-    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'def BehaviorActivity(order)')
-  end
-  
   def test_call_behavior_action_method_defined
-    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'returnOrder =BehaviorActivity(order)')
+    stringInFile('acceleo/testing/activity/autogen/SomeFunActivity.rb', 'returnOrder = BehaviorActivity(order)')
   end
 
   
