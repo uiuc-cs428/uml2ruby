@@ -2,19 +2,17 @@
 [module activity('http://www.eclipse.org/uml2/4.0.0/UML')]
 
 [template public generateActivity(anActivity : Activity)]
-[file (anActivity.name.concat('.rb'), false, 'UTF-8')]
+[file (anActivity.name.replaceAll(' ', '_').concat('.rb'), false, 'UTF-8')]
 [genComments(anActivity)/]
 # The activity "[anActivity.name/]" has [anActivity.eAllContents(ActivityNode)->size()/] nodes and [anActivity.eAllContents(ControlFlow)->size()/] control flows 
 [if (anActivity.eAllContents(InitialNode)->first().oclIsUndefined())]
  [genBehaviorActivity(anActivity)/]
 [else]
   [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
-  # The initial node is called "[theInitialNode.name/]"
-  [theInitialNode.nextActivityNode()/]
 [genRequires(theInitialNode)/]
 [genCallBehaviorActions(theInitialNode)/]
 [genMethodsFromActions(theInitialNode)/]
-def [anActivity.name/]
+def [anActivity.name.replaceAll(' ', '_')/]
   [genActivity(theInitialNode)/]
 end
   [/let]
@@ -24,7 +22,7 @@ end
 
 
 [template public genBehaviorActivity(anActivity : Activity) post(trim())]
-def [anActivity.name/][if (not anActivity.ownedParameter->asSet()->isEmpty())]([genInputActivityParameterNodes(anActivity)/])[/if]
+def [anActivity.name.replaceAll(' ', '_')/][if (not anActivity.ownedParameter->asSet()->isEmpty())]([genInputActivityParameterNodes(anActivity)/])[/if]
   [genActivityParameterNodeInitialization(anActivity)/]
   [let theInitialNode : ActivityParameterNode=anActivity.node->select(apn : ActivityNode | apn.oclIsTypeOf(ActivityParameterNode) and apn.eGet('parameter').direction.toString().contains('in'))->asSequence()->first()]
   [theInitialNode.nextActivityNodeInBehavior()/]
@@ -40,24 +38,26 @@ end
 
 [template public genActivityParameterNodeInitialization(anActivity : Activity)]
 [for(activityParameter : Parameter | anActivity.ownedParameter)]
-[if (activityParameter.direction.toString().contains('in'))]an[activityParameter.name/] = [activityParameter.name.toLowerFirst()/]
+[if (activityParameter.direction.toString().contains('in'))]an[activityParameter.name.replaceAll(' ', '_')/] = [activityParameter.name.toLowerFirst()/]
 [elseif (activityParameter.direction.toString().contains('return'))]an[activityParameter.name/] = nil[/if][if (activityParameter.followingSiblings()->isEmpty())][/if]
 [/for]
 [/template]
 
 [template public nextActivityNodeInBehavior(anActivityNode : ActivityNode) post(trim())]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
+ [printControlFlowGuard(aControlFlow)/]
  [generateActionCallInBehavior(anActivityNode)/]
-[if (aControlFlow.target.oclIsTypeOf(ActivityParameterNode))][printOutputActivityParameterNode(aControlFlow)/][else]# [aControlFlow.name/][/if]
+[if (aControlFlow.target.oclIsTypeOf(ActivityParameterNode))][printOutputActivityParameterNode(aControlFlow)/][else][comment # [aControlFlow.name/][/if]
 [(nextActivityNodeInBehavior(aControlFlow.target))/]
 [/for]
 [/template]
 
 [template public generateActionCallInBehavior(anActivityNode : ActivityNode) post(trim())]
-[if (anActivityNode.oclIsTypeOf(OpaqueAction))][anActivityNode.name/]()
-[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))][anActivityNode.name/]()
-[elseif (anActivityNode.oclIsTypeOf(CallOperationAction))][anActivityNode.name/]()
-[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))][anActivityNode.name/]()[/if]
+[if (anActivityNode.oclIsTypeOf(OpaqueAction))][anActivityNode.print()/]()
+[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))][anActivityNode.print()/]()
+[elseif (anActivityNode.oclIsTypeOf(CallOperationAction))][anActivityNode.print()/]()
+[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))][anActivityNode.print()/]()
+[/if]
 [/template]
 
 [template public printOutputActivityParameterNode(aControlFlow : ControlFlow) post(trim())]
@@ -99,7 +99,7 @@ end
 [/template]
 
 [template public printReturnParameter(anActivityNode : ActivityNode) post(trim())]
-[for(parameter : Element | anActivityNode.ownedElement)][if (not parameter.oclIsUndefined() and ( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/]=[/if][/for]
+[for(parameter : Element | anActivityNode.ownedElement)][if (not parameter.oclIsUndefined() and ( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/] = [/if][/for]
 [/template]
 
 [template public printTerminatingNode(aControlFlow : ControlFlow)]
@@ -128,6 +128,9 @@ require_relative('[anActivityNode.oclAsType(OpaqueAction).output->first().type.n
 [/if]
 [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
 [for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow))][genRequires(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
+[/if]
+[if (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))]
+require_relative('[anActivityNode.eGet('operation').class.name/].rb')
 [/if]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genRequires(aControlFlow.target)/][/for]
 [/template]
@@ -194,7 +197,7 @@ end
 
 [template public genCallBehaviorActions(anActivityNode : ActivityNode)]
 [if anActivityNode.oclIsTypeOf(CallBehaviorAction)]
-def [anActivityNode.eGet('behavior').name/][if (not (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()))]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
+def [anActivityNode.eGet('behavior').name.replaceAll(' ', '_')/][if (not (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()))]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
   [genActivityParameterNodeInitialization(anActivityNode.eGet('behavior').oclAsType(Activity))/]
   [let theInitialNode : ActivityParameterNode=anActivityNode.eGet('behavior').oclAsType(Activity).node->select(apn : ActivityNode | apn.oclIsTypeOf(ActivityParameterNode))->asSequence()->first()]
   [theInitialNode.nextActivityNodeInBehavior()/]
@@ -213,7 +216,8 @@ end
 /]
 
 [template public genActivity(anActivityNode : ActivityNode) post(trim())]
-[if anActivityNode.oclIsTypeOf(CallBehaviorAction)][printReturnActivityParameterNodeIfExists(anActivityNode)/][anActivityNode.name/]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
+[if anActivityNode.oclIsTypeOf(CallBehaviorAction)][printReturnActivityParameterNodeIfExists(anActivityNode)/][anActivityNode.print()/]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
+[if (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))][genClassMethod(anActivityNode)/][/if]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 [let anOpaqueAction : OpaqueAction = anActivityNode]
 [if anOpaqueAction.output->size() > 0]
@@ -241,7 +245,8 @@ end
 [printControlFlowGuard(aControlFlow)/]
 [(genActivity(aControlFlow.target))/]
 [/if]
-[/for][/template]
+[/for]
+[/template]
 
 [template public print(anActivityNode : ActivityNode)]
 [anActivityNode.name.replaceAll(' ', '_')/]
@@ -251,5 +256,22 @@ end
 [template public genComments(anActivity : Activity)]
 [for (aComment: Comment | anActivity.ownedComment)]
 #[aComment._body/]
+[/for]
+[/template]
+
+[template public printGuardsInBehavior(anActivityNode : ActivityNode)]
+[comment: Print control flow guards/]
+[for (aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
+[if not (aControlFlow.guard.oclIsUndefined() = false and aControlFlow.guard.name = 'else')]
+ [printControlFlowGuard(aControlFlow)/]
+[generateActionCallInBehavior(aControlFlow.target)/]
+[/if]
+[/for]
+[comment: Ensure that the else clause is always printed last/]
+[for (aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
+[if (aControlFlow.guard.oclIsUndefined() = false and aControlFlow.guard.name = 'else')]
+ [printControlFlowGuard(aControlFlow)/]
+[generateActionCallInBehavior(aControlFlow.target)/]
+[/if]
 [/for]
 [/template]

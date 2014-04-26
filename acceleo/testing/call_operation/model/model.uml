@@ -19,7 +19,7 @@
         </eAnnotations>
         <upperBound xmi:type="uml:LiteralInteger" xmi:id="_dKhHEcNCEeOsJ_OT0A4XLw" value="1"/>
       </argument>
-      <result xmi:type="uml:OutputPin" xmi:id="_bgIB0MNCEeOsJ_OT0A4XLw" name="SaveThis">
+      <result xmi:type="uml:OutputPin" xmi:id="_bgIB0MNCEeOsJ_OT0A4XLw" name="saveThis">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bgIo4MNCEeOsJ_OT0A4XLw" source="PinToParameterLink">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bgJP8MNCEeOsJ_OT0A4XLw" key="PinToParameterLink" value="_be2PcMNCEeOsJ_OT0A4XLw"/>
         </eAnnotations>
@@ -49,11 +49,11 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_JFAxYMNCEeOsJ_OT0A4XLw" name="Class1">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_Kg9yAMNCEeOsJ_OT0A4XLw" name="operation1">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_be2PcMNCEeOsJ_OT0A4XLw" name="SaveThis" direction="out"/>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dKAJsMNCEeOsJ_OT0A4XLw" name="Parameter1"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_be2PcMNCEeOsJ_OT0A4XLw" name="saveThis" direction="out"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dKAJsMNCEeOsJ_OT0A4XLw" name="parameter1"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_Xn8PUMNCEeOsJ_OT0A4XLw" name="operation2">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_iB8JAMNCEeOsJ_OT0A4XLw" name="Parameter1"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_iB8JAMNCEeOsJ_OT0A4XLw" name="parameter1"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Yu_-AMNCEeOsJ_OT0A4XLw" name="Class2">

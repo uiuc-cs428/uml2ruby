@@ -73,7 +73,7 @@
         </eAnnotations>
         <upperBound xmi:type="uml:LiteralInteger" xmi:id="_pYvj0bbTEeOqfKs6pnU-Zw" value="1"/>
       </argument>
-      <result xmi:type="uml:OutputPin" xmi:id="_pYvj2LbTEeOqfKs6pnU-Zw" name="Result" type="_ImjyELbREeOqfKs6pnU-Zw">
+      <result xmi:type="uml:OutputPin" xmi:id="_pYvj2LbTEeOqfKs6pnU-Zw" name="result" type="_ImjyELbREeOqfKs6pnU-Zw">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pYynILbTEeOqfKs6pnU-Zw" source="PinToParameterLink">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pYynIbbTEeOqfKs6pnU-Zw" key="PinToParameterLink" value="_o07sILbTEeOqfKs6pnU-Zw"/>
         </eAnnotations>
