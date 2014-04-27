@@ -36,7 +36,7 @@ end
 /]
 
 [template public genCallParameters(anOperation : Operation) post(trim()) ]
-([sortParamSet(anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return or param.direction = ParameterDirectionKind::out))).genOperationParameter()->sep(', ')/])
+([sortMethodParam(anOperation.ownedParameter).genOperationParameter()->sep(', ')/])
 [/template]
 
 [template public genOperationParameter(aParameter : OclAny)]
