@@ -26,7 +26,6 @@ class DependencyClassSuite < Test::Unit::TestCase
         assert_not_nil(uniqueAdd, "Duplicate require statement found: " + line)
       end
     end
-    File.close(autogen)
   end
 
   def test_consecutive_newlines
