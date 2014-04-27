@@ -1,6 +1,6 @@
 [comment encoding = UTF-8 /]
 [module class('http://www.eclipse.org/uml2/4.0.0/UML')]
-
+[import acceleo::files::queryTemplates /]
 
 [template public classFile(aClass : Class)]
 [file (aClass.genName().concat('.rb'), false, 'UTF-8')]
@@ -207,7 +207,7 @@ end
 
 [template public genParameters(anOperation : Operation) post(trim()) ]
 [if (anOperation.hasArgs()) ]
-([anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genOperationParameter()->sep(', ')/])
+([sortParamSet(anOperation.ownedParameter).genOperationParameter()->sep(', ')/])
 [/if]
 [/template]
 
@@ -215,11 +215,11 @@ end
 
 [if (anOperation.hasArgs()) ]
 # * *Args* :
-[anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genParameterComment()->sep('\n')/]
+[sortParamComment(anOperation.ownedParameter).genOperationParameter()->sep('\n')/]
 [/if]
 [if (anOperation.isVoid() = false) ]
 # * *Returns* :
-[anOperation.ownedParameter->select(param : Parameter | (param.direction = ParameterDirectionKind::return))->first().genParameterComment()/]
+[anOperation.ownedParameter->select(param : Parameter | (param.direction = ParameterDirectionKind::return  or param.direction = ParameterDirectionKind::out))->first().genParameterComment()/]
 [/if]
 [/template]
 
@@ -227,12 +227,8 @@ end
 #   - +[aParameter.genName()/]+ -> [aParameter.genType()/]
 [/template]
 
-[template public genOperationParameters(anOperation : Operation)]
-[anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genOperationParameter()->sep(', ')/]
-[/template]
-
-[template public genOperationParameter(aParameter : Parameter)]
-[aParameter.genName()/]
+[template public genOperationParameter(aParameter : OclAny)]
+[aParameter.toString()/]
 [/template]
 
 [template public genReturnValue(anOperation : Operation) {
