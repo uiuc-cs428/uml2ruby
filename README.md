@@ -7,6 +7,6 @@ There is a [Prebuilt Eclipse plugin](http://uiuc-cs428.github.io/uml2ruby/) and 
 
 ### Project Members
 * Kevin Boice (boice3)
-* Holly Decker (decker2)
+* Holly Decker (hdecker2)
 * Jon Gill (jagill2)
 * David Overgaard (overgaa2)
