@@ -24,6 +24,11 @@ class TestActivityCallOperationNodeSuite < Test::Unit::TestCase
     assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '^\s*saveThis\s*\=\s*Class1.operation1.*')
   end
   
+  def test_result_assigned_to_user_defined_var
+    assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '^\s*saveThis\s*\=\s*Class1.operation1.*')
+    assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '^\s*saveThat\s*\=\s*Class1.operation1.*')
+  end
+  
   def test_call_params_sorted_alphabetically
     assertRegexInFile('acceleo/testing/call_operation/autogen/Activity1.rb', '^\s.*Class1.operation1\(aParameter, parameter1, qParameter\)')
   end
