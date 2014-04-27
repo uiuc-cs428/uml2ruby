@@ -21,7 +21,7 @@ class DependencyClassSuite < Test::Unit::TestCase
     require_statements = Set.new []
     File.open(autogen).each do |line|
       if (line =~ /^require.+\'.+\'.*/)
-        uniqueAdd = require_statements.add?(autogen);
+        uniqueAdd = require_statements.add?(line);
 
         assert_not_nil(uniqueAdd, "Duplicate require statement found: " + line)
       end
