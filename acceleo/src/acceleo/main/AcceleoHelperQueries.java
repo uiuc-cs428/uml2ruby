@@ -23,16 +23,17 @@ public class AcceleoHelperQueries {
 		Set<String> sortedParams = new TreeSet<String>();
 
 		for (ParameterImpl object : inputStrings) {
-			System.out.println("argument: " + object.getName());
+//			System.out.println("argument: " + object.getName());
+//			System.out.println("argument: " + object);
 			sortedParams.add(object.getName());
 		}
-
-		System.out.println("Sorted:");
-		for (String string : sortedParams) {
-			System.out.println("argument: " + string);
-		}
-
-		System.out.println("hello world");
+//
+//		System.out.println("Sorted:");
+//		for (String string : sortedParams) {
+//			System.out.println("argument: " + string);
+//		}
+//
+//		System.out.println("hello world");
 
 		return sortedParams;
 	}

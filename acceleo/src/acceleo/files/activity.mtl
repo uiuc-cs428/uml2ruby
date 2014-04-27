@@ -1,5 +1,6 @@
 [comment encoding = UTF-8 /]
 [module activity('http://www.eclipse.org/uml2/4.0.0/UML')]
+[import acceleo::files::queryTemplates /]
 
 [template public generateActivity(anActivity : Activity)]
 [file (anActivity.name.replaceAll(' ', '_').concat('.rb'), false, 'UTF-8')]
@@ -28,6 +29,18 @@ def [anActivity.name.replaceAll(' ', '_')/][if (not anActivity.ownedParameter->a
   [theInitialNode.nextActivityNodeInBehavior()/]
 [/let]
 end
+[/template]
+
+[query public hasArgs(anOperation : Operation) : Boolean
+  = not (anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return))->isEmpty())
+/]
+
+[template public genCallParameters(anOperation : Operation) post(trim()) ]
+([sortParamSet(anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return or param.direction = ParameterDirectionKind::out))).genOperationParameter()->sep(', ')/])
+[/template]
+
+[template public genOperationParameter(aParameter : OclAny)]
+[aParameter.toString()/]
 [/template]
 
 [template public genInputActivityParameterNodes(anActivity : Activity) post(trim())]
@@ -80,7 +93,7 @@ end
 [/template]
 
 [template public genClassMethod(anActivityNode : ActivityNode)]
-[printReturnParameter(anActivityNode)/][anActivityNode.eGet('operation').class.name/].[anActivityNode.eGet('operation').name/]([printOperationParameters(anActivityNode)/])
+[printReturnParameter(anActivityNode)/][anActivityNode.eGet('operation').class.name/].[anActivityNode.eGet('operation').name/][genCallParameters(anActivityNode.eGet('operation'))/]
 [/template]
 
 [template public printControlFlowGuard(aControlFlow : ControlFlow) post(trim())]

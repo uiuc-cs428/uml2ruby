@@ -207,7 +207,7 @@ end
 
 [template public genParameters(anOperation : Operation) post(trim()) ]
 [if (anOperation.hasArgs()) ]
-([sortParamSet(anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return))).genOperationParameter()->sep(', ')/])
+([sortParamSet(anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return or param.direction = ParameterDirectionKind::out))).genOperationParameter()->sep(', ')/])
 [/if]
 [/template]
 
@@ -215,11 +215,11 @@ end
 
 [if (anOperation.hasArgs()) ]
 # * *Args* :
-[anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genParameterComment()->sep('\n')/]
+[anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return  or param.direction = ParameterDirectionKind::out)).genParameterComment()->sep('\n')/]
 [/if]
 [if (anOperation.isVoid() = false) ]
 # * *Returns* :
-[anOperation.ownedParameter->select(param : Parameter | (param.direction = ParameterDirectionKind::return))->first().genParameterComment()/]
+[anOperation.ownedParameter->select(param : Parameter | (param.direction = ParameterDirectionKind::return  or param.direction = ParameterDirectionKind::out))->first().genParameterComment()/]
 [/if]
 [/template]
 
@@ -228,7 +228,7 @@ end
 [/template]
 
 [template public genOperationParameters(anOperation : Operation)]
-[anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genOperationParameter()->sep(', ')/]
+[anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return  or param.direction = ParameterDirectionKind::out)).genOperationParameter()->sep(', ')/]
 [/template]
 
 [template public genOperationParameter(aParameter : OclAny)]
