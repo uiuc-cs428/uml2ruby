@@ -11,7 +11,7 @@
 [else]
   [let theInitialNode : InitialNode= anActivity.eAllContents(InitialNode)->first()]
 [genRequires(theInitialNode)/]
-[genCallBehaviorActions(theInitialNode)/]
+[comment [genCallBehaviorActions(theInitialNode)/]
 [genMethodsFromActions(theInitialNode)/]
 def [anActivity.name.replaceAll(' ', '_')/]
   [genActivity(theInitialNode)/]
@@ -111,7 +111,7 @@ end
 [if (not parameter.oclIsUndefined() and parameter.oclIsTypeOf(InputPin))][parameter.eGet('name')/][/if][/for]
 [/template]
 
-[template public printReturnParameter(anActivityNode : ActivityNode) post(trim())]
+[template public printReturnParameter(anActivityNode : ActivityNode) post(replaceAll('\n',''))]
 [for(parameter : Element | anActivityNode.ownedElement)][if (not parameter.oclIsUndefined() and ( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/] = [/if][/for]
 [/template]
 
@@ -144,6 +144,9 @@ require_relative('[anActivityNode.oclAsType(OpaqueAction).output->first().type.n
 [/if]
 [if (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))]
 require_relative('[anActivityNode.eGet('operation').class.name/].rb')
+[/if]
+[if (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( ( not anActivityNode.eGet('behavior').oclIsUndefined() )))]
+require_relative('[anActivityNode.print()/].rb')
 [/if]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genRequires(aControlFlow.target)/][/for]
 [/template]
@@ -220,7 +223,7 @@ end
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genCallBehaviorActions(aControlFlow.target)/][/for]
 [/template]
 
-[template public printReturnActivityParameterNodeIfExists(anActivityNode : ActivityNode) post(trim())]
+[template public printReturnActivityParameterNodeIfExists(anActivityNode : ActivityNode) post(replaceAll('\n',''))]
 [if (not (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()))][for (param : Parameter | anActivityNode.eGet('behavior').ownedParameter->asSet())][if (param.direction.toString().contains('return'))][param.name.toLowerFirst()/] = [/if][/for][/if]
 [/template] 
 
