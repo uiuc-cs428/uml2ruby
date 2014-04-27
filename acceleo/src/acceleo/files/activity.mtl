@@ -91,7 +91,7 @@ end
 [/template]
 
 [template public genClassMethod(anActivityNode : ActivityNode)]
-[printReturnParameter(anActivityNode)/][anActivityNode.eGet('operation').class.name/].[anActivityNode.eGet('operation').name/][genCallParameters(anActivityNode.eGet('operation'))/]
+[printSaveString(anActivityNode.eGet('target').name)/][anActivityNode.eGet('operation').class.name/].[anActivityNode.eGet('operation').name/][genCallParameters(anActivityNode.eGet('operation'))/]
 [/template]
 
 [template public printControlFlowGuard(aControlFlow : ControlFlow) post(trim())]
@@ -102,11 +102,6 @@ end
 #if [aControlFlow.guard.name/] == [aControlFlow.guard.eGet('value')/]
 [/if]
 [/if]
-[/template]
-
-[template public printOperationParameters(anActivityNode : ActivityNode) post(trim())]
-[for(parameter : Element | anActivityNode.ownedElement)]
-[if (not parameter.oclIsUndefined() and parameter.oclIsTypeOf(InputPin))][parameter.eGet('name')/][/if][/for]
 [/template]
 
 [template public printReturnParameter(anActivityNode : ActivityNode) post(replaceAll('\n',''))]

@@ -32,7 +32,7 @@
         </eAnnotations>
         <children xmi:type="notation:Shape" xmi:id="_NFSI4MNCEeOsJ_OT0A4XLw" type="3027">
           <children xmi:type="notation:DecorationNode" xmi:id="_NFSI48NCEeOsJ_OT0A4XLw" type="5023">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_NFSI5MNCEeOsJ_OT0A4XLw" x="-75" y="7"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_NFSI5MNCEeOsJ_OT0A4XLw" x="3" y="-23"/>
           </children>
           <children xmi:type="notation:DecorationNode" xmi:id="_NFSI5cNCEeOsJ_OT0A4XLw" type="5097">
             <layoutConstraint xmi:type="notation:Location" xmi:id="_NFSI5sNCEeOsJ_OT0A4XLw" y="5"/>
@@ -54,7 +54,7 @@
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_S3T9Mc2bEeOQILfQ9gJyeA" key="mutable" value="true"/>
           </eAnnotations>
           <children xmi:type="notation:DecorationNode" xmi:id="_S2pO082bEeOQILfQ9gJyeA" type="5019">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_S2pO1M2bEeOQILfQ9gJyeA" x="-62" y="-3"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_S2pO1M2bEeOQILfQ9gJyeA" x="-57" y="-3"/>
           </children>
           <children xmi:type="notation:DecorationNode" xmi:id="_S2pO1c2bEeOQILfQ9gJyeA" type="5093">
             <layoutConstraint xmi:type="notation:Location" xmi:id="_S2pO1s2bEeOQILfQ9gJyeA" y="5"/>

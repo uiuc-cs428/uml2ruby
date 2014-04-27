@@ -102,6 +102,29 @@ public class AcceleoHelperQueries {
 	}
 
 	/**
+	 * If a target pin has been set then save the return value to the name of
+	 * the target pin.
+	 * 
+	 * To be used with call operation functionality to define method calls to
+	 * class methods.
+	 * 
+	 * @param targetName
+	 *            Name of variable to save the return value to
+	 * @return The targeted variable name with = appended
+	 */
+	public String printSaveString(String targetName) {
+		String saveString;
+
+		if (targetName == null || targetName.matches("\\s*")) {
+			saveString = "";
+		} else {
+			saveString = targetName + " = ";
+		}
+
+		return saveString;
+	}
+
+	/**
 	 * Change first character of a string to lower case
 	 * 
 	 * @param param

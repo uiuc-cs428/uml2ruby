@@ -31,13 +31,13 @@
         </eAnnotations>
         <upperBound xmi:type="uml:LiteralInteger" xmi:id="_S2bzcc2bEeOQILfQ9gJyeA" value="1"/>
       </argument>
-      <result xmi:type="uml:OutputPin" xmi:id="_S2ePss2bEeOQILfQ9gJyeA" name="saveThis">
+      <result xmi:type="uml:OutputPin" xmi:id="_S2ePss2bEeOQILfQ9gJyeA" name="returnThis">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_S2e2wM2bEeOQILfQ9gJyeA" source="PinToParameterLink">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_S2e2wc2bEeOQILfQ9gJyeA" key="PinToParameterLink" value="_be2PcMNCEeOsJ_OT0A4XLw"/>
         </eAnnotations>
         <upperBound xmi:type="uml:LiteralInteger" xmi:id="_S2ePs82bEeOQILfQ9gJyeA" value="1"/>
       </result>
-      <target xmi:type="uml:InputPin" xmi:id="_NFQTssNCEeOsJ_OT0A4XLw" name="" type="_JFAxYMNCEeOsJ_OT0A4XLw">
+      <target xmi:type="uml:InputPin" xmi:id="_NFQTssNCEeOsJ_OT0A4XLw" name="saveThis" type="_JFAxYMNCEeOsJ_OT0A4XLw">
         <upperBound xmi:type="uml:LiteralInteger" xmi:id="_NFQTs8NCEeOsJ_OT0A4XLw" value="1"/>
       </target>
     </node>
