@@ -44,9 +44,7 @@ end
 [/template]
 
 [template public genInputActivityParameterNodes(anActivity : Activity) post(trim())]
-[for(activityParameter : Parameter | anActivity.ownedParameter)]
-[if (activityParameter.direction.toString().contains('in'))][activityParameter.name.toLowerFirst()/][/if][if (activityParameter.followingSiblings()->isEmpty())][elseif (activityParameter.followingSiblings()->first().eGet('direction').toString().contains('in'))], [/if]
-[/for]
+[sortActivityParam(anActivity.ownedParameter).genOperationParameter()->sep(', ')/]
 [/template]
 
 [template public genActivityParameterNodeInitialization(anActivity : Activity)]
