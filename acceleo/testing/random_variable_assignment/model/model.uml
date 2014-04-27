@@ -20,7 +20,7 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         <upperBound xmi:type="uml:LiteralInteger" xmi:id="_5u2a4M1hEeOjzvf9um1nEQ" value="1"/>
       </outputValue>
-      <body>n = rand(0, 5)</body>
+      <body>n = rand(5)</body>
     </node>
     <node xmi:type="uml:OpaqueAction" xmi:id="_yXE8EM1hEeOjzvf9um1nEQ" name="summation">
       <inputValue xmi:type="uml:InputPin" xmi:id="_-y5jkM1hEeOjzvf9um1nEQ" name="n" incoming="_Bjpz8M1iEeOjzvf9um1nEQ">

@@ -27,8 +27,8 @@ class RandomVariableAssignmentSuite < Test::Unit::TestCase
   end
 
   def test_get_rand
-    i = get_rand()
-    assert(i >= 0 and i <= 5)
+    i= get_rand()
+    assert((i >= 0 and i <= 5))
   end
 
   def test_summation
@@ -37,11 +37,11 @@ class RandomVariableAssignmentSuite < Test::Unit::TestCase
   end
 
   def test_first_variable_assignment
-    stringInFile('acceleo/testing/big_activity/autogen/Process_Order.rb', 'i = get_rand()')
+    stringInFile('acceleo/testing/random_variable_assignment/autogen/RandomVariableAssignment.rb', 'i = get_rand()')
   end
 
   def test_second_variable_assignment
-    stringInFile('acceleo/testing/big_activity/autogen/Process_Order.rb', 'sum = summation(i)')
+    stringInFile('acceleo/testing/random_variable_assignment/autogen/RandomVariableAssignment.rb', 'sum = summation(i)')
   end
 
 end
