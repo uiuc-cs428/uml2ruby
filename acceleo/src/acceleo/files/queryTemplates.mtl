@@ -1,8 +1,8 @@
 [comment encoding = Cp1252 /]
 [module queryTemplates('http://www.eclipse.org/uml2/4.0.0/UML')/]
 
-[query public sortParamSet(arg0 : Set(OclAny)) : Set(OclAny)
-	= invoke('acceleo.main.AcceleoHelperQueries', 'sortParamSet(java.util.Set)', Sequence{arg0})
+[query public sortMethodParam(arg0 : Set(OclAny)) : Set(OclAny)
+	= invoke('acceleo.main.AcceleoHelperQueries', 'sortMethodParam(java.util.Set)', Sequence{arg0})
 /]
 
 [query public sortParamComment(arg0 : Set(OclAny)) : Set(OclAny)

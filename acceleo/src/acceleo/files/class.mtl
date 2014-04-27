@@ -207,7 +207,7 @@ end
 
 [template public genParameters(anOperation : Operation) post(trim()) ]
 [if (anOperation.hasArgs()) ]
-([sortParamSet(anOperation.ownedParameter).genOperationParameter()->sep(', ')/])
+([sortMethodParam(anOperation.ownedParameter).genOperationParameter()->sep(', ')/])
 [/if]
 [/template]
 
