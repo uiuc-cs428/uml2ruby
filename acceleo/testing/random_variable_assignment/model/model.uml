@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_p9fa8M1hEeOjzvf9um1nEQ" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_p9fa8c1hEeOjzvf9um1nEQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_p95qoM1hEeOjzvf9um1nEQ" name="RandomVariableAssignment" node="_toDBIM1hEeOjzvf9um1nEQ _vWTSsM1hEeOjzvf9um1nEQ _yXE8EM1hEeOjzvf9um1nEQ _1I904M1hEeOjzvf9um1nEQ">
+    <edge xmi:type="uml:ObjectFlow" xmi:id="_Bjpz8M1iEeOjzvf9um1nEQ" name="i" source="_5u1z0M1hEeOjzvf9um1nEQ" target="_-y5jkM1hEeOjzvf9um1nEQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_BjuscM1iEeOjzvf9um1nEQ" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_BjvTgM1iEeOjzvf9um1nEQ" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_GE-qEM1iEeOjzvf9um1nEQ" name="ControlFlow1" source="_toDBIM1hEeOjzvf9um1nEQ" target="_vWTSsM1hEeOjzvf9um1nEQ"/>
+    <edge xmi:type="uml:ObjectFlow" xmi:id="_If47YM1kEeOjzvf9um1nEQ" name="sum" source="_2AR3YM1hEeOjzvf9um1nEQ" target="_1I904M1hEeOjzvf9um1nEQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_If6wkM1kEeOjzvf9um1nEQ" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_If7XoM1kEeOjzvf9um1nEQ" value="1"/>
+    </edge>
+    <node xmi:type="uml:InitialNode" xmi:id="_toDBIM1hEeOjzvf9um1nEQ" name="InitialNode1" outgoing="_GE-qEM1iEeOjzvf9um1nEQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_vWTSsM1hEeOjzvf9um1nEQ" name="get_rand" incoming="_GE-qEM1iEeOjzvf9um1nEQ">
+      <language>Ruby</language>
+      <outputValue xmi:type="uml:OutputPin" xmi:id="_5u1z0M1hEeOjzvf9um1nEQ" name="n" outgoing="_Bjpz8M1iEeOjzvf9um1nEQ">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_5u2a4M1hEeOjzvf9um1nEQ" value="1"/>
+      </outputValue>
+      <body>n = rand(0, 5)</body>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_yXE8EM1hEeOjzvf9um1nEQ" name="summation">
+      <inputValue xmi:type="uml:InputPin" xmi:id="_-y5jkM1hEeOjzvf9um1nEQ" name="n" incoming="_Bjpz8M1iEeOjzvf9um1nEQ">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_-y6KoM1hEeOjzvf9um1nEQ" value="1"/>
+      </inputValue>
+      <language>Ruby</language>
+      <outputValue xmi:type="uml:OutputPin" xmi:id="_2AR3YM1hEeOjzvf9um1nEQ" name="sum" outgoing="_If47YM1kEeOjzvf9um1nEQ">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_2AWv4M1hEeOjzvf9um1nEQ" value="1"/>
+      </outputValue>
+      <body>(0..n).each do |i|
+sum += i
+end</body>
+    </node>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_1I904M1hEeOjzvf9um1nEQ" name="ActivityFinalNode1" incoming="_If47YM1kEeOjzvf9um1nEQ"/>
+  </packagedElement>
+</uml:Model>

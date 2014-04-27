@@ -139,7 +139,10 @@ require_relative('[anOutput.type.name/].rb')
 [/for]
 [/if]
 [if anActivityNode.oclAsType(OpaqueAction).output->size() > 0]
-[for(anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow))][genRequires(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/for][/if]
+[for (anObjectFlow: ObjectFlow | anActivityNode.oclAsType(OpaqueAction).output->first().outgoing.oclAsType(ObjectFlow))]
+[if (anObjectFlow.target.oclIsTypeOf(InputPin))][genRequires(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/][/if]
+[/for]
+[/if]
 [/if]
 [if (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))]
 require_relative('[anActivityNode.eGet('operation').class.name/].rb')
@@ -147,7 +150,7 @@ require_relative('[anActivityNode.eGet('operation').class.name/].rb')
 [if (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( ( not anActivityNode.eGet('behavior').oclIsUndefined() )))]
 require_relative('[anActivityNode.print()/].rb')
 [/if]
-[for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genRequires(aControlFlow.target)/][/for]
+[for (aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genRequires(aControlFlow.target)/][/for]
 [/template]
 
 [comment genOpaqueActions adds function definitions for all of the opaque/value-specification actions in the diagram (can actually include manual/external ruby code)/]
@@ -182,8 +185,10 @@ def [anOpaqueAction.print()/][if anOpaqueAction.input->size() > 0]([anOpaqueActi
 end
 
 [if anOpaqueAction.output->size() > 0]
-[for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow))]
+[for (anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow))]
+[if (anObjectFlow.target.oclIsTypeOf(InputPin))]
 [genMethodsFromActions(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
+[/if]
 [/for]
 [/if]
 [/let]
@@ -235,11 +240,12 @@ end
 [if (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))][genClassMethod(anActivityNode)/][/if]
 [if anActivityNode.oclIsTypeOf(OpaqueAction)]
 [let anOpaqueAction : OpaqueAction = anActivityNode]
+[if anOpaqueAction.output->size() > 0][anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.print()/]([if anOpaqueAction.input->size() > 0][anOpaqueAction.input->first().incoming.oclAsType(ObjectFlow).name.toLower()/][/if])
 [if anOpaqueAction.output->size() > 0]
-[anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow).name.toLower()/] = [/if][anActivityNode.print()/]([if anOpaqueAction.input->size() > 0][anOpaqueAction.input->first().incoming.oclAsType(ObjectFlow).name.toLower()/]
-[/if])
-[if anOpaqueAction.output->size() > 0]
-[for(anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow))][genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
+[for (anObjectFlow: ObjectFlow | anOpaqueAction.output->first().outgoing.oclAsType(ObjectFlow))]
+[if (anObjectFlow.target.oclIsTypeOf(InputPin))]
+[genActivity(anObjectFlow.target.oclAsType(InputPin).owner.oclAsType(OpaqueAction))/]
+[/if]
 [/for]
 [/if]
 [/let]
