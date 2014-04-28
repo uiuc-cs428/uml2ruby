@@ -5,11 +5,15 @@
 	= invoke('acceleo.main.AcceleoHelperQueries', 'sortMethodParam(java.util.Set)', Sequence{arg0})
 /]
 
+[query public sortActivityParam(arg0 : Set(OclAny)) : Set(OclAny)
+	= invoke('acceleo.main.AcceleoHelperQueries', 'sortActivityParam(java.util.Set)', Sequence{arg0})
+/]
+
 [query public sortParamComment(arg0 : Set(OclAny)) : Set(OclAny)
 	= invoke('acceleo.main.AcceleoHelperQueries', 'sortParamComment(java.util.Set)', Sequence{arg0})
 /]
 
-[query public sortActivityParam(arg0 : Set(OclAny)) : Set(OclAny)
-	= invoke('acceleo.main.AcceleoHelperQueries', 'sortActivityParam(java.util.Set)', Sequence{arg0})
+[query public printSaveString(arg0 : String) : String
+	= invoke('acceleo.main.AcceleoHelperQueries', 'printSaveString(java.lang.String)', Sequence{arg0})
 /]
 

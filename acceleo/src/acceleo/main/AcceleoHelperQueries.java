@@ -40,8 +40,7 @@ public class AcceleoHelperQueries {
 		Set<String> sortedParams = new TreeSet<String>();
 
 		for (ParameterImpl param : inputStrings) {
-			if (!(param.getDirection().toString().equals("out") || param
-					.getDirection().toString().equals("return"))) {
+			if (!(param.getDirection().toString().equals("return"))) {
 				sortedParams.add(firstCharToLower(param.getName().toString()));
 			}
 		}
@@ -90,8 +89,7 @@ public class AcceleoHelperQueries {
 		Set<String> sortedParams = new TreeSet<String>();
 
 		for (ParameterImpl param : inputStrings) {
-			if (!(param.getDirection().toString().equals("out") || param
-					.getDirection().toString().equals("return"))) {
+			if (!(param.getDirection().toString().equals("return"))) {
 				sortedParams.add("#   - +"
 						+ firstCharToLower(param.getName().toString())
 						+ "+ -> " + getType(param.getType()));
@@ -99,6 +97,29 @@ public class AcceleoHelperQueries {
 		}
 
 		return sortedParams;
+	}
+
+	/**
+	 * If a target pin has been set then save the return value to the name of
+	 * the target pin.
+	 * 
+	 * To be used with call operation functionality to define method calls to
+	 * class methods.
+	 * 
+	 * @param targetName
+	 *            Name of variable to save the return value to
+	 * @return The targeted variable name with = appended
+	 */
+	public String printSaveString(String targetName) {
+		String saveString;
+
+		if (targetName == null || targetName.matches("\\s*")) {
+			saveString = "";
+		} else {
+			saveString = targetName + " = ";
+		}
+
+		return saveString;
 	}
 
 	/**
