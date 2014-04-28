@@ -2,6 +2,11 @@
 [module activity('http://www.eclipse.org/uml2/4.0.0/UML')]
 [import acceleo::files::queryTemplates /]
 
+[comment
+*******************************************************************************
+Diagram level templates
+*******************************************************************************
+/]
 [template public generateActivity(anActivity : Activity)]
 [file (anActivity.name.replaceAll(' ', '_').concat('.rb'), false, 'UTF-8')]
 [genComments(anActivity)/]
@@ -21,7 +26,6 @@ end
 [/file]
 [/template]
 
-
 [template public genBehaviorActivity(anActivity : Activity) post(trim())]
 def [anActivity.name.replaceAll(' ', '_')/][if (not anActivity.ownedParameter->asSet()->isEmpty())]([genInputActivityParameterNodes(anActivity)/])[/if]
   [genActivityParameterNodeInitialization(anActivity)/]
@@ -31,22 +35,25 @@ def [anActivity.name.replaceAll(' ', '_')/][if (not anActivity.ownedParameter->a
 end
 [/template]
 
-[query public hasArgs(anOperation : Operation) : Boolean
-  = not (anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return))->isEmpty())
+[comment
+*******************************************************************************
+Parameter templates
+*******************************************************************************
 /]
-
 [template public genCallParameters(anOperation : Operation) post(trim()) ]
-([sortMethodParam(anOperation.ownedParameter).genOperationParameter()->sep(', ')/])
+([sortMethodParam(anOperation.ownedParameter).printOperationParameter()->sep(', ')/])
 [/template]
 
-[template public genOperationParameter(aParameter : OclAny)]
-[aParameter.toString()/]
-[/template]
 
 [template public genInputActivityParameterNodes(anActivity : Activity) post(trim())]
-[sortActivityParam(anActivity.ownedParameter).genOperationParameter()->sep(', ')/]
+[sortActivityParam(anActivity.ownedParameter).printOperationParameter()->sep(', ')/]
 [/template]
 
+[comment
+*******************************************************************************
+Initialization templates
+*******************************************************************************
+/]
 [template public genActivityParameterNodeInitialization(anActivity : Activity)]
 [for(activityParameter : Parameter | anActivity.ownedParameter)]
 [if (activityParameter.direction.toString().contains('in'))]an[activityParameter.name.replaceAll(' ', '_')/] = [activityParameter.name.toLowerFirst()/]
@@ -54,6 +61,11 @@ end
 [/for]
 [/template]
 
+[comment
+*******************************************************************************
+Traversal templates
+*******************************************************************************
+/]
 [template public nextActivityNodeInBehavior(anActivityNode : ActivityNode) post(trim())]
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))]
  [printControlFlowGuard(aControlFlow)/]
@@ -61,18 +73,6 @@ end
 [if (aControlFlow.target.oclIsTypeOf(ActivityParameterNode))][printOutputActivityParameterNode(aControlFlow)/][else][comment # [aControlFlow.name/][/if]
 [(nextActivityNodeInBehavior(aControlFlow.target))/]
 [/for]
-[/template]
-
-[template public generateActionCallInBehavior(anActivityNode : ActivityNode) post(trim())]
-[if (anActivityNode.oclIsTypeOf(OpaqueAction))][anActivityNode.print()/]()
-[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))][anActivityNode.print()/]()
-[elseif (anActivityNode.oclIsTypeOf(CallOperationAction))][anActivityNode.print()/]()
-[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))][anActivityNode.print()/]()
-[/if]
-[/template]
-
-[template public printOutputActivityParameterNode(aControlFlow : ControlFlow) post(trim())]
-[if (aControlFlow.target.oclIsTypeOf(ActivityParameterNode))]return an[aControlFlow.target.eGet('parameter').name/][/if]
 [/template]
 
 [template public nextActivityNode(anActivityNode : ActivityNode)]
@@ -83,33 +83,22 @@ end
 [/for]
 [/template]
 
-[template public printNameAndAction(anActivityNode : ActivityNode) post(trim())]
-#[anActivityNode.name/]
-     [if (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]#[anActivityNode.name/] -> Output Pin: [printReturnParameter(anActivityNode)/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
-     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))][genClassMethod(anActivityNode)/]
-     [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))]#[(anActivityNode.name)/] -> Operation: [anActivityNode.eGet('behavior').name/][/if]
+
+[comment
+*******************************************************************************
+Functional templates
+*******************************************************************************
+/]
+[template public generateActionCallInBehavior(anActivityNode : ActivityNode) post(trim())]
+[if (anActivityNode.oclIsTypeOf(OpaqueAction))][anActivityNode.print()/]()
+[elseif (anActivityNode.oclIsTypeOf(ValueSpecificationAction))][anActivityNode.print()/]()
+[elseif (anActivityNode.oclIsTypeOf(CallOperationAction))][anActivityNode.print()/]()
+[elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))][anActivityNode.print()/]()
+[/if]
 [/template]
 
 [template public genClassMethod(anActivityNode : ActivityNode)]
 [if (not anActivityNode.eGet('target')->isEmpty())][printSaveString(anActivityNode.eGet('target').name)/][/if][anActivityNode.eGet('operation').class.name/].[anActivityNode.eGet('operation').name/][genCallParameters(anActivityNode.eGet('operation'))/]
-[/template]
-
-[template public printControlFlowGuard(aControlFlow : ControlFlow) post(trim())]
-[if not (aControlFlow.guard->isEmpty())]
-[if (aControlFlow.guard.name = 'else')]
-#else
-[else]
-#if [aControlFlow.guard.name/] == [aControlFlow.guard.eGet('value')/]
-[/if]
-[/if]
-[/template]
-
-[template public printReturnParameter(anActivityNode : ActivityNode) post(replaceAll('\n',''))]
-[for(parameter : Element | anActivityNode.ownedElement)][if (not parameter.oclIsUndefined() and ( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/] = [/if][/for]
-[/template]
-
-[template public printTerminatingNode(aControlFlow : ControlFlow)]
-[if (aControlFlow.target.oclIsTypeOf(FlowFinalNode))]    #[aControlFlow.target.name/][elseif (aControlFlow.target.oclIsTypeOf(ActivityFinalNode))]    #[aControlFlow.target.name/][/if]
 [/template]
 
 [template public genRequires(anActivityNode : ActivityNode)]
@@ -222,14 +211,6 @@ end
 [for(aControlFlow: ControlFlow | anActivityNode.outgoing.oclAsType(ControlFlow))][genCallBehaviorActions(aControlFlow.target)/][/for]
 [/template]
 
-[template public printReturnActivityParameterNodeIfExists(anActivityNode : ActivityNode) post(replaceAll('\n',''))]
-[if (not (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()))][for (param : Parameter | anActivityNode.eGet('behavior').ownedParameter->asSet())][if (param.direction.toString().contains('return'))][param.name.toLowerFirst()/] = [/if][/for][/if]
-[/template] 
-
-[query public validLanguage(anOpaqueAction : OpaqueAction, languageName : String) : Boolean = 
-  anOpaqueAction.language->includes(languageName) and not anOpaqueAction._body->at(anOpaqueAction.language.indexOf(languageName)->first()).oclIsInvalid()
-/]
-
 [template public genActivity(anActivityNode : ActivityNode) post(trim())]
 [if anActivityNode.oclIsTypeOf(CallBehaviorAction)][printReturnActivityParameterNodeIfExists(anActivityNode)/][anActivityNode.print()/]([genInputActivityParameterNodes(anActivityNode.eGet('behavior').oclAsType(Activity))/])[/if]
 [if (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))][genClassMethod(anActivityNode)/][/if]
@@ -264,15 +245,58 @@ end
 [/for]
 [/template]
 
-[template public print(anActivityNode : ActivityNode)]
-[anActivityNode.name.replaceAll(' ', '_')/]
-[/template]
-
 [comment: Print all of the comments for the given activity/]
 [template public genComments(anActivity : Activity)]
 [for (aComment: Comment | anActivity.ownedComment)]
 #[aComment._body/]
 [/for]
+[/template]
+
+[comment
+*******************************************************************************
+Helper print templates
+*******************************************************************************
+/]
+[template public printOperationParameter(aParameter : OclAny)]
+[aParameter.toString()/]
+[/template]
+
+[template public printOutputActivityParameterNode(aControlFlow : ControlFlow) post(trim())]
+[if (aControlFlow.target.oclIsTypeOf(ActivityParameterNode))]return an[aControlFlow.target.eGet('parameter').name/][/if]
+[/template]
+
+[template public printNameAndAction(anActivityNode : ActivityNode) post(trim())]
+#[anActivityNode.name/]
+     [if (anActivityNode.oclIsTypeOf(ValueSpecificationAction))]#[anActivityNode.name/] -> Output Pin: [printReturnParameter(anActivityNode)/], Value: [anActivityNode.eGet('value').name/]=[anActivityNode.eGet('value').eGet('value')/]
+     [elseif (anActivityNode.oclIsTypeOf(CallOperationAction) and ( ( not anActivityNode.eGet('operation').oclIsUndefined() )))][genClassMethod(anActivityNode)/]
+     [elseif (anActivityNode.oclIsTypeOf(CallBehaviorAction) and ( not anActivityNode.eGet('behavior').oclIsUndefined() ))]#[(anActivityNode.name)/] -> Operation: [anActivityNode.eGet('behavior').name/][/if]
+[/template]
+
+[template public printControlFlowGuard(aControlFlow : ControlFlow) post(trim())]
+[if not (aControlFlow.guard->isEmpty())]
+[if (aControlFlow.guard.name = 'else')]
+#else
+[else]
+#if [aControlFlow.guard.name/] == [aControlFlow.guard.eGet('value')/]
+[/if]
+[/if]
+[/template]
+
+[template public printReturnParameter(anActivityNode : ActivityNode) post(replaceAll('\n',''))]
+[for(parameter : Element | anActivityNode.ownedElement)][if (not parameter.oclIsUndefined() and ( parameter.oclIsTypeOf(OutputPin) ))][parameter.eGet('name')/] = [/if][/for]
+[/template]
+
+[template public printTerminatingNode(aControlFlow : ControlFlow)]
+[if (aControlFlow.target.oclIsTypeOf(FlowFinalNode))]    #[aControlFlow.target.name/][elseif (aControlFlow.target.oclIsTypeOf(ActivityFinalNode))]    #[aControlFlow.target.name/][/if]
+[/template]
+
+[template public printReturnActivityParameterNodeIfExists(anActivityNode : ActivityNode) post(replaceAll('\n',''))]
+[if (not (anActivityNode.eGet('behavior').ownedParameter->asSet()->isEmpty()))][for (param : Parameter | anActivityNode.eGet('behavior').ownedParameter->asSet())][if (param.direction.toString().contains('return'))][param.name.toLowerFirst()/] = [/if][/for][/if]
+[/template] 
+
+
+[template public print(anActivityNode : ActivityNode)]
+[anActivityNode.name.replaceAll(' ', '_')/]
 [/template]
 
 [template public printGuardsInBehavior(anActivityNode : ActivityNode)]
@@ -291,3 +315,12 @@ end
 [/if]
 [/for]
 [/template]
+
+[comment
+*******************************************************************************
+General helper templates
+*******************************************************************************
+/]
+[query public validLanguage(anOpaqueAction : OpaqueAction, languageName : String) : Boolean = 
+  anOpaqueAction.language->includes(languageName) and not anOpaqueAction._body->at(anOpaqueAction.language.indexOf(languageName)->first()).oclIsInvalid()
+/]

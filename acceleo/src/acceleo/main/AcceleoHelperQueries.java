@@ -40,8 +40,7 @@ public class AcceleoHelperQueries {
 		Set<String> sortedParams = new TreeSet<String>();
 
 		for (ParameterImpl param : inputStrings) {
-			if (!(param.getDirection().toString().equals("out") || param
-					.getDirection().toString().equals("return"))) {
+			if (!(param.getDirection().toString().equals("return"))) {
 				sortedParams.add(firstCharToLower(param.getName().toString()));
 			}
 		}
@@ -90,8 +89,7 @@ public class AcceleoHelperQueries {
 		Set<String> sortedParams = new TreeSet<String>();
 
 		for (ParameterImpl param : inputStrings) {
-			if (!(param.getDirection().toString().equals("out") || param
-					.getDirection().toString().equals("return"))) {
+			if (!(param.getDirection().toString().equals("return"))) {
 				sortedParams.add("#   - +"
 						+ firstCharToLower(param.getName().toString())
 						+ "+ -> " + getType(param.getType()));

@@ -91,7 +91,7 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_JFAxYMNCEeOsJ_OT0A4XLw" name="Class1">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_Kg9yAMNCEeOsJ_OT0A4XLw" name="operation1">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_be2PcMNCEeOsJ_OT0A4XLw" name="returnThis" direction="out"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_be2PcMNCEeOsJ_OT0A4XLw" name="returnThis" direction="return"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_dKAJsMNCEeOsJ_OT0A4XLw" name="parameter1"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_KWImUM2bEeOQILfQ9gJyeA" name="aParameter"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_SfprIM2bEeOQILfQ9gJyeA" name="qParameter"/>
