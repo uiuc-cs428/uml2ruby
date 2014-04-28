@@ -91,7 +91,7 @@ end
 [/template]
 
 [template public genClassMethod(anActivityNode : ActivityNode)]
-[printSaveString(anActivityNode.eGet('target').name)/][anActivityNode.eGet('operation').class.name/].[anActivityNode.eGet('operation').name/][genCallParameters(anActivityNode.eGet('operation'))/]
+[if (not anActivityNode.eGet('target')->isEmpty())][printSaveString(anActivityNode.eGet('target').name)/][/if][anActivityNode.eGet('operation').class.name/].[anActivityNode.eGet('operation').name/][genCallParameters(anActivityNode.eGet('operation'))/]
 [/template]
 
 [template public printControlFlowGuard(aControlFlow : ControlFlow) post(trim())]
